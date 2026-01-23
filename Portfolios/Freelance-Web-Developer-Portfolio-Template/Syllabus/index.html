@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML, CSS, and JavaScript Concepts</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Learning HTML, CSS, and JavaScript</h1>
+        <p>This page will help you understand basic to advanced HTML, CSS, and JavaScript concepts.</p>
+    </header>
+
+    <section id="html-section">
+        <h2>HTML Tags</h2>
+        <h3>Basic Structure</h3>
+        <div class="code-block">
+            <pre>
+<code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Document Title&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Main Heading&lt;/h1&gt;
+        &lt;p&gt;This is a paragraph.&lt;/p&gt;
+        &lt;br&gt;
+        &lt;hr&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code>
+            </pre>
+        </div>
+
+        <h3>Text Formatting</h3>
+        <div class="code-block">
+            <pre>
+<code>
+&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;br&gt;
+&lt;hr&gt;
+</code>
+            </pre>
+        </div>
+
+        <h3>Lists</h3>
+        <div class="code-block">
+            <pre>
+<code>
+&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;First&lt;/li&gt;
+    &lt;li&gt;Second&lt;/li&gt;
+&lt;/ol&gt;
+</code>
+            </pre>
+        </div>
+
+        <h3>Links and Images</h3>
+        <div class="code-block">
+            <pre>
+<code>
+&lt;a href="https://www.example.com"&gt;This is a link&lt;/a&gt;
+&lt;img src="https://www.example.com/image.jpg" alt="Description"&gt;
+</code>
+            </pre>
+        </div>
+
+        <h3>Tables</h3>
+        <div class="code-block">
+            <pre>
+<code>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Header 1&lt;/th&gt;
+        &lt;th&gt;Header 2&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Data 1&lt;/td&gt;
+        &lt;td&gt;Data 2&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code>
+            </pre>
+        </div>
+
+        <h3>Forms</h3>
+        <div class="code-block">
+            <pre>
+<code>
+&lt;form&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name"&gt;
+    &lt;textarea rows="4" cols="50"&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;select&gt;
+        &lt;option value="option1"&gt;Option 1&lt;/option&gt;
+        &lt;option value="option2"&gt;Option 2&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/form&gt;
+</code>
+            </pre>
+        </div>
+
+        <h3>Media</h3>
+        <div class="code-block">
+            <pre>
+<code>
+&lt;audio controls&gt;
+    &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+    Your browser does not support the audio element.
+&lt;/audio&gt;
+
+&lt;video width="320" height="240" controls&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+    Your browser does not support the video tag.
+&lt;/video&gt;
+</code>
+            </pre>
+        </div>
+
+        <h3>Semantic Tags</h3>
+        <div class="code-block">
+            <pre>
+<code>
+&lt;header&gt;
+    &lt;h1&gt;Website Header&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;nav&gt;
+    &lt;a href="#home"&gt;Home&lt;/a&gt;
+    &lt;a href="#about"&gt;About&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;article&gt;
+        &lt;h2&gt;Article Title&lt;/h2&gt;
+        &lt;p&gt;This is an article.&lt;/p&gt;
+    &lt;/article&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;Footer content.&lt;/p&gt;
+&lt;/footer&gt;
+</code>
+            </pre>
+        </div>
+
+        <h3>Div and Span</h3>
+        <div class="code-block">
+            <pre>
+<code>
+&lt;div&gt;This is a block-level container&lt;/div&gt;
+&lt;span&gt;This is an inline container&lt;/span&gt;
+</code>
+            </pre>
+        </div>
+
+        <h3>Iframe</h3>
+        <div class="code-block">
+            <pre>
+<code>
+&lt;iframe src="https://www.example.com" width="600" height="400"&gt;&lt;/iframe&gt;
+</code>
+            </pre>
+        </div>
+    </section>
+
+    <section id="css-section">
+        <h2>CSS Concepts</h2>
+        <h3>Selectors</h3>
+        <div class="code-block">
+            <pre>
+<code>
+p { color: blue; }
+.class { font-size: 20px; }
+#id { background-color: yellow; }
+</code>
+            </pre>
+        </div>
+
+        <h3>Basic Properties</h3>
+        <div class="code-block">
+            <pre>
+<code>
+body { color: #333; background-color: #f4f4f4; }
+h1 { font-size: 2em; text-align: center; }
+p { margin: 20px; padding: 10px; }
+</code>
+            </pre>
+        </div>
+
+        <h3>Layout</h3>
+        <div class="code-block">
+            <pre>
+<code>
+.container { display: flex; flex-direction: row; }
+.box { width: 100px; height: 100px; background-color: red; }
+</code>
+            </pre>
+        </div>
+
+        <h3>Borders and Spacing</h3>
+        <div class="code-block">
+            <pre>
+<code>
+.box { border: 2px solid black; border-radius: 10px; margin: 20px; padding: 10px; }
+</code>
+            </pre>
+        </div>
+
+        <h3>Pseudo-classes and Pseudo-elements</h3>
+        <div class="code-block">
+            <pre>
+<code>
+a:hover { color: green; }
+button:active { background-color: red; }
+p::before { content: "Note: "; font-weight: bold; }
+</code>
+            </pre>
+        </div>
+    </section>
+
+    <section id="js-section">
+        <h2>JavaScript Concepts</h2>
+        <h3>Basic Syntax</h3>
+        <div class="code-block">
+            <pre>
+<code>
+alert("Hello World!");
+console.log("Logging to the console.");
+var name = "John";
+let age = 30;
+const PI = 3.14;
+
+function greet() {
+    console.log("Hello!");
+}
+</code>
+            </pre>
+        </div>
+
+        <h3>DOM Manipulation</h3>
+        <div class="code-block">
+            <pre>
+<code>
+document.getElementById("example").innerHTML = "New Content";
+document.querySelector(".example").style.color = "red";
+</code>
+            </pre>
+        </div>
+
+        <h3>Events</h3>
+        <div class="code-block">
+            <pre>
+<code>
+document.getElementById("btn").onclick = function() {
+    alert("Button clicked!");
+};
+</code>
+            </pre>
+        </div>
+
+        <h3>Loops and Conditions</h3>
+        <div class="code-block">
+            <pre>
+<code>
+for (let i = 0; i &lt; 5; i++) {
+    console.log(i);
+}
+
+if (age &gt; 18) {
+    console.log("Adult");
+} else {
+    console.log("Minor");
+}
+</code>
+            </pre>
+        </div>
+
+        <h3>Functions and Scope</h3>
+        <div class="code-block">
+            <pre>
+<code>
+function add(a, b) {
+    return a + b;
+}
+
+let result = add(5, 3);
+console.log(result);
+</code>
+            </pre>
+        </div>
+
+        <h3>Arrays and Objects</h3>
+        <div class="code-block">
+            <pre>
+<code>
+let array = [1, 2, 3];
+array.push(4);
+console.log(array);
+
+let obj = {name: "John", age: 30};
+console.log(obj.name);
+</code>
+            </pre>
+        </div>
+
+        <h3>Basic Algorithms</h3>
+        <div class="code-block">
+            <pre>
+<code>
+let numbers = [4, 2, 7, 1];
+numbers.sort();
+console.log(numbers);
+
+let evenNumbers = numbers.filter(num =&gt; num % 2 === 0);
+console.log(evenNumbers);
+</code>
+            </pre>
+        </div>
+
+        <h3>Interactivity</h3>
+        <div class="code-block">
+            <pre>
+<code>
+let name = prompt("What's your name?");
+alert("Hello, " + name + "!");
+</code>
+            </pre>
+        </div>
+    </section>
+</body>
+</html>
