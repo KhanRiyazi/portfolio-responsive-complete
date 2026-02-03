@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple AI Mastery | FastAPI + ML + AI Learning Path</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== KISS PRINCIPLES ===== */
+        /* Keep It Simple, Stupid */
+        :root {
+            /* Minimal color palette */
+            --primary: #3b82f6;
+            /* Blue */
+            --secondary: #10b981;
+            /* Green */
+            --accent: #8b5cf6;
+            /* Purple */
+            --dark: #1f2937;
+            /* Dark gray */
+            --light: #f9fafb;
+            /* Light gray */
+            --border: #e5e7eb;
+            /* Border color */
+
+            /* Simple shadows */
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+
+            /* Consistent spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: white;
+            /* No fancy backgrounds - just clean white */
+        }
+
+        /* ===== KAZEN IMPROVEMENTS ===== */
+        /* Continuous small improvements */
+
+        /* 1. Header - Simple & Functional */
+        header {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-sm) var(--space-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            margin-left: var(--space-lg);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* 2. Hero - Clear & Direct */
+        .hero {
+            padding: 8rem var(--space-md) var(--space-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: var(--space-xl);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--light);
+            color: var(--dark);
+            border: 1px solid var(--border);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* 3. Principles - Simple Cards */
+        .principles {
+            background: var(--light);
+            padding: var(--space-xl) var(--space-md);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+            color: var(--dark);
+        }
+
+        .section-title p {
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .principles-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .principle-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .principle-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* 4. Learning Path - Clean Steps */
+        .learning-path {
+            padding: var(--space-xl) var(--space-md);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .path-steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            background: white;
+            transition: border-color 0.2s;
+        }
+
+        .step:hover {
+            border-color: var(--primary);
+        }
+
+        .step-number {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            margin-bottom: var(--space-xs);
+            color: var(--dark);
+        }
+
+        .step-content p {
+            color: #6b7280;
+            margin-bottom: var(--space-sm);
+        }
+
+        .step-links {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .step-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .step-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 5. Resources - Simple List */
+        .resources {
+            background: var(--light);
+            padding: var(--space-xl) var(--space-md);
+        }
+
+        .resources-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .resource-card {
+            background: white;
+            padding: var(--space-md);
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .resource-card h3 {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+            color: var(--dark);
+        }
+
+        .resource-card ul {
+            list-style: none;
+        }
+
+        .resource-card li {
+            margin-bottom: var(--space-sm);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .resource-card li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .resource-card a {
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .resource-card a:hover {
+            color: var(--primary);
+        }
+
+        /* 6. Kaizen Improvements Section */
+        .improvements {
+            padding: var(--space-xl) var(--space-md);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .improvements-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .improvement-item {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            padding: var(--space-md);
+            background: var(--light);
+            border-radius: 0.5rem;
+        }
+
+        .improvement-number {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* 7. CTA - Simple & Clear */
+        .cta {
+            background: var(--dark);
+            color: white;
+            padding: var(--space-xl) var(--space-md);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto var(--space-lg);
+            color: #d1d5db;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* 8. Footer - Minimal */
+        footer {
+            background: #111827;
+            color: white;
+            padding: var(--space-xl) var(--space-md);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .footer-section h3 {
+            margin-bottom: var(--space-md);
+            color: white;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: var(--space-sm);
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-md);
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* ===== KAZEN IMPROVEMENT: PROGRESS TRACKER ===== */
+        .progress-tracker {
+            position: fixed;
+            bottom: var(--space-md);
+            right: var(--space-md);
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: var(--space-sm);
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+            max-width: 300px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-xs);
+        }
+
+        .progress-header h4 {
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: var(--space-xs);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--secondary);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .progress-stats {
+            font-size: 0.8rem;
+            color: #6b7280;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* ===== MOBILE RESPONSIVENESS ===== */
+        @media (max-width: 768px) {
+
+            /* KISS Improvement: Simpler mobile layout */
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: var(--space-md);
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow-md);
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav a {
+                display: block;
+                margin: 0 0 var(--space-sm) 0;
+                padding: var(--space-sm);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .progress-tracker {
+                left: var(--space-md);
+                right: var(--space-md);
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            /* Even simpler for small phones */
+            .hero {
+                padding-top: 6rem;
+            }
+
+            .principles-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-links {
+                flex-direction: column;
+            }
+        }
+
+        /* ===== KAZEN IMPROVEMENT: PRINT STYLES ===== */
+        @media print {
+
+            .progress-tracker,
+            .mobile-menu-btn,
+            nav {
+                display: none !important;
+            }
+
+            .btn {
+                display: none;
+            }
+
+            .step-link::after {
+                content: " (" attr(href) ")";
+                font-size: 0.8em;
+                color: #666;
+            }
+        }
+
+        /* ===== KISS IMPROVEMENT: FOCUS STATES ===== */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* ===== KAZEN IMPROVEMENT: LOADING STATES ===== */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-brain"></i>
+                SimpleAI
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav id="mainNav">
+                <a href="#principles">Principles</a>
+                <a href="#path">Learning Path</a>
+                <a href="#resources">Resources</a>
+                <a href="#improvements">Improvements</a>
+                <a href="#start" class="btn btn-primary" style="margin-left: 0; padding: 0.5rem 1rem;">Start Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <h1>Master FastAPI, ML & AI<br>the Simple Way</h1>
+        <p class="hero-subtitle">
+            KISS + Kaizen approach: Start simple, improve continuously.
+            No complexity, just clear steps from backend to AI.
+        </p>
+        <div class="hero-buttons">
+            <a href="#path" class="btn btn-primary">
+                <i class="fas fa-play"></i> Start Learning Path
+            </a>
+            <a href="#principles" class="btn btn-secondary">
+                <i class="fas fa-book"></i> Learn Principles
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== KISS & KAIZEN PRINCIPLES ===== -->
+    <section class="principles" id="principles">
+        <div class="section-title">
+            <h2>The Simple Philosophy</h2>
+            <p>Two principles that make learning effective</p>
+        </div>
+
+        <div class="principles-grid">
+            <div class="principle-card">
+                <div class="principle-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>KISS Principle</h3>
+                <p><strong>Keep It Simple, Stupid</strong></p>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem; color: #6b7280;">
+                    <li>Start with minimal code</li>
+                    <li>One concept at a time</li>
+                    <li>No unnecessary complexity</li>
+                    <li>Clear, readable examples</li>
+                </ul>
+            </div>
+
+            <div class="principle-card">
+                <div class="principle-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Kaizen Method</h3>
+                <p><strong>Continuous Improvement</strong></p>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem; color: #6b7280;">
+                    <li>Small, daily improvements</li>
+                    <li>Build upon what works</li>
+                    <li>Iterate and refine</li>
+                    <li>Measure progress</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LEARNING PATH ===== -->
+    <section class="learning-path" id="path">
+        <div class="section-title">
+            <h2>Simple Learning Path</h2>
+            <p>Follow these clear steps from zero to AI</p>
+        </div>
+
+        <div class="path-steps">
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Learn FastAPI Basics</h3>
+                    <p>Start with the simplest possible API. One endpoint, one response.</p>
+                    <div class="step-links">
+                        <a href="https://fastapi.tiangolo.com/tutorial/first-steps/" target="_blank" class="step-link">
+                            <i class="fas fa-external-link-alt"></i> Official First Steps
+                        </a>
+                        <a href="https://fastapi.tiangolo.com/tutorial/" target="_blank" class="step-link">
+                            <i class="fas fa-book"></i> Complete Tutorial
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Add Data Validation</h3>
+                    <p>Use Pydantic models. Simple validation, automatic documentation.</p>
+                    <div class="step-links">
+                        <a href="https://fastapi.tiangolo.com/tutorial/body/" target="_blank" class="step-link">
+                            <i class="fas fa-external-link-alt"></i> Request Bodies
+                        </a>
+                        <a href="https://docs.pydantic.dev/latest/" target="_blank" class="step-link">
+                            <i class="fas fa-book"></i> Pydantic Docs
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>First ML Integration</h3>
+                    <p>Add a simple scikit-learn model. Start with a pre-trained model.</p>
+                    <div class="step-links">
+                        <a href="https://scikit-learn.org/stable/tutorial/basic/tutorial.html" target="_blank"
+                            class="step-link">
+                            <i class="fas fa-external-link-alt"></i> scikit-learn Basics
+                        </a>
+                        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html"
+                            target="_blank" class="step-link">
+                            <i class="fas fa-code"></i> Linear Regression Example
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Build Simple AI</h3>
+                    <p>Add a TensorFlow/Keras model. Use a pre-trained model first.</p>
+                    <div class="step-links">
+                        <a href="https://www.tensorflow.org/tutorials/quickstart/beginner" target="_blank"
+                            class="step-link">
+                            <i class="fas fa-external-link-alt"></i> TensorFlow Quickstart
+                        </a>
+                        <a href="https://keras.io/getting_started/" target="_blank" class="step-link">
+                            <i class="fas fa-book"></i> Keras Guide
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Deploy & Improve</h3>
+                    <p>Deploy to production. Monitor, measure, improve continuously.</p>
+                    <div class="step-links">
+                        <a href="https://fastapi.tiangolo.com/deployment/" target="_blank" class="step-link">
+                            <i class="fas fa-external-link-alt"></i> Deployment Guide
+                        </a>
+                        <a href="https://www.docker.com/get-started/" target="_blank" class="step-link">
+                            <i class="fab fa-docker"></i> Docker Basics
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SIMPLE RESOURCES ===== -->
+    <section class="resources" id="resources">
+        <div class="section-title">
+            <h2>Essential Resources</h2>
+            <p>All you need, nothing you don't</p>
+        </div>
+
+        <div class="resources-grid">
+            <!-- FastAPI Resources -->
+            <div class="resource-card">
+                <h3><i class="fas fa-bolt" style="color: var(--primary);"></i> FastAPI</h3>
+                <ul>
+                    <li>
+                        <a href="https://fastapi.tiangolo.com/" target="_blank">
+                            Official Docs
+                            <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/tiangolo/fastapi" target="_blank">
+                            GitHub Repo
+                            <i class="fab fa-github" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://fastapi.tiangolo.com/tutorial/" target="_blank">
+                            Tutorial
+                            <i class="fas fa-graduation-cap" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://fastapi.tiangolo.com/deployment/" target="_blank">
+                            Deployment
+                            <i class="fas fa-rocket" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ML Resources -->
+            <div class="resource-card">
+                <h3><i class="fas fa-brain" style="color: var(--secondary);"></i> Machine Learning</h3>
+                <ul>
+                    <li>
+                        <a href="https://scikit-learn.org/stable/" target="_blank">
+                            scikit-learn
+                            <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.tensorflow.org/" target="_blank">
+                            TensorFlow
+                            <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://pytorch.org/" target="_blank">
+                            PyTorch
+                            <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://keras.io/" target="_blank">
+                            Keras
+                            <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- AI & Advanced -->
+            <div class="resource-card">
+                <h3><i class="fas fa-robot" style="color: var(--accent);"></i> AI & Production</h3>
+                <ul>
+                    <li>
+                        <a href="https://huggingface.co/" target="_blank">
+                            Hugging Face
+                            <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://onnxruntime.ai/" target="_blank">
+                            ONNX Runtime
+                            <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://mlflow.org/" target="_blank">
+                            MLflow
+                            <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.docker.com/" target="_blank">
+                            Docker
+                            <i class="fab fa-docker" style="font-size: 0.8rem;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KAIZEN IMPROVEMENTS ===== -->
+    <section class="improvements" id="improvements">
+        <div class="section-title">
+            <h2>Continuous Improvements</h2>
+            <p>Small daily improvements lead to mastery</p>
+        </div>
+
+        <div class="improvements-list">
+            <!-- Improvement 1 -->
+            <div class="improvement-item">
+                <div class="improvement-number">1</div>
+                <div>
+                    <h3>Daily Code Practice</h3>
+                    <p>Code for 30 minutes every day. Consistency beats intensity.</p>
+                    <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--secondary);">
+                        <i class="fas fa-check-circle"></i> Start with 15 minutes if 30 feels too much
+                    </div>
+                </div>
+            </div>
+
+            <!-- Improvement 2 -->
+            <div class="improvement-item">
+                <div class="improvement-number">2</div>
+                <div>
+                    <h3>One New Concept Daily</h3>
+                    <p>Learn one new FastAPI feature, ML algorithm, or AI concept each day.</p>
+                    <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--secondary);">
+                        <i class="fas fa-check-circle"></i> Keep notes in a simple text file
+                    </div>
+                </div>
+            </div>
+
+            <!-- Improvement 3 -->
+            <div class="improvement-item">
+                <div class="improvement-number">3</div>
+                <div>
+                    <h3>Build Small Projects</h3>
+                    <p>Each week, build one small project combining what you've learned.</p>
+                    <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--secondary);">
+                        <i class="fas fa-check-circle"></i> Start with a simple prediction API
+                    </div>
+                </div>
+            </div>
+
+            <!-- Improvement 4 -->
+            <div class="improvement-item">
+                <div class="improvement-number">4</div>
+                <div>
+                    <h3>Review & Refactor</h3>
+                    <p>Weekly, review your code and make one improvement.</p>
+                    <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--secondary);">
+                        <i class="fas fa-check-circle"></i> Simplify complex code
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CALL TO ACTION ===== -->
+    <section class="cta" id="start">
+        <h2>Start Simple, Improve Daily</h2>
+        <p>
+            The journey from FastAPI to AI mastery begins with a single step.
+            Follow the KISS principle to avoid overwhelm, and the Kaizen method to make continuous progress.
+        </p>
+        <a href="#path" class="btn">
+            <i class="fas fa-play"></i> Begin Your Journey
+        </a>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SimpleAI Learning</h3>
+                <ul>
+                    <li><a href="#principles">KISS + Kaizen</a></li>
+                    <li><a href="#path">Learning Path</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#improvements">Improvements</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Official Links</h3>
+                <ul>
+                    <li><a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI Docs</a></li>
+                    <li><a href="https://scikit-learn.org/" target="_blank">scikit-learn</a></li>
+                    <li><a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a></li>
+                    <li><a href="https://pytorch.org/" target="_blank">PyTorch</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Learning Tips</h3>
+                <ul>
+                    <li><a href="#improvements">Daily Practice</a></li>
+                    <li><a href="#path">Step-by-Step</a></li>
+                    <li><a href="#resources">Essential Resources</a></li>
+                    <li><a href="#start">Start Now</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2023 SimpleAI Learning. KISS + Kaizen approach to mastering FastAPI, ML & AI.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                Start simple, improve daily, master continuously.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== KAZEN IMPROVEMENT: PROGRESS TRACKER ===== -->
+    <div class="progress-tracker" id="progressTracker">
+        <div class="progress-header">
+            <h4>Your Progress</h4>
+            <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-stats">
+            <span id="stepsCompleted">0/5 steps</span>
+            <span id="timeSpent">0 min today</span>
+        </div>
+    </div>
+
+    <script>
+        // ===== KISS + KAZEN JAVASCRIPT =====
+        // Simple, functional code with continuous improvements
+
+        // 1. Mobile Menu Toggle (Simple)
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+
+        // 2. Progress Tracking System (Kaizen Improvement)
+        let progress = {
+            steps: JSON.parse(localStorage.getItem('progressSteps')) || {
+                1: false, 2: false, 3: false, 4: false, 5: false
+            },
+            timeSpent: parseInt(localStorage.getItem('progressTime')) || 0,
+            lastVisit: localStorage.getItem('lastVisit') || new Date().toISOString()
+        };
+
+        // Update progress display
+        function updateProgressDisplay() {
+            const completedSteps = Object.values(progress.steps).filter(Boolean).length;
+            const totalSteps = Object.keys(progress.steps).length;
+            const percentage = (completedSteps / totalSteps) * 100;
+
+            // Update UI
+            document.getElementById('progressPercent').textContent = `${Math.round(percentage)}%`;
+            document.getElementById('progressFill').style.width = `${percentage}%`;
+            document.getElementById('stepsCompleted').textContent = `${completedSteps}/${totalSteps} steps`;
+            document.getElementById('timeSpent').textContent = `${progress.timeSpent} min today`;
+
+            // Save to localStorage
+            localStorage.setItem('progressSteps', JSON.stringify(progress.steps));
+            localStorage.setItem('progressTime', progress.timeSpent);
+        }
+
+        // Mark step as completed
+        function completeStep(stepNumber) {
+            if (stepNumber >= 1 && stepNumber <= 5) {
+                progress.steps[stepNumber] = true;
+                updateProgressDisplay();
+
+                // Simple celebration
+                if (Object.values(progress.steps).filter(Boolean).length === 5) {
+                    setTimeout(() => {
+                        alert('🎉 Congratulations! You completed all steps!');
+                    }, 500);
+                }
+            }
+        }
+
+        // Time tracking simulation
+        function trackTime() {
+            // Increment time spent every minute
+            setInterval(() => {
+                progress.timeSpent++;
+                updateProgressDisplay();
+            }, 60000); // Every minute for demonstration
+
+            // Reset daily
+            const now = new Date();
+            const lastVisit = new Date(progress.lastVisit);
+
+            if (now.toDateString() !== lastVisit.toDateString()) {
+                progress.timeSpent = 0;
+                progress.lastVisit = now.toISOString();
+                localStorage.setItem('lastVisit', now.toISOString());
+            }
+        }
+
+        // 3. Step Completion Detection (Simple Scroll-based)
+        const steps = document.querySelectorAll('.step');
+        const observerOptions = {
+            threshold: 0.7, // 70% of step visible
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const stepObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stepNumber = parseInt(entry.target.querySelector('.step-number').textContent);
+                    if (!progress.steps[stepNumber]) {
+                        completeStep(stepNumber);
+
+                        // Simple visual feedback
+                        entry.target.style.borderColor = 'var(--secondary)';
+                        entry.target.style.boxShadow = '0 0 0 2px rgba(16, 185, 129, 0.1)';
+
+                        setTimeout(() => {
+                            entry.target.style.boxShadow = 'none';
+                        }, 2000);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all steps
+        steps.forEach(step => {
+            stepObserver.observe(step);
+        });
+
+        // 4. Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            updateProgressDisplay();
+            trackTime();
+
+            // Update year in footer
+            document.querySelector('.copyright p').innerHTML =
+                document.querySelector('.copyright p').innerHTML.replace('2023', new Date().getFullYear());
+        });
+
+        // 5. Simple Resource Click Tracking (Kaizen: Measure what matters)
+        document.querySelectorAll('.resource-card a, .step-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const resourceName = e.target.textContent.trim();
+                console.log(`Resource clicked: ${resourceName}`);
+                // In a real app, you would send this to analytics
+            });
+        });
+
+        // 6. Print-friendly improvements
+        window.addEventListener('beforeprint', () => {
+            document.body.style.fontSize = '12pt';
+            document.querySelectorAll('section').forEach(section => {
+                section.style.padding = '1rem';
+                section.style.margin = '0';
+            });
+        });
+
+        // 7. Simple Loading State Example
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function (e) {
+                if (this.href.includes('#') && this.href !== '#') {
+                    // Simulate loading for external links
+                    const originalHTML = this.innerHTML;
+                    this.innerHTML = '<div class="spinner"></div>';
+                    this.classList.add('loading');
+
+                    setTimeout(() => {
+                        this.innerHTML = originalHTML;
+                        this.classList.remove('loading');
+                        // In real app, this would happen after the page loads
+                    }, 1000);
+                }
+            });
+        });
+
+        // 8. KISS: One more simple improvement - Smooth scroll with offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight - 20;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
