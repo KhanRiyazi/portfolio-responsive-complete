@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PEP · Python Official Learning Hub (fixed navbar)</title>
+  <style>
+    /* ---------- PEP 8 style guide · clean, technical, high authority ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Fira Sans', 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+      background: #f5f5f5;
+      color: #2d2d2d;
+      line-height: 1.6;
+    }
+
+    .pep-header {
+      background-color: #2b5b84;
+      background: linear-gradient(155deg, #2b5b84 0%, #1f415f 100%);
+      color: white;
+      padding: 2.5rem 2rem 1.8rem;
+      border-bottom: 8px solid #ffd343;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .pep-header h1 {
+      font-weight: 500;
+      font-size: 3.2rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .pep-header h1 span {
+      font-weight: 300;
+      background: rgba(255,255,255,0.15);
+      padding: 0.2rem 1rem;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      margin-left: 1rem;
+      vertical-align: middle;
+    }
+
+    .pep-header .subhead {
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: #ffeaaf;
+      max-width: 1000px;
+    }
+
+    /* ✅ FULLY FUNCTIONAL NAVBAR – each link opens official resource */
+    .pep-nav {
+      background: #1c3b54;
+      padding: 0.8rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      border-bottom: 1px solid #45729c;
+      font-weight: 400;
+    }
+
+    .pep-nav a {
+      color: #e2eaf2;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+      transition: 0.1s;
+      cursor: pointer;
+    }
+
+    .pep-nav a:hover {
+      border-bottom-color: #ffd343;
+      color: white;
+    }
+
+    .pep-container {
+      max-width: 1200px;
+      margin: 2.5rem auto;
+      padding: 0 2.5rem;
+    }
+
+    .pep-section-title {
+      font-size: 2.2rem;
+      font-weight: 450;
+      border-bottom: 3px solid #2b5b84;
+      padding-bottom: 0.4rem;
+      margin: 2.5rem 0 2rem;
+      color: #1f3a4f;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .pep-section-title code {
+      background: #e2eaf2;
+      font-size: 1.3rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+      color: #1f4973;
+      border: 1px solid #adc7e0;
+    }
+
+    .pep-resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .pep-card {
+      background: white;
+      border: 1px solid #cbd9e7;
+      border-radius: 12px;
+      padding: 1.5rem 1.8rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.02);
+      transition: 0.1s ease;
+      border-left: 6px solid #2b5b84;
+    }
+
+    .pep-card:hover {
+      border-color: #2b5b84;
+      box-shadow: 0 12px 18px -6px rgba(0,60,120,0.15);
+      background: #fafdff;
+    }
+
+    .pep-card h3 {
+      font-size: 1.6rem;
+      font-weight: 450;
+      color: #1f3a4f;
+      margin-bottom: 0.25rem;
+    }
+
+    .pep-card .url {
+      font-family: 'Fira Mono', 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      background: #eef3f8;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin: 0.75rem 0;
+      border: 1px solid #b7cfec;
+    }
+
+    .pep-card a {
+      color: #1f5b9e;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .pep-card a:hover {
+      text-decoration: underline;
+    }
+
+    .pep-card .desc {
+      color: #3f5468;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    .official-badge {
+      background: #1c6d4b;
+      color: white;
+      padding: 0.2rem 1rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      margin-right: 0.8rem;
+    }
+
+    .codex-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .pep-code-card {
+      background: #fafdff;
+      border: 1px solid #c0d3e9;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      border-top: 5px solid #2b5b84;
+    }
+
+    .pep-code-header {
+      background: #eaf0f8;
+      padding: 0.8rem 1.5rem;
+      font-weight: 600;
+      color: #1f3a4f;
+      border-bottom: 1px solid #b9cfec;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pep-code-header span {
+      font-family: 'Fira Mono', monospace;
+      background: white;
+      padding: 0.2rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      border: 1px solid #97b9dd;
+    }
+
+    .pep-pre {
+      background: #1e293b;
+      color: #e7f0ff;
+      padding: 1.5rem;
+      font-family: 'Fira Code', 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      border-radius: 0;
+      margin: 0;
+    }
+
+    .btn-pep {
+      background: white;
+      border: 1px solid #2b5b84;
+      color: #1f4a74;
+      padding: 0.5rem 2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin: 1rem 1.5rem 1.5rem;
+      cursor: pointer;
+      transition: 0.1s;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-pep:hover {
+      background: #1f4a74;
+      color: white;
+      border-color: #ffd343;
+    }
+
+    .pep-editor {
+      background: white;
+      border: 2px solid #cdddec;
+      border-radius: 24px;
+      padding: 2.5rem;
+      margin: 3rem 0 2rem;
+      box-shadow: 0 20px 30px -15px rgba(0,35,70,0.2);
+    }
+
+    .pep-editor h2 {
+      font-weight: 400;
+      color: #1d3e5c;
+      border-left: 10px solid #ffd343;
+      padding-left: 1.5rem;
+    }
+
+    #codeInput {
+      width: 100%;
+      background: #f2f7fd;
+      border: 1px solid #adc6e2;
+      border-radius: 16px;
+      padding: 1.8rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 1rem;
+      border-left: 8px solid #2b5b84;
+      margin: 1.5rem 0;
+    }
+
+    .pep-output {
+      background: #1f293d;
+      color: #deedff;
+      padding: 1.5rem;
+      border-radius: 14px;
+      font-family: monospace;
+      border-left: 6px solid #ffb347;
+    }
+
+    .pep-footer {
+      background: #1c3b54;
+      color: #c2d6ed;
+      padding: 2rem;
+      text-align: center;
+      border-top: 6px solid #ffd343;
+      font-size: 1rem;
+    }
+
+    .counter-chip {
+      background: #ffffff;
+      border: 1px solid #2b5b84;
+      color: #1f3a4f;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px dotted #7b9fc7;
+      margin: 2rem 0;
+    }
+
+    .python-yellow {
+      color: #ffd343;
+    }
+  </style>
+</head>
+<body>
+
+<header class="pep-header">
+  <h1>Python Enhancement Proposals <span>learning path</span></h1>
+  <div class="subhead">Official · canonical · PEP 8 – 20 – 257 – and beyond</div>
+</header>
+
+<!-- ✅ FULLY FUNCTIONAL NAVIGATION – every button opens official link -->
+<div class="pep-nav">
+  <a href="https://peps.python.org/" target="_blank" rel="noopener">PEP index</a>
+  <a href="https://www.python.org/" target="_blank" rel="noopener">Python.org</a>
+  <a href="https://docs.python.org/3/" target="_blank" rel="noopener">Docs</a>
+  <a href="https://pypi.org/" target="_blank" rel="noopener">PyPI</a>
+  <a href="https://www.youtube.com/user/PythonSoftwareFoundation" target="_blank" rel="noopener">YouTube/PSF</a>
+  <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank" rel="noopener">Wikipedia</a>
+  <a href="https://wiki.python.org/moin/BeginnersGuide" target="_blank" rel="noopener">Beginner</a>
+</div>
+
+<main class="pep-container">
+
+  <!-- teacher / master note -->
+  <div style="background: #eef4fd; border-left: 12px solid #ffd343; padding: 2rem; border-radius: 0 40px 40px 0; margin: 2rem 0;">
+    <p style="font-size: 1.4rem; font-weight: 350; color: #003057;">🧑‍🏫 “Master Python through official PEPs, python.org, YouTube, Wikipedia, and core infra — every link is authoritative.”</p>
+  </div>
+
+  <!-- 1. OFFICIAL CORE (PEP style) -->
+  <div class="pep-section-title">
+    <code>PEP-0001</code> Ultimate official hubs
+  </div>
+  <div class="pep-resource-grid">
+    <div class="pep-card"><h3>🐍 Python.org</h3><div class="url">https://python.org</div><div class="desc">Downloads, documentation, community, PEP index, style guide</div><a href="https://python.org" target="_blank">visit →</a></div>
+    <div class="pep-card"><h3>📄 Python 3 Docs</h3><div class="url">docs.python.org/3</div><div class="desc">Official tutorial, library reference, language reference</div><a href="https://docs.python.org/3/" target="_blank">read docs →</a></div>
+    <div class="pep-card"><h3>📺 Python YouTube (PSF)</h3><div class="url">youtube.com/user/PythonSoftwareFoundation</div><div class="desc">Talks, tutorials, official conference recordings</div><a href="https://www.youtube.com/user/PythonSoftwareFoundation" target="_blank">watch →</a></div>
+    <div class="pep-card"><h3>🌐 Wikipedia: Python</h3><div class="url">en.wikipedia.org/wiki/Python_(programming_language)</div><div class="desc">History, design, philosophy, examples</div><a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank">explore →</a></div>
+    <div class="pep-card"><h3>📦 PyPI · package index</h3><div class="url">pypi.org</div><div class="desc">Official repository, pip, libraries</div><a href="https://pypi.org/" target="_blank">search packages →</a></div>
+    <div class="pep-card"><h3>📘 PEP 0 · index</h3><div class="url">peps.python.org</div><div class="desc">All Python Enhancement Proposals (PEPs)</div><a href="https://peps.python.org/" target="_blank">browse PEPs →</a></div>
+    <div class="pep-card"><h3>🧭 BeginnersGuide (wiki)</h3><div class="url">wiki.python.org/moin/BeginnersGuide</div><div class="desc">Official starting point for non‑programmers</div><a href="https://wiki.python.org/moin/BeginnersGuide" target="_blank">start here →</a></div>
+    <div class="pep-card"><h3>🎓 Google Python class</h3><div class="url">developers.google.com/edu/python</div><div class="desc">Google's official intro with exercises</div><a href="https://developers.google.com/edu/python" target="_blank">open class →</a></div>
+    <div class="pep-card"><h3>📺 Corey Schafer (official style)</h3><div class="url">youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU</div><div class="desc">Highly recommended, PEP‑friendly tutorials</div><a href="https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU" target="_blank">watch playlist →</a></div>
+    <div class="pep-card"><h3>🐍 Real Python</h3><div class="url">realpython.com</div><div class="desc">In‑depth articles, official‑style</div><a href="https://realpython.com/" target="_blank">learn →</a></div>
+    <div class="pep-card"><h3>📘 Microsoft Python</h3><div class="url">learn.microsoft.com/python</div><div class="desc">Official Microsoft learning path</div><a href="https://learn.microsoft.com/en-us/training/browse/?terms=python" target="_blank">start module →</a></div>
+    <div class="pep-card"><h3>📃 PEP 8 – style guide</h3><div class="url">peps.python.org/pep-0008</div><div class="desc">Official code style, essential for master</div><a href="https://peps.python.org/pep-0008/" target="_blank">read PEP 8 →</a></div>
+  </div>
+
+  <hr>
+
+  <!-- 2. YOUTUBE + WIKIPEDIA (special official) -->
+  <div class="pep-section-title">
+    <code>PEP-xxxx</code> YouTube & Wikipedia · official
+  </div>
+  <div class="pep-resource-grid">
+    <div class="pep-card"><h3>📺 PSF YouTube</h3><div class="url">youtube.com/PythonSoftwareFoundation</div><div class="desc">PyCon talks, tutorials, official</div><a href="https://www.youtube.com/user/PythonSoftwareFoundation" target="_blank">visit channel</a></div>
+    <div class="pep-card"><h3>🌎 Wikipedia Python</h3><div class="url">wikipedia.org/wiki/Python_(programming_language)</div><div class="desc">Read language overview</div><a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank">explore</a></div>
+    <div class="pep-card"><h3>📚 Wikipedia‑API (PyPI)</h3><div class="url">pypi.org/project/wikipedia-api</div><div class="desc">Official lib to access Wikipedia</div><a href="https://pypi.org/project/wikipedia-api/" target="_blank">view package</a></div>
+    <div class="pep-card"><h3>🎥 freeCodeCamp Python</h3><div class="url">youtube.com/playlist?list=PLWKjhJtqVAbnqBxcdjVGgT3uVR10bzTEB</div><div class="desc">Full course (official partner)</div><a href="https://www.youtube.com/playlist?list=PLWKjhJtqVAbnqBxcdjVGgT3uVR10bzTEB" target="_blank">watch</a></div>
+    <div class="pep-card"><h3>🎬 Telusko beginners</h3><div class="url">youtube.com/playlist?list=PLsyeobzWxl7poL9JTVyndKe62ieoN-MZ3</div><div class="desc">Step‑by‑step, huge reach</div><a href="https://www.youtube.com/playlist?list=PLsyeobzWxl7poL9JTVyndKe62ieoN-MZ3" target="_blank">watch</a></div>
+    <div class="pep-card"><h3>📘 NetworkChuck</h3><div class="url">youtube.com/playlist?list=PLIhvC56v63ILPDA2DQBv0IKzqsWTZxCkp</div><div class="desc">Energetic, beginner</div><a href="https://www.youtube.com/playlist?list=PLIhvC56v63ILPDA2DQBv0IKzqsWTZxCkp" target="_blank">watch</a></div>
+  </div>
+
+  <!-- 3. COPY CODE SNIPPETS (official practice) -->
+  <div class="pep-section-title">
+    <code>PEP-0257</code> code snippets — copy & paste into VS Code
+  </div>
+  <div class="codex-grid">
+    <div class="pep-code-card"><div class="pep-code-header"><span>hello.py</span> <span class="official-badge">PEP 8</span></div><pre class="pep-pre" id="snip1">print("Hello, official Python!")    # PEP 8 compliant
+name = input("Your name? ")
+print(f"Welcome, {name} — start mastering")</pre><button class="btn-pep" data-copy="snip1">📋 copy snippet</button></div>
+
+    <div class="pep-code-card"><div class="pep-code-header"><span>variables.py</span></div><pre class="pep-pre" id="snip2"># variables & types
+course = "PEP learning"
+duration = 12
+is_authentic = True
+print(course, duration, is_authentic)</pre><button class="btn-pep" data-copy="snip2">📋 copy snippet</button></div>
+
+    <div class="pep-code-card"><div class="pep-code-header"><span>control.py</span></div><pre class="pep-pre" id="snip3">score = 85
+if score >= 90:
+    grade = 'A'
+elif score >= 75:
+    grade = 'B'
+else:
+    grade = 'C'
+print(f"grade: {grade}")</pre><button class="btn-pep" data-copy="snip3">📋 copy snippet</button></div>
+
+    <div class="pep-code-card"><div class="pep-code-header"><span>loop.py</span></div><pre class="pep-pre" id="snip4">fruits = ['apple', 'banana', 'cherry']
+for fruit in fruits:
+    print(f"I like {fruit}")
+
+for i in range(3):
+    print(f"PEP official count: {i}")</pre><button class="btn-pep" data-copy="snip4">📋 copy snippet</button></div>
+
+    <div class="pep-code-card"><div class="pep-code-header"><span>function.py</span></div><pre class="pep-pre" id="snip5">def square(n):
+    """return square (PEP 257 docstring)"""
+    return n * n
+
+print(square(7))</pre><button class="btn-pep" data-copy="snip5">📋 copy snippet</button></div>
+
+    <div class="pep-code-card"><div class="pep-code-header"><span>class.py</span></div><pre class="pep-pre" id="snip6">class Student:
+    def __init__(self, name):
+        self.name = name
+    def greet(self):
+        return f"{self.name} learns PEP"
+
+s = Student("Alex")
+print(s.greet())</pre><button class="btn-pep" data-copy="snip6">📋 copy snippet</button></div>
+
+    <div class="pep-code-card"><div class="pep-code-header"><span>wikipedia_demo.py</span></div><pre class="pep-pre" id="snip7">import wikipedia
+summary = wikipedia.summary("Python", sentences=2)
+print(summary)   # requires: pip install wikipedia-api</pre><button class="btn-pep" data-copy="snip7">📋 copy snippet</button></div>
+  </div>
+
+  <!-- progress & live editor -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin: 2rem 0 1rem;">
+    <div class="counter-chip" id="progressDisplay">📋 copied 0 snippets</div>
+    <div class="counter-chip">🐍 official PEP master</div>
+  </div>
+
+  <!-- live editor - PEP style -->
+  <div class="pep-editor">
+    <h2><span class="python-yellow">⚡</span> Interactive Python · PEP style</h2>
+    <textarea id="codeInput" placeholder="# write Python here (PEP 8 encouraged) ...">print("Master Python with PEP")
+for i in range(3):
+    print("official →", i)</textarea>
+    <div style="display: flex; gap: 1rem;">
+      <button class="btn-pep" id="copyLiveBtn">📋 copy editor content</button>
+      <button class="btn-pep" id="runLiveBtn">▶ simulate output</button>
+    </div>
+    <div class="pep-output" id="liveOutput">
+      > Master Python with PEP<br>>> official → 0<br>>> official → 1<br>>> official → 2
+    </div>
+    <p style="margin-top: 1rem; color: #3f5e82;">→ then run in VS Code: python filename.py</p>
+  </div>
+
+  <!-- VS Code workflow -->
+  <div style="background: #eaf1fa; border-radius: 32px; padding: 2.5rem; margin: 3rem 0;">
+    <h3 style="color: #1d3e5c; font-weight: 450;">🖥️ VS Code — official workflow</h3>
+    <pre style="background: white; padding: 1.5rem; border-radius: 20px; border: 1px solid #b1cbe7;">1. Install Python from python.org
+2. Install VS Code + Python extension (Microsoft)
+3. Create file (e.g., pep_lesson.py)
+4. Paste any snippet from this lab
+5. Open terminal (Ctrl+`) → python pep_lesson.py
+6. Or click "Run" ▶ (top right)</pre>
+  </div>
+</main>
+
+<footer class="pep-footer">
+  <p>Python Official Learning Hub · based on PEP & python.org · YouTube · Wikipedia · docs · PyPI · every link official</p>
+  <p style="margin-top: 0.8rem; font-size: 0.9rem;">designed for teachers and students — master Python the PEP way</p>
+</footer>
+
+<script>
+  (function() {
+    let copyCounter = 0;
+    const progress = document.getElementById('progressDisplay');
+
+    function updateCopy() {
+      progress.innerText = `📋 copied ${copyCounter} snippet${copyCounter !== 1 ? 's' : ''}`;
+    }
+
+    async function copyTextToClipboard(text, showAlert = true) {
+      try {
+        await navigator.clipboard.writeText(text);
+        copyCounter++;
+        updateCopy();
+        if (showAlert) alert('✓ Copied to clipboard — paste into VS Code');
+      } catch {
+        alert('please use Ctrl+C');
+      }
+    }
+
+    // copy from pre via data-copy
+    document.querySelectorAll('button[data-copy]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-copy');
+        const preElem = document.getElementById(id);
+        if (preElem) copyTextToClipboard(preElem.innerText, true);
+      });
+    });
+
+    // live editor copy
+    document.getElementById('copyLiveBtn').addEventListener('click', () => {
+      const txt = document.getElementById('codeInput').value;
+      copyTextToClipboard(txt, true);
+    });
+
+    // simulate run
+    document.getElementById('runLiveBtn').addEventListener('click', () => {
+      const code = document.getElementById('codeInput').value;
+      const lines = code.split('\n');
+      let sim = '';
+      lines.forEach(l => {
+        const m = l.match(/print\s*\(\s*["'](.+?)["']\s*\)/);
+        if (m) sim += '> ' + m[1] + '\n';
+        else if (l.includes('print')) sim += '> [print]\n';
+      });
+      if (!sim) sim = '> (no print)';
+      document.getElementById('liveOutput').innerText = '⚡ simulation:\n' + sim;
+    });
+
+    window.copyCode = function(id) {
+      const pre = document.getElementById(id);
+      if (pre) copyTextToClipboard(pre.innerText, true);
+    };
+  })();
+</script>
+</body>
+</html>
