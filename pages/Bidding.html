@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Ads - CTR, CPC, Conversions & Bidding Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f9fafb;
+            color: #333;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a73e8;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            border: 1px solid #1a73e8;
+            border-radius: 5px;
+            margin: 5px;
+            cursor: pointer;
+            background: white;
+            color: #1a73e8;
+            transition: 0.3s;
+        }
+
+        .tab.active {
+            background: #1a73e8;
+            color: white;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .content h2 {
+            color: #1a73e8;
+        }
+
+        .content p {
+            line-height: 1.6;
+        }
+
+        .link {
+            margin-top: 1rem;
+        }
+
+        .link a {
+            color: #0b57d0;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+
+        .strategy-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            background: #f8f9fa;
+        }
+
+        .strategy-card h3 {
+            margin-top: 0;
+            color: #1a73e8;
+        }
+
+        .best-for {
+            font-weight: bold;
+            color: #34a853;
+        }
+
+        .simulator {
+            background: #f1f3f4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0b57d0;
+        }
+
+        #result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .visualization {
+            height: 200px;
+            background: #f1f3f4;
+            margin: 20px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 0 10px;
+        }
+
+        .bar {
+            width: 40px;
+            background: #1a73e8;
+            border-radius: 4px 4px 0 0;
+            position: relative;
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>📊 Google Ads Metrics & Bidding Strategies</h1>
+
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('ctr')">CTR</div>
+        <div class="tab" onclick="showTab('cpc')">CPC</div>
+        <div class="tab" onclick="showTab('conversions')">Conversions</div>
+        <div class="tab" onclick="showTab('bidding')">Bidding Strategies</div>
+    </div>
+
+    <div id="ctr" class="content">
+        <h2>CTR - Click-Through Rate</h2>
+        <p>
+            CTR (Click-Through Rate) is the ratio of users who click on your ad to the number of total users who view
+            it.
+            It helps measure how effective your ads are at attracting interest.
+        </p>
+        <p><strong>Formula:</strong> <code>(Clicks ÷ Impressions) × 100</code></p>
+        <p><strong>High CTR</strong> = Relevant Ad + Matching Audience</p>
+        <div class="link">
+            🔗 <a href="https://support.google.com/google-ads/answer/2615875" target="_blank">
+                Official Google Ads Guide on CTR
+            </a>
+        </div>
+    </div>
+
+    <div id="cpc" class="content" style="display:none">
+        <h2>CPC - Cost Per Click</h2>
+        <p>
+            CPC refers to the amount you're charged each time someone clicks on your ad.
+            Lower CPC with high CTR = higher performance and ROI.
+        </p>
+        <p><strong>Formula:</strong> <code>Total Cost ÷ Total Clicks</code></p>
+        <p>Google Ads uses auction bidding to determine CPC.</p>
+        <div class="link">
+            🔗 <a href="https://support.google.com/google-ads/answer/116495" target="_blank">
+                Official Google Ads Guide on CPC
+            </a>
+        </div>
+    </div>
+
+    <div id="conversions" class="content" style="display:none">
+        <h2>Conversions</h2>
+        <p>
+            A Conversion happens when a user takes a desired action after clicking your ad — such as making a purchase,
+            filling a form, or downloading an app.
+        </p>
+        <p>Conversion tracking helps you measure ROI and optimize future ads.</p>
+        <p><strong>Formula:</strong> <code>Conversions ÷ Clicks × 100 = Conversion Rate</code></p>
+        <div class="link">
+            🔗 <a href="https://support.google.com/google-ads/answer/1722022" target="_blank">
+                Official Google Ads Guide on Conversion Tracking
+            </a>
+        </div>
+    </div>
+
+    <div id="bidding" class="content" style="display:none">
+        <h2>Google Ads Bidding Strategies</h2>
+        <p>Choose the right bidding strategy based on your advertising goals and budget.</p>
+
+        <div class="strategy-card">
+            <h3>1. Maximize Clicks</h3>
+            <p>Automatically sets bids to get as many clicks as possible within your budget.</p>
+            <p class="best-for">Best for: Driving traffic to your website</p>
+            <p><strong>Bid Adjustment Tip:</strong> Set a maximum CPC limit to control costs</p>
+        </div>
+
+        <div class="strategy-card">
+            <h3>2. Target CPA (Cost Per Acquisition)</h3>
+            <p>Automatically sets bids to get as many conversions as possible at your target cost per acquisition.</p>
+            <p class="best-for">Best for: Conversion-focused campaigns with historical data</p>
+            <p><strong>Bid Adjustment Tip:</strong> Start with your average CPA, then adjust based on performance</p>
+        </div>
+
+        <div class="strategy-card">
+            <h3>3. Target ROAS (Return On Ad Spend)</h3>
+            <p>Automatically sets bids to help you get the most conversion value at your target return on ad spend.</p>
+            <p class="best-for">Best for: E-commerce businesses with conversion value tracking</p>
+            <p><strong>Bid Adjustment Tip:</strong> Set realistic ROAS targets based on your profit margins</p>
+        </div>
+
+        <div class="strategy-card">
+            <h3>4. Maximize Conversions</h3>
+            <p>Automatically sets bids to get the most conversions within your budget.</p>
+            <p class="best-for">Best for: Campaigns focused purely on conversion volume</p>
+            <p><strong>Bid Adjustment Tip:</strong> Combine with a budget cap to control spend</p>
+        </div>
+
+        <div class="simulator">
+            <h3>Bidding Strategy Simulator</h3>
+            <div class="form-group">
+                <label for="goal">Primary Campaign Goal:</label>
+                <select id="goal">
+                    <option value="traffic">Website Traffic</option>
+                    <option value="leads">Lead Generation</option>
+                    <option value="sales">Product Sales</option>
+                    <option value="awareness">Brand Awareness</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="budget">Daily Budget ($):</label>
+                <input type="number" id="budget" min="10" value="50">
+            </div>
+            <div class="form-group">
+                <label for="conversion-value">Average Conversion Value ($):</label>
+                <input type="number" id="conversion-value" min="0" value="100">
+            </div>
+            <button onclick="recommendStrategy()">Recommend Strategy</button>
+            <div id="result"></div>
+        </div>
+
+        <div class="visualization" id="bid-visualization">
+            <div class="bar" style="height: 40%"><span class="bar-label">Max Clicks</span></div>
+            <div class="bar" style="height: 60%"><span class="bar-label">Target CPA</span></div>
+            <div class="bar" style="height: 80%"><span class="bar-label">Target ROAS</span></div>
+            <div class="bar" style="height: 70%"><span class="bar-label">Max Conv.</span></div>
+        </div>
+
+        <div class="link">
+            🔗 <a href="https://support.google.com/google-ads/answer/2472725" target="_blank">
+                Official Google Ads Guide on Bidding Strategies
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.style.display = 'none');
+
+            document.getElementById(tabId).style.display = 'block';
+            event.target.classList.add('active');
+
+            // Update visualization when bidding tab is shown
+            if (tabId === 'bidding') {
+                updateVisualization();
+            }
+        }
+
+        function recommendStrategy() {
+            const goal = document.getElementById('goal').value;
+            const budget = parseInt(document.getElementById('budget').value);
+            const conversionValue = parseInt(document.getElementById('conversion-value').value);
+
+            let recommendation = '';
+            let reasoning = '';
+
+            if (goal === 'traffic') {
+                recommendation = 'Maximize Clicks';
+                reasoning = `With your budget of $${budget}/day and focus on traffic, Maximize Clicks will help get the most visitors to your site.`;
+            } else if (goal === 'leads') {
+                recommendation = 'Target CPA';
+                reasoning = `For lead generation, Target CPA will optimize for conversions while maintaining your target cost per lead.`;
+            } else if (goal === 'sales') {
+                if (conversionValue > 0) {
+                    recommendation = 'Target ROAS';
+                    reasoning = `With an average order value of $${conversionValue}, Target ROAS will maximize your return on ad spend.`;
+                } else {
+                    recommendation = 'Maximize Conversions';
+                    reasoning = `Focus on getting the most sales within your budget.`;
+                }
+            } else {
+                recommendation = 'Maximize Conversions';
+                reasoning = `For brand awareness, getting as many conversions as possible will help build your customer base.`;
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+        <h4>Recommended Strategy: ${recommendation}</h4>
+        <p>${reasoning}</p>
+        <p>Suggested starting bid adjustments:</p>
+        <ul>
+          <li>Start with 10-20% below your maximum acceptable ${goal === 'sales' ? 'ROAS' : 'CPA'}</li>
+          <li>Monitor for 7-14 days before making adjustments</li>
+          <li>Increase budget by no more than 20% at a time</li>
+        </ul>
+      `;
+            resultDiv.style.display = 'block';
+            resultDiv.style.background = '#e8f0fe';
+        }
+
+        function updateVisualization() {
+            const bars = document.querySelectorAll('.bar');
+            bars.forEach(bar => {
+                const randomHeight = Math.floor(Math.random() * 60) + 20;
+                bar.style.height = `${randomHeight}%`;
+                bar.style.transition = 'height 0.5s ease';
+            });
+        }
+    </script>
+</body>
+
+</html>
