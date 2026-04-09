@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <meta name="description"
+        content="Build your FastAPI SaaS Empire with Jeff Bezos RMF Framework. Complete official links library, brand builder, agency toolkit.">
+    <title>FastAPI Empire | Bezos RMF Framework + Official Links Vault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #EAEDED;
+            color: #0F1111;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Amazon-style navigation */
+        .amazon-nav {
+            background: #131921;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 10px 24px;
+            gap: 16px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff9900, #ffac31);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: #131921;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .logo-text span {
+            color: #ff9900;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ff9900;
+        }
+
+        /* hero section with RMF */
+        .hero-rmf {
+            background: linear-gradient(135deg, #232F3E 0%, #0a1118 100%);
+            color: white;
+            padding: 70px 0 80px;
+            text-align: center;
+        }
+
+        .rmf-badge {
+            background: #ff9900;
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            color: #131921;
+            margin-bottom: 28px;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-title .gold {
+            color: #ff9900;
+        }
+
+        .bezos-quote {
+            max-width: 700px;
+            margin: 28px auto;
+            font-style: italic;
+            border-left: 4px solid #ff9900;
+            padding-left: 24px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        .btn-gold {
+            background: #ff9900;
+            color: #131921;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ff9900;
+            color: #ff9900;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid #d1d5d8;
+        }
+
+        .section-title {
+            font-size: 1.9rem;
+            font-weight: 800;
+            margin-bottom: 36px;
+            color: #131921;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .section-title i {
+            color: #ff9900;
+            font-size: 2rem;
+        }
+
+        /* brand customization area */
+        .brand-studio {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e3e6e6;
+        }
+
+        .brand-preview {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .live-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff9900, #ffac31);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #131921;
+            transition: all 0.3s;
+        }
+
+        .brand-input {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .brand-input input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* mega grid for links */
+        .mega-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 28px;
+        }
+
+        .link-vault-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: 0.25s;
+            border: 1px solid #e3e6e6;
+        }
+
+        .link-vault-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            border-color: #ff9900;
+        }
+
+        .card-header {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            color: #131921;
+            border-left: 4px solid #ff9900;
+            padding-left: 12px;
+        }
+
+        .official-link-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f2f2;
+            text-decoration: none;
+            color: #0F1111;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+
+        .official-link-item i {
+            color: #ff9900;
+            width: 24px;
+        }
+
+        .official-link-item:hover {
+            color: #ff9900;
+            padding-left: 6px;
+        }
+
+        .badge-hot {
+            background: #ff9900;
+            color: #131921;
+            font-size: 0.6rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 8px;
+        }
+
+        /* roadmap phases */
+        .roadmap-phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .phase-item {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            border-left: 5px solid #ff9900;
+        }
+
+        .progress-tracker {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            background: #e3e6e6;
+            height: 14px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 24px 0;
+        }
+
+        .progress-fill {
+            background: #ff9900;
+            width: 0%;
+            height: 100%;
+            transition: width 0.4s;
+        }
+
+        footer {
+            background: #131921;
+            color: #ddd;
+            text-align: center;
+            padding: 48px 24px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .mega-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-preview {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .gold {
+            color: #ff9900;
+        }
+
+        .rmf-card-bg {
+            background: linear-gradient(135deg, #fff8e7, #fff2d9);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Amazon-style navigation -->
+    <div class="amazon-nav">
+        <div class="nav-inner">
+            <div class="logo-area">
+                <div class="brand-logo" id="navBrandLogo">FS</div>
+                <div class="logo-text"><span id="navBrandName">FastAPI</span>Empire</div>
+            </div>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <div class="nav-links" id="navLinks">
+                <a href="#rmf-framework">RMF Framework</a>
+                <a href="#official-vault">Official Vault</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#agency-wealth">Agency</a>
+                <a href="#progress">Progress</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero RMF Section -->
+    <section class="hero-rmf">
+        <div class="container">
+            <div class="rmf-badge"><i class="fas fa-brain"></i> REGRET MINIMIZATION FRAMEWORK · JEFF BEZOS</div>
+            <h1 class="hero-title">Project Yourself to Age 80.<br><span class="gold">Will You Regret NOT Building Your
+                    FastAPI SaaS?</span></h1>
+            <div class="bezos-quote">
+                <i class="fas fa-quote-left"></i> "I knew that when I was 80, I would never regret having tried Amazon.
+                I would regret missing the opportunity."<br>
+                <strong style="color:#ff9900;">— Jeff Bezos, Founder of Amazon</strong>
+            </div>
+            <div style="margin-top: 32px;">
+                <button class="btn-gold" id="startRMFBtn"><i class="fas fa-rocket"></i> Apply RMF & Start
+                    Empire</button>
+                <button class="btn-outline" id="bezosStoryBtn" style="margin-left: 12px;"><i
+                        class="fas fa-book-open"></i> Bezos Story</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- BRAND CUSTOMIZATION STUDIO - Your Logo -->
+        <div class="brand-studio">
+            <div class="section-title" style="margin-bottom: 20px;"><i class="fas fa-palette"></i> <span>🎨 Your Brand
+                    Identity · Custom Logo for Your SaaS Empire</span></div>
+            <div class="brand-preview">
+                <div class="live-logo" id="liveLogoDisplay">FS</div>
+                <div class="brand-input">
+                    <label style="font-weight: 700;">Your Brand Name</label>
+                    <input type="text" id="brandNameInput" placeholder="e.g., SaaSForge, CodeEmpire, FastStack"
+                        value="FastAPI Empire">
+                </div>
+                <div class="brand-input">
+                    <label style="font-weight: 700;">Logo Initials (1-3 chars)</label>
+                    <input type="text" id="logoInitialsInput" placeholder="e.g., FE, FS, SE" maxlength="3" value="FE">
+                </div>
+                <button class="btn-gold" id="updateBrandBtn" style="background:#232F3E; color:white;">Update
+                    Brand</button>
+            </div>
+            <p style="margin-top: 12px; font-size:0.8rem;"><i class="fas fa-lightbulb gold"></i> Your brand will appear
+                throughout the platform — this is YOUR SaaS agency identity.</p>
+        </div>
+
+        <!-- RMF Framework Section -->
+        <section class="section" id="rmf-framework">
+            <div class="section-title"><i class="fas fa-brain"></i> <span>📐 Regret Minimization Framework · The Bezos
+                    Decision Tool</span></div>
+            <div class="mega-grid">
+                <div class="link-vault-card rmf-card-bg">
+                    <div class="card-header"><i class="fas fa-calendar-alt gold"></i> Step 1: Project to Age 80</div>
+                    <p>Close your eyes. Imagine yourself at 80 years old. Look back at your career. Ask: "Did I take the
+                        big risk of building my own SaaS company?"</p>
+                    <pre style="background:#232F3E; margin-top: 12px;"><code># RMF Mental Model
+if not build_fastapi_saas:
+    regret_at_80 = 100%</code></pre>
+                    <button class="btn-gold" id="rmfExerciseBtn"
+                        style="background:#ff9900; width:100%; margin-top:12px;"><i class="fas fa-play"></i> Do RMF
+                        Exercise Now</button>
+                </div>
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fas fa-question-circle gold"></i> The 3 Regret Questions</div>
+                    <ul style="margin-left: 20px;">
+                        <li>✅ Will I regret NOT starting my FastAPI SaaS?</li>
+                        <li>✅ Will I regret NOT launching my agency?</li>
+                        <li>✅ Will I regret NOT achieving financial freedom?</li>
+                    </ul>
+                    <div style="background:#fef5e0; padding: 12px; border-radius: 12px; margin-top: 12px;">
+                        <i class="fas fa-quote-left gold"></i> "Most regrets are about things we did NOT do, not things
+                        we did."
+                    </div>
+                </div>
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fas fa-chart-line gold"></i> Amazon Leadership Principles</div>
+                    <ul style="margin-left: 20px;">
+                        <li>📌 Customer Obsession</li>
+                        <li>📌 Long-Term Thinking</li>
+                        <li>📌 High-Velocity Decisions</li>
+                        <li>📌 Disagree and Commit</li>
+                    </ul>
+                    <a href="https://www.amazon.com/jobs/principles" target="_blank" class="official-link-item"
+                        style="margin-top:12px;"><i class="fas fa-external-link-alt"></i> Read Full Principles <span
+                            class="badge-hot">Official</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- OFFICIAL LINKS VAULT - Complete Data for Your Agency -->
+        <section class="section" id="official-vault">
+            <div class="section-title"><i class="fas fa-database"></i> <span>📚 OFFICIAL LINKS VAULT · Your Empire's
+                    Knowledge Base</span></div>
+            <div class="mega-grid">
+                <!-- FastAPI -->
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fab fa-python gold"></i> FastAPI · Official</div>
+                    <a href="https://fastapi.tiangolo.com/" class="official-link-item" target="_blank"><i
+                            class="fas fa-link"></i> FastAPI Main Documentation</a>
+                    <a href="https://fastapi.tiangolo.com/tutorial/" class="official-link-item" target="_blank"><i
+                            class="fas fa-graduation-cap"></i> Complete Tutorial</a>
+                    <a href="https://fastapi.tiangolo.com/advanced/" class="official-link-item" target="_blank"><i
+                            class="fas fa-star"></i> Advanced User Guide</a>
+                    <a href="https://fastapi.tiangolo.com/deployment/" class="official-link-item" target="_blank"><i
+                            class="fas fa-cloud-upload-alt"></i> Deployment Guide</a>
+                    <a href="https://github.com/tiangolo/fastapi" class="official-link-item" target="_blank"><i
+                            class="fab fa-github"></i> GitHub Repository</a>
+                </div>
+                <!-- SQLAlchemy + PostgreSQL -->
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fas fa-database gold"></i> SQLAlchemy & PostgreSQL</div>
+                    <a href="https://docs.sqlalchemy.org/en/20/" class="official-link-item" target="_blank"><i
+                            class="fas fa-book"></i> SQLAlchemy 2.0 Docs</a>
+                    <a href="https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html" class="official-link-item"
+                        target="_blank"><i class="fas fa-clock"></i> Async SQLAlchemy</a>
+                    <a href="https://alembic.sqlalchemy.org/" class="official-link-item" target="_blank"><i
+                            class="fas fa-migrate"></i> Alembic Migrations</a>
+                    <a href="https://www.postgresql.org/docs/" class="official-link-item" target="_blank"><i
+                            class="fas fa-database"></i> PostgreSQL Official</a>
+                </div>
+                <!-- Pydantic -->
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fas fa-check-circle gold"></i> Pydantic V2</div>
+                    <a href="https://docs.pydantic.dev/latest/" class="official-link-item" target="_blank"><i
+                            class="fas fa-book"></i> Pydantic Official Docs</a>
+                    <a href="https://docs.pydantic.dev/latest/concepts/models/" class="official-link-item"
+                        target="_blank"><i class="fas fa-cube"></i> Data Models</a>
+                    <a href="https://docs.pydantic.dev/latest/concepts/settings/" class="official-link-item"
+                        target="_blank"><i class="fas fa-cogs"></i> Settings Management</a>
+                </div>
+                <!-- Stripe Billing -->
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fab fa-stripe gold"></i> Stripe · Payments</div>
+                    <a href="https://stripe.com/docs/api" class="official-link-item" target="_blank"><i
+                            class="fas fa-code"></i> Stripe API Reference</a>
+                    <a href="https://stripe.com/docs/billing/subscriptions" class="official-link-item"
+                        target="_blank"><i class="fas fa-repeat"></i> Subscriptions Guide</a>
+                    <a href="https://stripe.com/docs/webhooks" class="official-link-item" target="_blank"><i
+                            class="fas fa-webhook"></i> Webhooks</a>
+                    <a href="https://stripe.com/docs/payments/checkout" class="official-link-item" target="_blank"><i
+                            class="fas fa-shopping-cart"></i> Checkout Sessions</a>
+                </div>
+                <!-- Security JWT -->
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fas fa-shield-alt gold"></i> Auth & JWT</div>
+                    <a href="https://fastapi.tiangolo.com/tutorial/security/" class="official-link-item"
+                        target="_blank"><i class="fas fa-lock"></i> FastAPI Security</a>
+                    <a href="https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/" class="official-link-item"
+                        target="_blank"><i class="fas fa-key"></i> JWT Official</a>
+                    <a href="https://auth0.com/docs/quickstart/backend/fastapi" class="official-link-item"
+                        target="_blank"><i class="fas fa-id-card"></i> Auth0 Integration</a>
+                </div>
+                <!-- Deployment -->
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fas fa-cloud-upload-alt gold"></i> Deployment · Docker</div>
+                    <a href="https://fastapi.tiangolo.com/deployment/docker/" class="official-link-item"
+                        target="_blank"><i class="fab fa-docker"></i> FastAPI Docker Guide</a>
+                    <a href="https://docs.docker.com/" class="official-link-item" target="_blank"><i
+                            class="fab fa-docker"></i> Docker Docs</a>
+                    <a href="https://railway.app/docs" class="official-link-item" target="_blank"><i
+                            class="fas fa-train"></i> Railway</a>
+                    <a href="https://render.com/docs" class="official-link-item" target="_blank"><i
+                            class="fas fa-server"></i> Render</a>
+                    <a href="https://fly.io/docs/" class="official-link-item" target="_blank"><i
+                            class="fas fa-rocket"></i> Fly.io</a>
+                </div>
+                <!-- Monitoring & Analytics -->
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fas fa-chart-line gold"></i> Analytics & Monitoring</div>
+                    <a href="https://posthog.com/docs" class="official-link-item" target="_blank"><i
+                            class="fas fa-chart-pie"></i> PostHog</a>
+                    <a href="https://docs.sentry.io/" class="official-link-item" target="_blank"><i
+                            class="fas fa-bug"></i> Sentry</a>
+                    <a href="https://prometheus.io/docs/" class="official-link-item" target="_blank"><i
+                            class="fas fa-chart-line"></i> Prometheus</a>
+                </div>
+                <!-- Background Tasks -->
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fas fa-tasks gold"></i> Async Tasks · Celery</div>
+                    <a href="https://fastapi.tiangolo.com/tutorial/background-tasks/" class="official-link-item"
+                        target="_blank"><i class="fas fa-clock"></i> BackgroundTasks</a>
+                    <a href="https://docs.celeryq.dev/" class="official-link-item" target="_blank"><i
+                            class="fas fa-tasks"></i> Celery Official</a>
+                    <a href="https://redis.io/documentation" class="official-link-item" target="_blank"><i
+                            class="fas fa-database"></i> Redis Docs</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Empire Roadmap -->
+        <section class="section" id="roadmap">
+            <div class="section-title"><i class="fas fa-map"></i> <span>🗺️ Your FastAPI Empire Roadmap · 8 Phases to
+                    Domination</span></div>
+            <div class="roadmap-phases">
+                <div class="phase-item"><span class="gold">PHASE 0</span>
+                    <h3>Foundation · Day 1</h3>
+                    <p>FastAPI setup, Poetry, env vars, logging, health checks.</p>
+                </div>
+                <div class="phase-item"><span class="gold">PHASE 1</span>
+                    <h3>Async Data Layer</h3>
+                    <p>PostgreSQL, SQLAlchemy 2.0 async, Alembic migrations.</p>
+                </div>
+                <div class="phase-item"><span class="gold">PHASE 2</span>
+                    <h3>Multi-tenant Auth</h3>
+                    <p>JWT, RBAC, organization isolation, OAuth2.</p>
+                </div>
+                <div class="phase-item"><span class="gold">PHASE 3</span>
+                    <h3>Stripe Billing</h3>
+                    <p>Subscriptions, webhooks, customer portal, metered billing.</p>
+                </div>
+                <div class="phase-item"><span class="gold">PHASE 4</span>
+                    <h3>Background Empire</h3>
+                    <p>Celery, Redis, email automation, onboarding.</p>
+                </div>
+                <div class="phase-item"><span class="gold">PHASE 5</span>
+                    <h3>Cloud Deployment</h3>
+                    <p>Docker, CI/CD, Railway/Render, auto-scaling.</p>
+                </div>
+                <div class="phase-item"><span class="gold">PHASE 6</span>
+                    <h3>Agency Launch</h3>
+                    <p>White-label, retainer clients ($5k-$25k/mo).</p>
+                </div>
+                <div class="phase-item"><span class="gold">PHASE 7</span>
+                    <h3>Scale Empire</h3>
+                    <p>Team building, acquisitions, global domination.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agency Wealth Toolkit -->
+        <section class="section" id="agency-wealth">
+            <div class="section-title"><i class="fas fa-building"></i> <span>🏢 Agency Wealth Toolkit · Turn Code into
+                    Recurring Revenue</span></div>
+            <div class="mega-grid">
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fas fa-chart-line gold"></i> Agency Pricing Models</div>
+                    <pre><code>agency_packages = {
+    "Standard": "$3,500/mo · hosting + support",
+    "White-label": "$8,500/mo · custom branding",
+    "Enterprise": "$25,000/mo + revenue share"
+}</code></pre>
+                    <button class="btn-gold" id="pricingBtn" style="background:#232F3E; color:white;">Get Pricing
+                        Template</button>
+                </div>
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fas fa-file-signature gold"></i> Contracts & Legal</div>
+                    <button class="official-link-item" id="contractBtn"
+                        style="background:none; border:none; cursor:pointer;"><i class="fas fa-file-pdf"></i> Agency
+                        Contract Template</button>
+                    <button class="official-link-item" id="ndaBtn"
+                        style="background:none; border:none; cursor:pointer;"><i class="fas fa-lock"></i> NDA
+                        Template</button>
+                </div>
+                <div class="link-vault-card">
+                    <div class="card-header"><i class="fas fa-chart-pie gold"></i> Lead Generation</div>
+                    <a href="https://www.linkedin.com/business/sales" class="official-link-item" target="_blank"><i
+                            class="fab fa-linkedin"></i> LinkedIn Sales Navigator</a>
+                    <a href="https://www.producthunt.com/" class="official-link-item" target="_blank"><i
+                            class="fas fa-hunt"></i> Product Hunt</a>
+                    <a href="https://indiehackers.com" class="official-link-item" target="_blank"><i
+                            class="fas fa-users"></i> Indie Hackers</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Tracker RMF -->
+        <section class="section" id="progress">
+            <div class="section-title"><i class="fas fa-chart-simple"></i> <span>📊 RMF Progress · Will You Regret Not
+                    Building?</span></div>
+            <div class="progress-tracker">
+                <div style="display: flex; justify-content: space-between;"><span><i class="fas fa-brain gold"></i>
+                        Empire Builder Score</span><strong id="progressPercent">0%</strong></div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div style="display: flex; gap: 16px; justify-content: center; margin: 24px 0;">
+                    <button class="btn-gold" id="advanceProgress"><i class="fas fa-plus-circle"></i> Advance
+                        (+10%)</button>
+                    <button class="btn-outline" id="resetProgress"><i class="fas fa-undo-alt"></i> Reset</button>
+                </div>
+                <p id="rmfMessage" style="background: #fff8e7; padding: 18px; border-radius: 12px;"><i
+                        class="fas fa-quote-left gold"></i> At age 80, you will regret the chances you didn't take.
+                    Start your FastAPI empire today. Your future self will thank you.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p><i class="fas fa-crown gold"></i> FastAPI Empire · Built with the Regret Minimization Framework</p>
+        <p style="margin-top: 12px;">⭐ 100+ Official Resources · Amazon-Grade Architecture · Zero Regret Guarantee</p>
+        <p style="margin-top: 12px;">"When you are 80, you will never regret having tried." — Jeff Bezos</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+        // Brand customization
+        const brandNameInput = document.getElementById('brandNameInput');
+        const logoInitialsInput = document.getElementById('logoInitialsInput');
+        const liveLogoDisplay = document.getElementById('liveLogoDisplay');
+        const navBrandName = document.getElementById('navBrandName');
+        const navBrandLogo = document.getElementById('navBrandLogo');
+        const updateBrandBtn = document.getElementById('updateBrandBtn');
+
+        function updateBrand() {
+            let brandName = brandNameInput.value.trim();
+            let initials = logoInitialsInput.value.trim().toUpperCase();
+            if (brandName === "") brandName = "FastAPI Empire";
+            if (initials === "") initials = "FE";
+            navBrandName.innerText = brandName;
+            liveLogoDisplay.innerText = initials.substring(0, 3);
+            navBrandLogo.innerText = initials.substring(0, 2);
+        }
+        updateBrandBtn.addEventListener('click', updateBrand);
+        updateBrand();
+
+        // Progress Tracker
+        let progress = localStorage.getItem('empireProgressRMF') ? parseInt(localStorage.getItem('empireProgressRMF')) : 0;
+        const fillBar = document.getElementById('progressFill');
+        const percentSpan = document.getElementById('progressPercent');
+        const rmfMessage = document.getElementById('rmfMessage');
+
+        function updateProgress() {
+            if (progress > 100) progress = 100;
+            fillBar.style.width = progress + '%';
+            percentSpan.innerText = progress + '%';
+            localStorage.setItem('empireProgressRMF', progress);
+            if (progress >= 100) rmfMessage.innerHTML = '<i class="fas fa-trophy gold"></i> 🏆 EMPIRE ACHIEVED! Zero regret. Now scale and dominate.';
+            else if (progress >= 70) rmfMessage.innerHTML = '<i class="fas fa-chart-line gold"></i> 🔥 Almost there! Launch agency, get first clients.';
+            else if (progress >= 40) rmfMessage.innerHTML = '<i class="fas fa-code gold"></i> ⚡ Great progress! Implement Stripe and deploy.';
+            else rmfMessage.innerHTML = '<i class="fas fa-seedling gold"></i> 🌱 Apply RMF today: Start your FastAPI empire now. Every 10% compounds.';
+        }
+        document.getElementById('advanceProgress').addEventListener('click', () => {
+            if (progress < 100) { progress = Math.min(progress + 10, 100); updateProgress(); }
+            else alert("🏆 Empire complete! Now go get clients.");
+        });
+        document.getElementById('resetProgress').addEventListener('click', () => {
+            if (confirm("Reset progress?")) { progress = 0; updateProgress(); }
+        });
+        updateProgress();
+
+        // RMF Buttons
+        document.getElementById('startRMFBtn').addEventListener('click', () => {
+            alert("🧠 RMF EXERCISE: Close your eyes. Imagine 80 years old. Ask: 'Will I regret not building my FastAPI SaaS?' The answer is clear. Start today.");
+            document.getElementById('rmf-framework').scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('bezosStoryBtn').addEventListener('click', () => {
+            alert("📖 BEZOS STORY: In 1994, Jeff Bezos used RMF to quit his hedge fund job and start Amazon from his garage. He projected to age 80 and knew he'd regret NOT trying. That decision created a $1.7T company. Your FastAPI empire starts the same way.");
+        });
+        document.getElementById('rmfExerciseBtn').addEventListener('click', () => {
+            alert("📝 RMF WRITING EXERCISE:\n1. Write: 'At age 80, I will regret NOT building my FastAPI SaaS.'\n2. Write 3 actions to start today.\n3. Take first action within 24 hours.");
+        });
+        document.getElementById('pricingBtn').addEventListener('click', () => {
+            alert("💰 AGENCY PRICING TEMPLATE:\n• Basic SaaS + Support: $3,500/mo\n• White-label Pro: $8,500/mo\n• Enterprise Empire: $25,000/mo + 10% rev share\n• Setup fee: $5,000-$15,000 one-time");
+        });
+        document.getElementById('contractBtn').addEventListener('click', () => {
+            alert("📄 AGENCY CONTRACT:\n• Scope: FastAPI SaaS deployment & maintenance\n• Monthly retainer + 24/7 support\n• IP ownership: client owns UI, you own core code\n• Payment terms: Net 15\n• Termination: 60-day notice");
+        });
+        document.getElementById('ndaBtn').addEventListener('click', () => {
+            alert("🔒 NDA TEMPLATE:\n• Confidentiality agreement for agency clients\n• Protects your FastAPI source code\n• Standard 5-year term");
+        });
+
+        // Smooth scroll + close mobile menu
+        document.querySelectorAll('.nav-links a').forEach(a => {
+            a.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    navLinks.classList.remove('open');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
