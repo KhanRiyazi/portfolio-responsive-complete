@@ -49,52 +49,84 @@
                 </h1>
 
                 <!-- This is a comment -->
+
                 <div style="position:relative;display:inline-block;">
 
-                    <a href="javascript:void(0)" onclick="document.getElementById('links').style.display=
-document.getElementById('links').style.display=='block'?'none':'block';" style="
-display:inline-block;
-padding:12px 24px;
-background:linear-gradient(135deg,#2563eb,#4f46e5);
-color:#fff;
-text-decoration:none;
-border-radius:10px;
-font-weight:600;
-font-family:Poppins,sans-serif;
-">
-                        🚀 Main Links
-                    </a>
+                    <!-- Button -->
+                    <button onclick="
+        let box=document.getElementById('quickLinks');
+        box.style.display = box.style.display=='grid' ? 'none' : 'grid';
+    " style="
+        padding:11px 22px;
+        border:none;
+        cursor:pointer;
+        background:linear-gradient(135deg,#2563eb,#4f46e5);
+        color:white;
+        border-radius:12px;
+        font-size:14px;
+        font-weight:600;
+        box-shadow:0 6px 18px rgba(37,99,235,.25);
+    ">
+                        🚀 DATA
+                    </button>
 
-                    <div id="links" style="
-display:none;
-position:absolute;
-bottom:55px;
-left:50%;
-transform:translateX(-50%);
-background:#fff;
-padding:12px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-text-align:center;
-min-width:180px;
-z-index:999;
-">
+                    <!-- Hidden Popup -->
+                    <div id="quickLinks" style="
+        display:none;
+        position:absolute;
+        top:50%;
+        left:115%;
+        transform:translateY(-50%);
+        background:rgba(255,255,255,.96);
+        backdrop-filter:blur(12px);
+        padding:8px;
+        border-radius:14px;
+        box-shadow:0 10px 28px rgba(0,0,0,.12);
+        grid-template-columns:repeat(2,1fr);
+        gap:6px;
+        width:190px;
+        z-index:999;
+    ">
 
-                        <a href="https://www.linkedin.com" target="_blank"
-                            style="display:block;padding:6px;text-decoration:none;">LinkedIn</a>
+                        <a href="https://khanriyazi.github.io/data-science-syllabus/" style="
+        padding:8px;
+        background:#f8fafc;
+        border-radius:8px;
+        text-align:center;
+        font-size:11px;
+        text-decoration:none;
+        color:#222;">💼<br>DS Hub</a>
 
-                        <a href="https://www.upwork.com" target="_blank"
-                            style="display:block;padding:6px;text-decoration:none;">Upwork</a>
+                        <a href="https://data.affiliatemath.xyz/" style="
+        padding:8px;
+        background:#f8fafc;
+        border-radius:8px;
+        text-align:center;
+        font-size:11px;
+        text-decoration:none;
+        color:#222;">🔥<br>Service</a>
 
-                        <a href="https://www.wyzant.com" target="_blank"
-                            style="display:block;padding:6px;text-decoration:none;">Wyzant</a>
+                        <a href="https://khanriyazi.github.io/Data-mining/" style="
+        padding:8px;
+        background:#f8fafc;
+        border-radius:8px;
+        text-align:center;
+        font-size:11px;
+        text-decoration:none;
+        color:#222;">🎥<br>Mining</a>
 
-                        <a href="https://preply.com" target="_blank"
-                            style="display:block;padding:6px;text-decoration:none;">Preply</a>
+                        <a href="https://khanriyazi.github.io/Graphic-Designer/" style="
+        padding:8px;
+        background:#f8fafc;
+        border-radius:8px;
+        text-align:center;
+        font-size:11px;
+        text-decoration:none;
+        color:#222;">⚡<br>Graph</a>
 
                     </div>
-
                 </div>
+
                 <!-- This is a comment -->
             </div>
 
@@ -130,15 +162,15 @@ z-index:999;
                     <i class='bx bxl-youtube'></i>
                 </a>
 
-                <!-- Behance -->
-                <!-- <a href="https://www.behance.net/rizwanali3251" target="_blank" class="home__social-icon">
-                    <i class='bx bxl-behance'></i>
-                </a> -->
 
-                <!-- Dribbble -->
-                <!-- <a href="https://dribbble.com/khanRiyazi" target="_blank" class="home__social-icon">
+                <a href="https://www.behance.net/rizwanali3251" target="_blank" class="home__social-icon">
+                    <i class='bx bxl-behance'></i>
+                </a>
+
+
+                <a href="https://dribbble.com/khanRiyazi" target="_blank" class="home__social-icon">
                     <i class='bx bxl-dribbble'></i>
-                </a> -->
+                </a>
             </div>
 
 
