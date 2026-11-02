@@ -50,16 +50,14 @@
 
                 <!-- This is a comment -->
 
-                <!-- RIZWAN ALI | PROFESSIONAL WORKSPACE -->
-                <section id="ra-workspace">
-
+                <!-- RIZWAN ALI | AGENTIC AI TRAINING (paste once; extra copies remove themselves) -->
+                <section class="ra-ws">
                     <style>
-                        #ra-workspace {
-                            font-family: Inter, Arial, sans-serif;
+                        .ra-ws {
+                            font-family: Inter, Arial, sans-serif
                         }
 
-                        /* Launcher */
-                        #ra-launch {
+                        .ra-launch {
                             display: inline-flex;
                             align-items: center;
                             gap: 9px;
@@ -68,19 +66,22 @@
                             border-radius: 11px;
                             background: #202124;
                             color: #fff;
-                            font-size: 14px;
-                            font-weight: 650;
+                            font: 650 14px/1 Inter, Arial, sans-serif;
                             cursor: pointer;
-                            transition: .2s;
+                            transition: background .2s
                         }
 
-                        #ra-launch:hover {
-                            background: #3c4043;
-                            transform: translateY(-1px);
+                        .ra-launch:hover {
+                            background: #3c4043
                         }
 
-                        /* Popup */
-                        #ra-popup {
+                        .ra-popup,
+                        .ra-popup * {
+                            box-sizing: border-box;
+                            font-family: Inter, Arial, sans-serif
+                        }
+
+                        .ra-popup {
                             display: none !important;
                             position: fixed !important;
                             top: 76px !important;
@@ -88,49 +89,48 @@
                             left: auto !important;
                             bottom: auto !important;
                             z-index: 2147483647 !important;
-                            width: 370px;
+                            width: 410px;
                             max-width: calc(100vw - 24px);
                             max-height: calc(100vh - 100px);
                             overflow-y: auto;
                             padding: 19px;
-                            box-sizing: border-box;
                             background: #fff;
                             color: #202124;
                             border: 1px solid #e8eaed;
                             border-radius: 17px;
-                            box-shadow: 0 16px 48px rgba(60, 64, 67, .20);
+                            box-shadow: 0 16px 48px rgba(60, 64, 67, .22)
                         }
 
-                        #ra-popup.ra-open {
-                            display: block !important;
+                        .ra-popup.ra-open {
+                            display: block !important
                         }
 
-                        #ra-popup * {
-                            box-sizing: border-box;
+                        .ra-popup :focus-visible,
+                        .ra-launch:focus-visible {
+                            outline: 2px solid #1a73e8;
+                            outline-offset: 2px
                         }
 
-                        /* Header */
-                        #ra-popup .ra-header {
+                        .ra-head {
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
-                            margin-bottom: 17px;
+                            margin-bottom: 12px
                         }
 
-                        #ra-popup .ra-title {
+                        .ra-title {
                             margin: 0;
                             font-size: 18px;
-                            font-weight: 700;
-                            letter-spacing: -.4px;
+                            font-weight: 700
                         }
 
-                        #ra-popup .ra-subtitle {
-                            margin: 4px 0 0;
-                            color: #80868b;
-                            font-size: 11px;
+                        .ra-sub {
+                            margin: 3px 0 0;
+                            color: #5f6368;
+                            font-size: 12px
                         }
 
-                        #ra-popup .ra-close {
+                        .ra-close {
                             width: 32px;
                             height: 32px;
                             border: 0;
@@ -138,493 +138,640 @@
                             background: #f1f3f4;
                             color: #5f6368;
                             font-size: 21px;
-                            cursor: pointer;
+                            cursor: pointer
                         }
 
-                        #ra-popup .ra-close:hover {
+                        .ra-close:hover {
+                            background: #e8eaed
+                        }
+
+                        .ra-prog {
+                            margin: 0 0 14px
+                        }
+
+                        .ra-prog p {
+                            display: flex;
+                            justify-content: space-between;
+                            margin: 0 0 5px;
+                            font-size: 12px;
+                            color: #3c4043;
+                            font-weight: 600
+                        }
+
+                        .ra-track {
+                            height: 8px;
+                            border-radius: 99px;
                             background: #e8eaed;
+                            overflow: hidden
                         }
 
-                        /* Tabs */
-                        #ra-popup .ra-tabs {
+                        .ra-track i {
+                            display: block;
+                            height: 100%;
+                            width: 0;
+                            background: #188038;
+                            transition: width .25s
+                        }
+
+                        .ra-tabs {
                             display: grid;
                             grid-template-columns: repeat(3, 1fr);
                             gap: 5px;
                             padding: 4px;
-                            margin-bottom: 18px;
+                            margin-bottom: 16px;
                             border-radius: 10px;
-                            background: #f1f3f4;
+                            background: #f1f3f4
                         }
 
-                        #ra-popup .ra-tab {
+                        .ra-tab {
                             padding: 10px 3px;
                             border: 0;
                             border-radius: 8px;
                             background: transparent;
                             color: #5f6368;
-                            font-size: 11px;
-                            font-weight: 600;
-                            cursor: pointer;
-                            transition: .2s;
+                            font: 600 12px Inter, Arial, sans-serif;
+                            cursor: pointer
                         }
 
-                        #ra-popup .ra-tab.ra-active {
+                        .ra-tab.ra-on {
                             background: #fff;
                             color: #202124;
-                            box-shadow: 0 1px 4px rgba(60, 64, 67, .16);
+                            box-shadow: 0 1px 4px rgba(60, 64, 67, .16)
                         }
 
-                        /* Panels */
-                        #ra-popup .ra-panel {
-                            display: none;
+                        .ra-panel {
+                            display: none
                         }
 
-                        #ra-popup .ra-panel.ra-active {
-                            display: block;
+                        .ra-panel.ra-on {
+                            display: block
                         }
 
-                        /* Section label */
-                        #ra-popup .ra-section-label {
+                        .ra-label {
+                            margin: 0 0 10px;
+                            color: #5f6368;
+                            font-size: 12px;
+                            font-weight: 700
+                        }
+
+                        .ra-intro {
                             margin: 0 0 12px;
-                            color: #80868b;
-                            font-size: 10px;
-                            font-weight: 700;
-                            letter-spacing: 1px;
-                            text-transform: uppercase;
+                            padding: 11px 13px;
+                            border-radius: 12px;
+                            background: #e8f0fe;
+                            font-size: 12px;
+                            line-height: 1.5;
+                            color: #202124
                         }
 
-                        /* App grid */
-                        #ra-popup .ra-grid {
+                        /* Modules */
+                        .ra-mod {
+                            margin-bottom: 8px;
+                            border: 1px solid #e8eaed;
+                            border-radius: 12px
+                        }
+
+                        .ra-mod summary {
+                            display: flex;
+                            justify-content: space-between;
+                            gap: 8px;
+                            padding: 11px 13px;
+                            cursor: pointer;
+                            font-size: 13px;
+                            font-weight: 650
+                        }
+
+                        .ra-mod summary small {
+                            display: block;
+                            color: #5f6368;
+                            font-weight: 500;
+                            font-size: 11px
+                        }
+
+                        .ra-cnt {
+                            flex: none;
+                            align-self: center;
+                            padding: 2px 9px;
+                            border-radius: 99px;
+                            background: #f1f3f4;
+                            font-size: 11px;
+                            color: #3c4043
+                        }
+
+                        .ra-cnt.ra-full {
+                            background: #e6f4ea;
+                            color: #188038
+                        }
+
+                        .ra-mb {
+                            padding: 0 13px 13px;
+                            font-size: 12.5px;
+                            line-height: 1.5
+                        }
+
+                        .ra-mb p {
+                            margin: 0 0 8px;
+                            color: #3c4043
+                        }
+
+                        .ra-mb ul {
+                            list-style: none;
+                            margin: 0 0 10px;
+                            padding: 0
+                        }
+
+                        .ra-mb label {
+                            display: flex;
+                            gap: 9px;
+                            align-items: flex-start;
+                            padding: 5px 0;
+                            cursor: pointer
+                        }
+
+                        .ra-mb input {
+                            margin-top: 3px;
+                            accent-color: #188038
+                        }
+
+                        .ra-ex {
+                            padding: 10px 12px;
+                            border-radius: 10px;
+                            background: #fef7e0;
+                            color: #5f4400
+                        }
+
+                        /* Practice */
+                        .ra-card {
+                            padding: 13px;
+                            border: 1px solid #e8eaed;
+                            border-radius: 14px;
+                            margin-bottom: 12px
+                        }
+
+                        .ra-card h4 {
+                            margin: 0 0 4px;
+                            font-size: 13.5px
+                        }
+
+                        .ra-card>p {
+                            margin: 0 0 9px;
+                            color: #5f6368;
+                            font-size: 12px
+                        }
+
+                        .ra-card textarea {
+                            width: 100%;
+                            min-height: 84px;
+                            padding: 9px 11px;
+                            border: 1px solid #dadce0;
+                            border-radius: 11px;
+                            font: 500 12.5px/1.45 Inter, Arial, sans-serif;
+                            resize: vertical
+                        }
+
+                        .ra-btn {
+                            padding: 9px 15px;
+                            border: 0;
+                            border-radius: 10px;
+                            background: #1a73e8;
+                            color: #fff;
+                            font: 650 12.5px Inter, Arial, sans-serif;
+                            cursor: pointer;
+                            margin-top: 8px
+                        }
+
+                        .ra-btn:hover {
+                            background: #1765cc
+                        }
+
+                        .ra-btn.ra-alt {
+                            background: #fff;
+                            color: #1a73e8;
+                            border: 1px solid #dadce0
+                        }
+
+                        .ra-res {
+                            list-style: none;
+                            margin: 10px 0 0;
+                            padding: 0;
+                            font-size: 12px
+                        }
+
+                        .ra-res li {
+                            padding: 4px 0
+                        }
+
+                        .ra-ok {
+                            color: #188038;
+                            font-weight: 700
+                        }
+
+                        .ra-no {
+                            color: #c5221f;
+                            font-weight: 700
+                        }
+
+                        .ra-q {
+                            margin: 0 0 9px;
+                            font-size: 13px;
+                            font-weight: 650
+                        }
+
+                        .ra-opts {
+                            display: grid;
+                            gap: 7px
+                        }
+
+                        .ra-opt {
+                            text-align: left;
+                            padding: 9px 12px;
+                            border: 1px solid #dadce0;
+                            border-radius: 11px;
+                            background: #fff;
+                            font: 500 12.5px/1.4 Inter, Arial, sans-serif;
+                            cursor: pointer;
+                            color: #202124
+                        }
+
+                        .ra-opt:hover:not(:disabled) {
+                            background: #f8f9fa
+                        }
+
+                        .ra-opt.ra-right {
+                            border-color: #188038;
+                            background: #e6f4ea
+                        }
+
+                        .ra-opt.ra-wrong {
+                            border-color: #c5221f;
+                            background: #fce8e6
+                        }
+
+                        .ra-fb {
+                            margin: 9px 0 0;
+                            font-size: 12px;
+                            color: #3c4043;
+                            min-height: 16px
+                        }
+
+                        /* Resources */
+                        .ra-links {
+                            display: grid;
+                            gap: 8px;
+                            margin-bottom: 16px
+                        }
+
+                        .ra-link {
+                            display: block;
+                            padding: 10px 12px;
+                            border: 1px solid #e8eaed;
+                            border-radius: 12px;
+                            color: #202124;
+                            text-decoration: none
+                        }
+
+                        .ra-link:hover {
+                            background: #f8f9fa
+                        }
+
+                        .ra-link b {
+                            display: block;
+                            font-size: 12.5px;
+                            color: #1a73e8
+                        }
+
+                        .ra-link span {
+                            font-size: 11.5px;
+                            color: #5f6368
+                        }
+
+                        .ra-pg {
                             display: grid;
                             grid-template-columns: repeat(3, 1fr);
-                            gap: 9px;
+                            gap: 8px
                         }
 
-                        /* App tiles */
-                        #ra-popup .ra-app {
+                        .ra-pj {
                             display: flex;
                             flex-direction: column;
                             align-items: center;
-                            justify-content: center;
-                            min-height: 91px;
-                            padding: 10px 5px;
-                            border: 1px solid transparent;
-                            border-radius: 12px;
-                            color: #3c4043;
-                            text-decoration: none;
-                            text-align: center;
-                            transition: .2s;
-                        }
-
-                        #ra-popup .ra-app:hover {
-                            background: #f8f9fa;
-                            border-color: #e8eaed;
-                            transform: translateY(-2px);
-                        }
-
-                        /* Real app-style icons */
-                        #ra-popup .ra-icon {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            width: 43px;
-                            height: 43px;
-                            margin-bottom: 8px;
-                        }
-
-                        #ra-popup .ra-icon svg {
-                            display: block;
-                            width: 100%;
-                            height: 100%;
-                        }
-
-                        #ra-popup .ra-app-name {
-                            font-size: 11px;
-                            font-weight: 600;
-                        }
-
-                        /* Analytics icon */
-                        #ra-popup .ra-simple-icon {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            width: 43px;
-                            height: 43px;
-                            margin-bottom: 8px;
-                            border-radius: 13px;
-                            background: #f1f3f4;
-                            color: #3c4043;
-                            font-size: 21px;
-                            font-weight: 700;
-                        }
-
-                        /* Projects */
-                        #ra-popup .ra-project-grid {
-                            display: grid;
-                            grid-template-columns: repeat(4, 1fr);
                             gap: 7px;
-                        }
-
-                        #ra-popup .ra-project {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            gap: 8px;
-                            padding: 11px 2px;
+                            padding: 10px 3px;
                             border: 1px solid transparent;
                             border-radius: 11px;
                             color: #3c4043;
                             text-decoration: none;
                             text-align: center;
-                            transition: .2s;
+                            font-size: 10.5px;
+                            font-weight: 600
                         }
 
-                        #ra-popup .ra-project:hover {
+                        .ra-pj:hover {
                             background: #f8f9fa;
-                            border-color: #e8eaed;
+                            border-color: #e8eaed
                         }
 
-                        #ra-popup .ra-project-icon {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            width: 43px;
-                            height: 43px;
-                            overflow: hidden;
+                        .ra-pj i {
+                            width: 40px;
+                            height: 40px;
                             border-radius: 12px;
                             background: #e8f0fe;
                             color: #1967d2;
-                            font-size: 18px;
-                            font-weight: 700;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-style: normal;
+                            font-size: 15px;
+                            font-weight: 700
                         }
 
-                        #ra-popup .ra-project-icon img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
+                        .ra-safe {
+                            margin-top: 12px;
+                            padding: 10px 12px;
+                            border-radius: 12px;
+                            background: #fef7e0;
+                            color: #5f4400;
+                            font-size: 11.5px;
+                            line-height: 1.45
                         }
 
-                        #ra-popup .ra-project-name {
-                            font-size: 10px;
-                            font-weight: 600;
-                            line-height: 1.3;
+                        .ra-reset {
+                            margin-top: 12px;
+                            border: 0;
+                            background: none;
+                            color: #5f6368;
+                            font: 600 11.5px Inter, Arial, sans-serif;
+                            text-decoration: underline;
+                            cursor: pointer
                         }
 
-                        /* Footer */
-                        #ra-popup .ra-footer {
-                            margin-top: 17px;
-                            padding-top: 12px;
+                        .ra-foot {
+                            margin-top: 14px;
+                            padding-top: 11px;
                             border-top: 1px solid #f0f0f0;
                             color: #80868b;
-                            font-size: 10px;
-                            text-align: center;
+                            font-size: 11px;
+                            text-align: center
                         }
 
-                        #ra-popup .ra-footer a {
+                        .ra-foot a {
                             color: #1a73e8;
                             text-decoration: none;
-                            font-weight: 600;
+                            font-weight: 600
                         }
 
-                        /* Mobile */
                         @media(max-width:480px) {
-                            #ra-popup {
+                            .ra-popup {
                                 top: auto !important;
                                 right: 10px !important;
                                 bottom: 10px !important;
                                 left: 10px !important;
                                 width: auto;
                                 max-width: none;
-                                max-height: 78vh;
-                                padding: 16px;
+                                max-height: 84vh;
+                                padding: 16px
                             }
+                        }
 
-                            #ra-popup .ra-app {
-                                min-height: 82px;
+                        @media(prefers-reduced-motion:reduce) {
+                            .ra-track i {
+                                transition: none
                             }
                         }
                     </style>
 
-                    <!-- LAUNCH BUTTON -->
-                    <button id="ra-launch" type="button" aria-expanded="false" aria-controls="ra-popup">
-                        <span>▦</span> My Workspace
-                    </button>
+                    <button class="ra-launch" type="button" aria-expanded="false">&#9670; Agentic AI Training</button>
 
-                    <!-- POPUP -->
-                    <div id="ra-popup">
-
-                        <div class="ra-header">
+                    <div class="ra-popup" role="dialog" aria-label="Agentic AI Training">
+                        <div class="ra-head">
                             <div>
-                                <h3 class="ra-title">My Workspace</h3>
-                                <p class="ra-subtitle">Your digital tools in one place</p>
+                                <h3 class="ra-title">Agentic AI Training</h3>
+                                <p class="ra-sub">Learn, practise and build AI agents step by step</p>
                             </div>
-                            <button class="ra-close" type="button" aria-label="Close">
-                                &times;
-                            </button>
+                            <button class="ra-close" type="button" aria-label="Close">&times;</button>
+                        </div>
+                        <div class="ra-prog">
+                            <p><span>Your progress</span><span class="ra-ptxt">0 of 0 lessons</span></p>
+                            <div class="ra-track" role="progressbar" aria-label="Training progress" aria-valuemin="0"
+                                aria-valuemax="100" aria-valuenow="0"><i></i></div>
+                        </div>
+                        <div class="ra-tabs" role="tablist">
+                            <button class="ra-tab ra-on" data-t="learn" type="button">Learn</button>
+                            <button class="ra-tab" data-t="practice" type="button">Practice</button>
+                            <button class="ra-tab" data-t="res" type="button">Resources</button>
                         </div>
 
-                        <!-- NAVIGATION -->
-                        <div class="ra-tabs">
-                            <button class="ra-tab ra-active" data-tab="google" type="button">
-                                Google Apps
-                            </button>
-                            <button class="ra-tab" data-tab="analytics" type="button">
-                                Analytics
-                            </button>
-                            <button class="ra-tab" data-tab="projects" type="button">
-                                My Projects
-                            </button>
+                        <div class="ra-panel ra-on" data-p="learn">
+                            <p class="ra-intro"><b>What is an AI agent?</b> A chatbot answers one question. An agent
+                                takes a goal, makes a plan, uses tools, checks the result and repeats. Work through the
+                                five modules in order and tick each lesson when you finish it.</p>
+                            <div class="ra-mods"></div>
+                            <button class="ra-reset" type="button">Reset my progress</button>
                         </div>
 
-                        <!-- GOOGLE APPS -->
-                        <div class="ra-panel ra-active" id="ra-google">
-
-                            <p class="ra-section-label">Google Workspace</p>
-
-                            <div class="ra-grid">
-
-                                <!-- Drive -->
-                                <a class="ra-app" href="https://drive.google.com" target="_blank" rel="noopener">
-                                    <span class="ra-icon">
-                                        <svg viewBox="0 0 48 48" aria-hidden="true">
-                                            <path fill="#00832d" d="M16 6h11L12 33H1z" />
-                                            <path fill="#0066da" d="M12 33h31l-6 10H6z" />
-                                            <path fill="#ffba00" d="M27 6 47 40l-6 3L21 11z" />
-                                            <path fill="#2684fc" d="M12 33h31l-6 10H6z" />
-                                        </svg>
-                                    </span>
-                                    <span class="ra-app-name">Drive</span>
-                                </a>
-
-                                <!-- Sheets -->
-                                <a class="ra-app" href="https://sheets.google.com" target="_blank" rel="noopener">
-                                    <span class="ra-icon">
-                                        <svg viewBox="0 0 48 48" aria-hidden="true">
-                                            <path fill="#188038" d="M10 4h20l10 10v29H10z" />
-                                            <path fill="#34a853" d="M30 4v10h10z" />
-                                            <path fill="#fff" d="M16 19h18v17H16z" />
-                                            <path fill="none" stroke="#188038" stroke-width="2"
-                                                d="M22 19v17M28 19v17M16 25h18M16 31h18" />
-                                        </svg>
-                                    </span>
-                                    <span class="ra-app-name">Sheets</span>
-                                </a>
-
-                                <!-- Docs -->
-                                <a class="ra-app" href="https://docs.google.com" target="_blank" rel="noopener">
-                                    <span class="ra-icon">
-                                        <svg viewBox="0 0 48 48" aria-hidden="true">
-                                            <path fill="#4285f4" d="M10 4h20l10 10v30H10z" />
-                                            <path fill="#a1c2fa" d="M30 4v10h10z" />
-                                            <path fill="#fff" d="M17 20h16v2H17zm0 6h16v2H17zm0 6h16v2H17z" />
-                                        </svg>
-                                    </span>
-                                    <span class="ra-app-name">Docs</span>
-                                </a>
-
-                                <!-- Slides -->
-                                <a class="ra-app" href="https://slides.google.com" target="_blank" rel="noopener">
-                                    <span class="ra-icon">
-                                        <svg viewBox="0 0 48 48" aria-hidden="true">
-                                            <path fill="#f9ab00" d="M10 4h20l10 10v30H10z" />
-                                            <path fill="#fce8b2" d="M30 4v10h10z" />
-                                            <rect x="16" y="20" width="18" height="13" rx="1" fill="#fff" />
-                                            <path d="M25 33v6" stroke="#fff" stroke-width="2" />
-                                        </svg>
-                                    </span>
-                                    <span class="ra-app-name">Slides</span>
-                                </a>
-
-                                <!-- Gmail -->
-                                <a class="ra-app" href="https://mail.google.com" target="_blank" rel="noopener">
-                                    <span class="ra-icon">
-                                        <svg viewBox="0 0 48 48" aria-hidden="true">
-                                            <path fill="#4285f4" d="M5 14v23h8V19z" />
-                                            <path fill="#34a853" d="M35 19v18h8V14z" />
-                                            <path fill="#ea4335" d="M5 14l19 15 19-15-5-5-14 11L10 9z" />
-                                            <path fill="#c5221f" d="M5 14v-1a5 5 0 0 1 8-4l11 8v8z" />
-                                            <path fill="#fbbc04" d="M43 14v-1a5 5 0 0 0-8-4l-11 8v8z" />
-                                        </svg>
-                                    </span>
-                                    <span class="ra-app-name">Gmail</span>
-                                </a>
-
-                                <!-- Calendar -->
-                                <a class="ra-app" href="https://calendar.google.com" target="_blank" rel="noopener">
-                                    <span class="ra-icon">
-                                        <svg viewBox="0 0 48 48" aria-hidden="true">
-                                            <rect x="7" y="10" width="34" height="32" rx="6" fill="#4285f4" />
-                                            <path fill="#fff" d="M7 17h34v19a6 6 0 0 1-6 6H13a6 6 0 0 1-6-6z" />
-                                            <path fill="#ea4335" d="M7 16a6 6 0 0 1 6-6h22a6 6 0 0 1 6 6v3H7z" />
-                                            <path fill="#34a853" d="M13 6h5v11h-5z" />
-                                            <path fill="#fbbc04" d="M30 6h5v11h-5z" />
-                                            <text x="24" y="34" font-size="15" text-anchor="middle" font-weight="bold"
-                                                fill="#4285f4">31</text>
-                                        </svg>
-                                    </span>
-                                    <span class="ra-app-name">Calendar</span>
-                                </a>
-
+                        <div class="ra-panel" data-p="practice">
+                            <div class="ra-card">
+                                <h4>Prompt checker</h4>
+                                <p>Paste a prompt for an agent. I check it for five parts. This is a simple keyword
+                                    check, not a real AI review.</p>
+                                <textarea class="ra-ptext" aria-label="Your prompt"
+                                    placeholder="Act as a research assistant. Find three sources on ... Use a table. Do not guess."></textarea>
+                                <button class="ra-btn ra-check" type="button">Check my prompt</button>
+                                <ul class="ra-res" aria-live="polite"></ul>
+                            </div>
+                            <div class="ra-card">
+                                <h4>Quick quiz</h4>
+                                <p class="ra-qmeta">Four questions. Best score is saved on this device.</p>
+                                <div class="ra-quiz"></div>
                             </div>
                         </div>
 
-                        <!-- ANALYTICS -->
-                        <div class="ra-panel" id="ra-analytics">
-
-                            <p class="ra-section-label">Data & Development</p>
-
-                            <div class="ra-grid">
-
-                                <a class="ra-app" href="https://colab.research.google.com" target="_blank"
-                                    rel="noopener">
-                                    <span class="ra-simple-icon">◉</span>
-                                    <span class="ra-app-name">Colab</span>
-                                </a>
-
-                                <a class="ra-app" href="https://lookerstudio.google.com" target="_blank" rel="noopener">
-                                    <span class="ra-simple-icon">▥</span>
-                                    <span class="ra-app-name">Looker</span>
-                                </a>
-
-                                <a class="ra-app" href="https://console.cloud.google.com/bigquery" target="_blank"
-                                    rel="noopener">
-                                    <span class="ra-simple-icon">▦</span>
-                                    <span class="ra-app-name">BigQuery</span>
-                                </a>
-
-                                <a class="ra-app" href="https://www.kaggle.com" target="_blank" rel="noopener">
-                                    <span class="ra-simple-icon">K</span>
-                                    <span class="ra-app-name">Kaggle</span>
-                                </a>
-
-                                <a class="ra-app" href="https://github.com" target="_blank" rel="noopener">
-                                    <span class="ra-simple-icon">⌘</span>
-                                    <span class="ra-app-name">GitHub</span>
-                                </a>
-
-                                <a class="ra-app" href="https://www.python.org" target="_blank" rel="noopener">
-                                    <span class="ra-simple-icon">Py</span>
-                                    <span class="ra-app-name">Python</span>
-                                </a>
-
-                            </div>
+                        <div class="ra-panel" data-p="res">
+                            <p class="ra-label">Official learning resources</p>
+                            <div class="ra-links"></div>
+                            <p class="ra-label">My live projects</p>
+                            <div class="ra-pg"></div>
+                            <div class="ra-safe"><b>Stay safe:</b> never paste passwords, ID numbers or private student
+                                data into an AI tool. Ask for sources and check important facts yourself. Let an agent
+                                act on your accounts only after you review what it will do.</div>
                         </div>
 
-                        <!-- MY PROJECTS -->
-                        <div class="ra-panel" id="ra-projects">
-
-                            <p class="ra-section-label">My Live Projects</p>
-
-                            <div class="ra-project-grid">
-
-                                <a class="ra-project" href="https://khanriyazi.github.io/Data/" target="_blank"
-                                    rel="noopener">
-                                    <span class="ra-project-icon">D</span>
-                                    <span class="ra-project-name">Dashboard</span>
-                                </a>
-
-                                <a class="ra-project" href="https://data.affiliatemath.xyz/" target="_blank"
-                                    rel="noopener">
-                                    <span class="ra-project-icon">S</span>
-                                    <span class="ra-project-name">Service</span>
-                                </a>
-
-                                <a class="ra-project" href="https://khanriyazi.github.io/Data-mining/" target="_blank"
-                                    rel="noopener">
-                                    <span class="ra-project-icon">M</span>
-                                    <span class="ra-project-name">Mining</span>
-                                </a>
-
-                                <a class="ra-project" href="https://khanriyazi.github.io/Data-Mining2/" target="_blank"
-                                    rel="noopener">
-                                    <span class="ra-project-icon">M2</span>
-                                    <span class="ra-project-name">Mining 2</span>
-                                </a>
-                                <a class="ra-project"
-                                    href="https://script.google.com/macros/s/AKfycbxyfTWXM-05m-8J0fmcMgjPlTIAd_zqUT-Iq16WLUcGQWa6MNqj8I1__x1CaLJ1s3o/exec"
-                                    target="_blank" rel="noopener">
-                                    <span class="ra-project-icon">TM</span>
-                                    <span class="ra-project-name">Time Machine</span>
-                                </a>
-                                <a class="ra-project" href="https://khanriyazi.github.io/Google-Workspace/"
-                                    target="_blank" rel="noopener">
-                                    <span class="ra-project-icon">GP</span>
-                                    <span class="ra-project-name">Google Portfolio</span>
-                                </a>
-
-                            </div>
-                        </div>
-
-                        <!-- FOOTER -->
-                        <div class="ra-footer">
-                            Personal Workspace ·
-                            <a href="https://khanriyazi.in" target="_blank" rel="noopener">
-                                My Website ↗
-                            </a>
-                        </div>
-
+                        <div class="ra-foot">Personal Workspace · <a href="https://khanriyazi.in" target="_blank"
+                                rel="noopener noreferrer">My Website ↗</a></div>
                     </div>
 
                     <script>
                         (() => {
-                            const popup = document.getElementById("ra-popup");
-                            const launch = document.getElementById("ra-launch");
+                            const sec = document.currentScript.closest(".ra-ws");
+                            const popup = sec.querySelector(".ra-popup");
+                            // Guard: if this section is pasted more than once, keep only the first copy.
+                            if (window.__raAgenticTraining) { popup.remove(); sec.remove(); return; }
+                            window.__raAgenticTraining = true;
+                            document.body.appendChild(popup); // avoids clipping inside page containers
 
-                            if (!popup || !launch || popup.dataset.initialized) return;
-                            popup.dataset.initialized = "true";
+                            const $ = (s) => popup.querySelector(s), $$ = (s) => [...popup.querySelectorAll(s)];
+                            const launch = sec.querySelector(".ra-launch");
+                            // Safe element builder: all text goes in through textContent, never innerHTML.
+                            const h = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
 
-                            // Prevent popup clipping inside website containers.
-                            document.body.appendChild(popup);
-
-                            const close = popup.querySelector(".ra-close");
-                            const tabs = popup.querySelectorAll(".ra-tab");
-                            const panels = popup.querySelectorAll(".ra-panel");
-
-                            function openPopup() {
-                                popup.classList.add("ra-open");
-                                launch.setAttribute("aria-expanded", "true");
-                            }
-
-                            function closePopup() {
-                                popup.classList.remove("ra-open");
-                                launch.setAttribute("aria-expanded", "false");
-                            }
-
-                            launch.addEventListener("click", event => {
-                                event.stopPropagation();
-                                popup.classList.contains("ra-open") ? closePopup() : openPopup();
-                            });
-
-                            close.addEventListener("click", closePopup);
-
-                            tabs.forEach(tab => {
-                                tab.addEventListener("click", () => {
-                                    tabs.forEach(item => item.classList.remove("ra-active"));
-                                    panels.forEach(panel => panel.classList.remove("ra-active"));
-
-                                    tab.classList.add("ra-active");
-
-                                    const selected = document.getElementById("ra-" + tab.dataset.tab);
-                                    if (selected) selected.classList.add("ra-active");
-                                });
-                            });
-
-                            document.addEventListener("click", event => {
-                                if (
-                                    popup.classList.contains("ra-open") &&
-                                    !popup.contains(event.target) &&
-                                    !launch.contains(event.target)
-                                ) {
-                                    closePopup();
+                            /* ---------- Curriculum data ---------- */
+                            const MODULES = [
+                                {
+                                    t: "1. What is an AI agent?", lv: "Beginner", goal: "Explain the difference between a chatbot and an agent, and name the four parts of an agent.",
+                                    les: ["A chatbot answers; an agent pursues a goal over several steps", "The four parts: goal, tools, memory, loop", "Real examples: research agent, coding agent, data-cleaning agent"],
+                                    ex: "Pick one daily task (for example cleaning a sheet). Write the goal, the tools needed and the steps an agent would take."
+                                },
+                                {
+                                    t: "2. Prompting for agents", lv: "Beginner", goal: "Write a clear instruction with a role, task, context, format and limits.",
+                                    les: ["The five parts of a strong prompt", "Give examples of good output", "Add limits: what the agent must not do"],
+                                    ex: "Rewrite a vague prompt into all five parts, then test it in the Prompt checker (Practice tab)."
+                                },
+                                {
+                                    t: "3. Tools and APIs", lv: "Intermediate", goal: "Understand how an agent calls a tool, such as search, a spreadsheet or a Python function.",
+                                    les: ["What a tool is: a function with a name and inputs", "How the model chooses a tool and reads the result", "Permissions: give the least access needed"],
+                                    ex: "Write a Python function that sums a column in a CSV. Describe it in two lines as if explaining it to an agent."
+                                },
+                                {
+                                    t: "4. The agent loop and workflows", lv: "Intermediate", goal: "Describe the loop plan, act, observe, repeat, and know where a human should approve.",
+                                    les: ["Plan, act, observe, repeat", "Simple workflow or full agent: when to use which", "Human approval before irreversible actions"],
+                                    ex: "Draw the loop for a research agent on paper. Mark the two steps where you would stop and approve."
+                                },
+                                {
+                                    t: "5. Build and evaluate an agent", lv: "Advanced", goal: "Build a small agent, test it on real cases and record where it fails.",
+                                    les: ["Start with the simplest version that works", "Write 5 test cases with expected answers", "Record failures and fix one at a time"],
+                                    ex: "Project: an agent that reads a CSV, finds three insights and drafts a short report. Test it on 5 different files."
                                 }
+                            ];
+                            const RES = [
+                                ["Building effective agents (Anthropic)", "https://www.anthropic.com/engineering/building-effective-agents", "Clear guide to workflows vs agents and when to use each."],
+                                ["Claude developer docs", "https://docs.claude.com", "Tool use, prompting and API reference."],
+                                ["Agent Development Kit (Google)", "https://google.github.io/adk-docs/", "Open-source framework for building agents in Python."],
+                                ["OpenAI Agents SDK", "https://openai.github.io/openai-agents-python/", "Python SDK with tools, handoffs and guardrails."],
+                                ["Hugging Face Agents Course", "https://huggingface.co/learn/agents-course", "Free step-by-step course with exercises."],
+                                ["Google Colab", "https://colab.research.google.com", "Run your Python agent experiments in the browser."],
+                                ["Studio Google", "https://studio.workspace.google.com/workflow/g16727eb23f34b68f2a0e7c31c0980027", "Learn Rizwan Google."],
+                                ["My Progressive Prompting", "https://script.google.com/macros/s/AKfycbzlBmDfL2t1nQHO096nkeA0MHNQB60-V53Ua7C720Kriv8LmePwn4Iv-izmKMRHuH2F/exec?utm_source=chatgpt.com", "Learn Progressive Prompting."]
+                            ];
+                            const PROJ = [["Dashboard", "D", "https://khanriyazi.github.io/Data/"], ["Service", "S", "https://data.affiliatemath.xyz/"], ["Mining", "M", "https://khanriyazi.github.io/Data-mining/"], ["Mining 2", "M2", "https://khanriyazi.github.io/Data-Mining2/"], ["Time Machine", "TM", "https://script.google.com/macros/s/AKfycbxyfTWXM-05m-8J0fmcMgjPlTIAd_zqUT-Iq16WLUcGQWa6MNqj8I1__x1CaLJ1s3o/exec"], ["Google Portfolio", "GP", "https://khanriyazi.github.io/Google-Workspace/"]];
+                            const QUIZ = [
+                                { q: "What makes an AI agent different from a chatbot?", o: ["It uses a bigger font", "It works toward a goal over several steps and can use tools", "It never makes mistakes"], a: 1, why: "An agent plans, acts with tools and checks results. It can still make mistakes." },
+                                { q: "The agent loop is plan, act, then what?", o: ["Observe the result", "Delete the plan", "Stop forever"], a: 0, why: "After acting, the agent observes the result and decides the next step." },
+                                { q: "When should a human approve an agent's action?", o: ["Never", "Only on weekends", "Before irreversible actions like sending email or deleting files"], a: 2, why: "Review actions that are hard to undo." },
+                                { q: "What best reduces made-up answers?", o: ["Ask for sources and check them", "Use shorter prompts", "Trust the first answer"], a: 0, why: "Sources let you verify. Giving the agent your own documents also helps." }
+                            ];
+
+                            /* ---------- Saved progress (LocalStorage, safe if blocked) ---------- */
+                            const KEY = "ra-agentic-training-v1";
+                            let state = { done: {}, best: 0 };
+                            try {
+                                const s = JSON.parse(localStorage.getItem(KEY) || "null");
+                                if (s && typeof s === "object" && s.done && typeof s.done === "object") state = { done: s.done, best: Number(s.best) || 0 };
+                            } catch (e) { /* ignore corrupt or blocked storage */ }
+                            const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* storage blocked */ } };
+
+                            /* ---------- Learn tab ---------- */
+                            const total = MODULES.reduce((n, m) => n + m.les.length, 0);
+                            const boxes = [], counters = [];
+                            MODULES.forEach((m, mi) => {
+                                const d = h("details", "ra-mod"); if (mi === 0) d.open = true;
+                                const sum = h("summary"); const lbl = h("span", null, m.t); lbl.append(h("small", null, m.lv));
+                                const cnt = h("span", "ra-cnt"); sum.append(lbl, cnt); counters.push(cnt);
+                                const body = h("div", "ra-mb"); body.append(h("p", null, "Goal: " + m.goal));
+                                const ul = h("ul");
+                                m.les.forEach((text, li) => {
+                                    const key = "m" + mi + "-" + li, row = h("li"), lab = h("label"), cb = h("input");
+                                    cb.type = "checkbox"; cb.checked = !!state.done[key];
+                                    cb.addEventListener("change", () => { cb.checked ? (state.done[key] = true) : delete state.done[key]; save(); refresh(); });
+                                    boxes.push(cb); lab.append(cb, h("span", null, text)); row.append(lab); ul.append(row);
+                                });
+                                body.append(ul, h("div", "ra-ex", "Exercise: " + m.ex)); d.append(sum, body); $(".ra-mods").append(d);
+                            });
+                            // Recompute every progress number from the saved state.
+                            function refresh() {
+                                const done = Object.keys(state.done).length, pct = Math.round((done / total) * 100);
+                                $(".ra-ptxt").textContent = done + " of " + total + " lessons";
+                                $(".ra-track i").style.width = pct + "%";
+                                $(".ra-track").setAttribute("aria-valuenow", pct);
+                                MODULES.forEach((m, mi) => {
+                                    const n = m.les.filter((_, li) => state.done["m" + mi + "-" + li]).length;
+                                    counters[mi].textContent = n + " / " + m.les.length;
+                                    counters[mi].classList.toggle("ra-full", n === m.les.length);
+                                });
+                            }
+                            $(".ra-reset").addEventListener("click", () => {
+                                if (!confirm("Reset all lesson progress and your best quiz score?")) return;
+                                state = { done: {}, best: 0 }; save(); boxes.forEach((b) => (b.checked = false)); refresh(); showQ();
                             });
 
-                            document.addEventListener("keydown", event => {
-                                if (event.key === "Escape") closePopup();
+                            /* ---------- Practice: prompt checker ---------- */
+                            const CHECKS = [
+                                ["Role (who the agent acts as)", /\b(act as|you are|as a[n]?)\b/i],
+                                ["Task (what to do)", /\b(write|build|explain|analy[sz]e|create|summari[sz]e|find|compare|plan|fix|list|teach|clean|draft)\b/i],
+                                ["Context (who it is for, what you have)", null],
+                                ["Format (how the answer should look)", /\b(format|table|bullets?|steps?|json|checklist|summary|words|sentences|paragraphs?)\b/i],
+                                ["Limits (what not to do)", /\b(do not|don't|only|must|avoid|limit|at most|max|ask me|never)\b/i]
+                            ];
+                            $(".ra-check").addEventListener("click", () => {
+                                const text = $(".ra-ptext").value.trim(), out = $(".ra-res"); out.replaceChildren();
+                                if (text.length < 10) { out.append(h("li", "ra-no", "Write a prompt of at least 10 characters first.")); return; }
+                                if (text.length > 4000) { out.append(h("li", "ra-no", "That prompt is too long to check. Keep it under 4000 characters.")); return; }
+                                let score = 0;
+                                CHECKS.forEach(([name, re]) => {
+                                    const ok = re ? re.test(text) : text.split(/\s+/).length >= 25; // context = enough detail
+                                    if (ok) score++;
+                                    const li = h("li"); li.append(h("span", ok ? "ra-ok" : "ra-no", ok ? "\u2713 " : "\u2717 "), document.createTextNode(name)); out.append(li);
+                                });
+                                out.append(h("li", score === 5 ? "ra-ok" : "", "Score: " + score + " of 5. " + (score === 5 ? "Strong prompt." : "Add the missing parts and check again.")));
                             });
+
+                            /* ---------- Practice: quiz ---------- */
+                            let qi = 0, score = 0;
+                            function showQ() {
+                                qi = 0; score = 0; drawQ();
+                            }
+                            function drawQ() {
+                                const box = $(".ra-quiz"); box.replaceChildren();
+                                if (qi >= QUIZ.length) {
+                                    if (score > state.best) { state.best = score; save(); }
+                                    box.append(h("p", "ra-q", "You scored " + score + " of " + QUIZ.length + ". Best: " + state.best + "."));
+                                    const again = h("button", "ra-btn", "Try again"); again.type = "button"; again.addEventListener("click", showQ); box.append(again); return;
+                                }
+                                const q = QUIZ[qi], opts = h("div", "ra-opts"), fb = h("p", "ra-fb"); fb.setAttribute("aria-live", "polite");
+                                box.append(h("p", "ra-q", (qi + 1) + ". " + q.q), opts, fb);
+                                q.o.forEach((text, i) => {
+                                    const b = h("button", "ra-opt", text); b.type = "button";
+                                    b.addEventListener("click", () => {
+                                        opts.querySelectorAll("button").forEach((x) => (x.disabled = true));
+                                        const right = i === q.a; if (right) score++;
+                                        b.classList.add(right ? "ra-right" : "ra-wrong"); opts.children[q.a].classList.add("ra-right");
+                                        fb.textContent = (right ? "Correct. " : "Not quite. ") + q.why;
+                                        const next = h("button", "ra-btn ra-alt", qi === QUIZ.length - 1 ? "See score" : "Next question"); next.type = "button";
+                                        next.addEventListener("click", () => { qi++; drawQ(); }); box.append(next); next.focus();
+                                    });
+                                    opts.append(b);
+                                });
+                            }
+
+                            /* ---------- Resources ---------- */
+                            RES.forEach(([t, u, d]) => { const a = h("a", "ra-link"); a.href = u; a.target = "_blank"; a.rel = "noopener noreferrer"; a.append(h("b", null, t), h("span", null, d)); $(".ra-links").append(a); });
+                            PROJ.forEach(([t, i, u]) => { const a = h("a", "ra-pj"); a.href = u; a.target = "_blank"; a.rel = "noopener noreferrer"; a.append(h("i", null, i), h("span", null, t)); $(".ra-pg").append(a); });
+
+                            /* ---------- Tabs, open and close ---------- */
+                            const tabs = $$(".ra-tab"), panels = $$(".ra-panel");
+                            tabs.forEach((t) => t.addEventListener("click", () => {
+                                tabs.forEach((x) => x.classList.toggle("ra-on", x === t));
+                                panels.forEach((p) => p.classList.toggle("ra-on", p.dataset.p === t.dataset.t));
+                            }));
+                            const open = () => { popup.classList.add("ra-open"); launch.setAttribute("aria-expanded", "true"); };
+                            const close = () => { popup.classList.remove("ra-open"); launch.setAttribute("aria-expanded", "false"); };
+                            launch.addEventListener("click", (e) => { e.stopPropagation(); popup.classList.contains("ra-open") ? close() : open(); });
+                            $(".ra-close").addEventListener("click", close);
+                            document.addEventListener("click", (e) => { if (popup.classList.contains("ra-open") && !popup.contains(e.target) && !launch.contains(e.target)) close(); });
+                            document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+
+                            refresh(); showQ();
                         })();
                     </script>
-
                 </section>
 
 
