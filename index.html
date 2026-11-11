@@ -1072,8 +1072,13 @@
                 </a>
 
 
-                <a href="https://www.behance.net/rizwanali3251" target="_blank" class="home__social-icon">
+                <!-- <a href="https://www.behance.net/rizwanali3251" target="_blank" class="home__social-icon">
                     <i class='bx bxl-behance'></i>
+                </a> -->
+
+                <a href="https://khanriyazi.github.io/Analyst-lab/" target="_blank" rel="noopener noreferrer"
+                    class="home__social-icon" title="Data Analyst Workspace">
+                    <i class='bx bx-data'></i>
                 </a>
 
 
@@ -1388,6 +1393,7 @@
             <div class="contact__container bd-grid">
 
                 <!-- Video column (LEFT) -->
+
                 <div class="contact__video">
                     <div class="contact__video-wrap">
                         <iframe class="contact__iframe"
@@ -1410,12 +1416,30 @@
                 </div>
 
                 <!-- Contact form column (RIGHT) -->
-                <form action="mailto:rizwanrka826@gmail.com" class="contact__form">
+                <!-- <form action="mailto:rizwanrka826@gmail.com" class="contact__form">
                     <input type="text" placeholder="Name" class="contact__input">
                     <input type="email" placeholder="Email" class="contact__input">
                     <textarea rows="10" placeholder="Message" class="contact__input"></textarea>
                     <input type="button" value="Submit" class="contact__button button">
+                </form> -->
+
+
+                <form action="https://formspree.io/f/mzerpvkz" method="POST" class="contact__form">
+
+                    <input type="text" name="name" placeholder="Name" class="contact__input" required>
+
+                    <input type="email" name="email" placeholder="Email" class="contact__input" required>
+
+                    <textarea name="message" rows="10" placeholder="Message" class="contact__input" required></textarea>
+
+                    <input type="hidden" name="_subject" value="New Contact Message - Rizwan Portfolio">
+
+                    <button type="submit" class="contact__button button">
+                        Send Message
+                    </button>
+
                 </form>
+
 
             </div>
         </section>
