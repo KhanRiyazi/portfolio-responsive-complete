@@ -2195,7 +2195,7 @@
                         })();
                     </script>
                 </section> -->
-                <section class="ra-ws">
+                <!-- <section class="ra-ws">
                     <style>
                         .ra-ws,
                         .ra-popup {
@@ -3792,6 +3792,1768 @@ print(all(f(a) == b for a, b in tests))`, "True  (all test cases pass)"]
 
                             setRole(state.role); { const f = MODULES.find((m, mi) => m.les.some((_, li) => !state.done["m" + mi + "-" + li])); pick(f ? f.s : "Agentic"); } refresh(); showQ();
                             try { const lt = localStorage.getItem(TK); if (lt && lt !== "hub") goTab(lt); } catch (e) { }
+                        })();
+                    </script>
+                </section> -->
+
+                <section class="sa-ws">
+                    <style>
+                        .sa-ws,
+                        .sa-pop,
+                        .sa-bk {
+                            --bg: #fff;
+                            --tx: #202124;
+                            --mu: #5f6368;
+                            --bd: #e3e6ea;
+                            --sf: #f1f3f4;
+                            --pr: #1a73e8;
+                            --ph: #1765cc;
+                            --pt: #e8f0fe;
+                            --gr: #188038;
+                            --gt: #e6f4ea;
+                            --ye: #fef7e0;
+                            --yx: #5f4400;
+                            --rd: #c5221f;
+                            color-scheme: light;
+                            font-family: Inter, Roboto, Arial, sans-serif
+                        }
+
+                        .sa-bar {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 10px
+                        }
+
+                        .sa-launch {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 8px;
+                            padding: 12px 18px;
+                            border-radius: 99px;
+                            border: 1px solid #dadce0;
+                            background: #fff;
+                            color: #3c4043;
+                            font: 600 14px/1 Inter, Arial, sans-serif;
+                            cursor: pointer;
+                            text-decoration: none
+                        }
+
+                        .sa-launch:hover {
+                            background: #f8f9fa;
+                            box-shadow: 0 1px 6px rgba(60, 64, 67, .3)
+                        }
+
+                        .sa-launch.sa-main {
+                            background: var(--pr);
+                            border-color: var(--pr);
+                            color: #fff
+                        }
+
+                        .sa-launch.sa-main:hover {
+                            background: var(--ph)
+                        }
+
+                        .sa-pop,
+                        .sa-pop * {
+                            box-sizing: border-box
+                        }
+
+                        .sa-pop {
+                            display: none;
+                            position: fixed;
+                            top: 70px;
+                            right: 22px;
+                            z-index: 2147483647;
+                            width: 480px;
+                            max-width: calc(100vw - 24px);
+                            max-height: calc(100vh - 90px);
+                            overflow-y: auto;
+                            padding: 18px;
+                            background: var(--bg);
+                            color: var(--tx);
+                            border: 1px solid var(--bd);
+                            border-radius: 20px;
+                            box-shadow: 0 16px 48px rgba(60, 64, 67, .25)
+                        }
+
+                        .sa-pop.sa-open {
+                            display: block
+                        }
+
+                        .sa-pop h3,
+                        .sa-pop h4,
+                        .sa-pop p {
+                            margin: 0
+                        }
+
+                        .sa-head {
+                            display: flex;
+                            justify-content: space-between;
+                            gap: 8px;
+                            margin-bottom: 10px
+                        }
+
+                        .sa-head h3 {
+                            font-size: 19px
+                        }
+
+                        .sa-sub {
+                            color: var(--mu);
+                            font-size: 12px;
+                            margin-top: 3px !important
+                        }
+
+                        .sa-x,
+                        .sa-bko {
+                            width: 34px;
+                            height: 34px;
+                            border: 0;
+                            border-radius: 50%;
+                            background: var(--sf);
+                            font-size: 21px;
+                            cursor: pointer;
+                            color: var(--mu)
+                        }
+
+                        .sa-prog {
+                            font-size: 12px;
+                            font-weight: 600;
+                            margin-bottom: 12px
+                        }
+
+                        .sa-prog div {
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 5px
+                        }
+
+                        .sa-trk {
+                            height: 8px;
+                            border-radius: 99px;
+                            background: var(--bd);
+                            overflow: hidden
+                        }
+
+                        .sa-trk i {
+                            display: block;
+                            height: 100%;
+                            width: 0;
+                            background: var(--gr);
+                            transition: width .25s
+                        }
+
+                        .sa-tabs {
+                            display: flex;
+                            gap: 6px;
+                            overflow-x: auto;
+                            padding-bottom: 10px;
+                            border-bottom: 1px solid var(--bd);
+                            margin-bottom: 12px
+                        }
+
+                        .sa-tab {
+                            flex: none;
+                            padding: 8px 14px;
+                            border: 0;
+                            border-radius: 99px;
+                            background: none;
+                            color: var(--mu);
+                            font: 600 12.5px Inter, Arial, sans-serif;
+                            cursor: pointer
+                        }
+
+                        .sa-tab:hover {
+                            background: var(--sf)
+                        }
+
+                        .sa-tab.sa-on {
+                            background: var(--pt);
+                            color: #1967d2
+                        }
+
+                        .sa-panel {
+                            display: none
+                        }
+
+                        .sa-panel.sa-on {
+                            display: block
+                        }
+
+                        .sa-card {
+                            padding: 14px;
+                            border: 1px solid var(--bd);
+                            border-radius: 16px;
+                            margin-bottom: 12px
+                        }
+
+                        .sa-card h4 {
+                            font-size: 14px;
+                            margin-bottom: 4px
+                        }
+
+                        .sa-card p,
+                        .sa-card li {
+                            font-size: 12.5px;
+                            line-height: 1.5;
+                            color: var(--mu)
+                        }
+
+                        .sa-card ol,
+                        .sa-card ul {
+                            margin: 6px 0 0;
+                            padding-left: 18px
+                        }
+
+                        .sa-next {
+                            background: var(--pt);
+                            border-color: transparent
+                        }
+
+                        .sa-next h4 {
+                            font-size: 15px
+                        }
+
+                        .sa-next p {
+                            color: var(--tx)
+                        }
+
+                        .sa-lbl {
+                            margin: 14px 0 6px;
+                            color: var(--mu);
+                            font-size: 11.5px;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                            letter-spacing: .04em
+                        }
+
+                        .sa-btn {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 6px;
+                            margin: 8px 6px 0 0;
+                            padding: 9px 16px;
+                            border: 0;
+                            border-radius: 99px;
+                            background: var(--pr);
+                            color: #fff;
+                            font: 650 12.5px Inter, Arial, sans-serif;
+                            cursor: pointer;
+                            text-decoration: none
+                        }
+
+                        .sa-btn:hover {
+                            background: var(--ph)
+                        }
+
+                        .sa-btn.sa-alt {
+                            background: #fff;
+                            color: var(--pr);
+                            border: 1px solid var(--bd)
+                        }
+
+                        .sa-btn.sa-alt:hover {
+                            background: var(--pt)
+                        }
+
+                        .sa-st {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 6px;
+                            margin-bottom: 10px
+                        }
+
+                        .sa-sb {
+                            text-align: left;
+                            padding: 9px 10px;
+                            border: 1px solid var(--bd);
+                            border-radius: 14px;
+                            background: #fff;
+                            cursor: pointer;
+                            color: var(--tx);
+                            font: 600 12px Inter, Arial, sans-serif
+                        }
+
+                        .sa-sb.sa-on {
+                            border-color: var(--pr);
+                            background: var(--pt)
+                        }
+
+                        .sa-sb span {
+                            display: block;
+                            color: var(--mu);
+                            font-weight: 500;
+                            font-size: 11px;
+                            margin-top: 2px
+                        }
+
+                        .sa-step {
+                            border: 1px solid var(--bd);
+                            border-radius: 14px;
+                            margin-bottom: 8px
+                        }
+
+                        .sa-step summary {
+                            display: flex;
+                            gap: 10px;
+                            align-items: center;
+                            padding: 11px 13px;
+                            cursor: pointer;
+                            font-size: 13px;
+                            font-weight: 650
+                        }
+
+                        .sa-step summary small {
+                            display: block;
+                            color: var(--mu);
+                            font-weight: 500;
+                            font-size: 11px
+                        }
+
+                        .sa-step.sa-done {
+                            background: var(--gt);
+                            border-color: var(--gr)
+                        }
+
+                        .sa-num {
+                            flex: none;
+                            width: 26px;
+                            height: 26px;
+                            border-radius: 50%;
+                            background: var(--pt);
+                            color: #1967d2;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 12px
+                        }
+
+                        .sa-done .sa-num {
+                            background: var(--gr);
+                            color: #fff
+                        }
+
+                        .sa-body {
+                            padding: 0 13px 13px;
+                            font-size: 12.5px;
+                            line-height: 1.5
+                        }
+
+                        .sa-body b {
+                            display: block;
+                            margin-top: 8px;
+                            font-size: 11.5px;
+                            color: var(--mu);
+                            text-transform: uppercase;
+                            letter-spacing: .03em
+                        }
+
+                        .sa-goal h4 {
+                            font-size: 14px
+                        }
+
+                        .sa-goal .sa-why {
+                            margin-bottom: 2px
+                        }
+
+                        .sa-badge {
+                            display: inline-block;
+                            margin-right: 6px;
+                            padding: 1px 8px;
+                            border-radius: 99px;
+                            background: var(--pr);
+                            color: #fff;
+                            font-size: 11px
+                        }
+
+                        .sa-role {
+                            display: flex;
+                            gap: 4px;
+                            padding: 3px;
+                            margin-bottom: 12px;
+                            border-radius: 99px;
+                            background: var(--sf);
+                            width: max-content
+                        }
+
+                        .sa-role button {
+                            border: 0;
+                            border-radius: 99px;
+                            padding: 7px 14px;
+                            background: none;
+                            font: 600 12px Inter, Arial, sans-serif;
+                            color: var(--mu);
+                            cursor: pointer
+                        }
+
+                        .sa-role button.sa-on {
+                            background: var(--pr);
+                            color: #fff
+                        }
+
+                        .sa-rings .sa-ro {
+                            border: 2px dashed #9aa0a6;
+                            border-radius: 999px;
+                            padding: 14px 14px 40px;
+                            text-align: center;
+                            font: 700 12px Inter, Arial, sans-serif;
+                            color: var(--tx)
+                        }
+
+                        .sa-rings small {
+                            display: block;
+                            font-weight: 500;
+                            color: var(--mu);
+                            font-size: 11px
+                        }
+
+                        .sa-rings .sa-ri {
+                            margin: 10px auto -26px;
+                            width: 66%;
+                            border: 2px solid var(--pr);
+                            background: var(--pt);
+                            border-radius: 999px;
+                            padding: 14px 8px;
+                            color: #1967d2
+                        }
+
+                        .sa-cc,
+                        .sa-lf {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 6px;
+                            margin-bottom: 10px
+                        }
+
+                        .sa-chip {
+                            padding: 7px 12px;
+                            border: 1px solid var(--bd);
+                            border-radius: 99px;
+                            background: #fff;
+                            font: 600 12px Inter, Arial, sans-serif;
+                            color: var(--tx);
+                            cursor: pointer;
+                            text-align: left
+                        }
+
+                        .sa-chip.sa-on {
+                            background: var(--pt);
+                            border-color: var(--pr);
+                            color: #1967d2
+                        }
+
+                        .sa-ci b {
+                            display: block;
+                            font-size: 11.5px;
+                            color: var(--mu);
+                            text-transform: uppercase;
+                            margin-top: 8px
+                        }
+
+                        .sa-note {
+                            margin-top: 10px !important;
+                            font-size: 11px;
+                            color: var(--mu);
+                            line-height: 1.45
+                        }
+
+                        .sa-link {
+                            display: block;
+                            padding: 10px 12px;
+                            border: 1px solid var(--bd);
+                            border-radius: 14px;
+                            margin-bottom: 8px;
+                            text-decoration: none;
+                            color: var(--tx)
+                        }
+
+                        .sa-link:hover {
+                            background: var(--sf)
+                        }
+
+                        .sa-link b {
+                            display: flex;
+                            justify-content: space-between;
+                            gap: 8px;
+                            font-size: 12.5px;
+                            color: var(--pr)
+                        }
+
+                        .sa-link em {
+                            font-style: normal;
+                            font-size: 10.5px;
+                            color: var(--mu);
+                            background: var(--sf);
+                            border-radius: 99px;
+                            padding: 1px 8px;
+                            flex: none
+                        }
+
+                        .sa-link span {
+                            font-size: 11.5px;
+                            color: var(--mu)
+                        }
+
+                        .sa-body .sa-tt {
+                            display: none
+                        }
+
+                        .sa-teacher .sa-body .sa-tt {
+                            display: block
+                        }
+
+                        .sa-ov {
+                            display: none;
+                            position: fixed;
+                            inset: 0;
+                            z-index: 2147483645;
+                            background: rgba(32, 33, 36, .55)
+                        }
+
+                        .sa-bk {
+                            display: none;
+                            position: fixed;
+                            z-index: 2147483647;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: min(820px, calc(100vw - 20px));
+                            height: min(640px, calc(100vh - 20px));
+                            flex-direction: column;
+                            background: #fff;
+                            color: var(--tx);
+                            border-radius: 20px;
+                            box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+                            overflow: hidden;
+                            font-family: Inter, Roboto, Arial, sans-serif
+                        }
+
+                        .sa-bk * {
+                            box-sizing: border-box
+                        }
+
+                        .sa-ov.sa-open {
+                            display: block
+                        }
+
+                        .sa-bk.sa-open {
+                            display: flex
+                        }
+
+                        .sa-bh {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            gap: 8px;
+                            padding: 8px 14px;
+                            border-bottom: 1px solid var(--bd);
+                            font-size: 12px;
+                            font-weight: 700
+                        }
+
+                        .sa-bh>span {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px
+                        }
+
+                        .sa-bh i {
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 50%;
+                            background: var(--pc, #1a73e8);
+                            display: inline-block
+                        }
+
+                        .sa-bt {
+                            border: 1px solid var(--bd);
+                            background: #fff;
+                            border-radius: 99px;
+                            padding: 5px 12px;
+                            font: 600 12px Inter, Arial, sans-serif;
+                            color: var(--pr);
+                            cursor: pointer
+                        }
+
+                        .sa-bt:hover {
+                            background: var(--pt)
+                        }
+
+                        .sa-bs {
+                            flex: 1;
+                            overflow: auto;
+                            position: relative
+                        }
+
+                        .sa-art {
+                            padding: 22px 28px 26px;
+                            font-size: 14.5px;
+                            line-height: 1.6;
+                            color: #202124
+                        }
+
+                        .sa-art h2 {
+                            margin: 0 0 10px;
+                            font: 400 28px/1.2 Georgia, "Times New Roman", serif;
+                            padding-bottom: 6px;
+                            border-bottom: 1px solid var(--bd)
+                        }
+
+                        .sa-art h3 {
+                            margin: 18px 0 6px;
+                            font: 400 19px/1.3 Georgia, serif;
+                            padding-bottom: 3px;
+                            border-bottom: 1px solid var(--bd)
+                        }
+
+                        .sa-art p {
+                            margin: 0 0 8px
+                        }
+
+                        .sa-ib {
+                            float: right;
+                            width: 230px;
+                            margin: 0 0 12px 18px;
+                            border: 1px solid var(--bd);
+                            background: #f8f9fa;
+                            border-radius: 10px;
+                            overflow: hidden;
+                            font-size: 12.5px;
+                            line-height: 1.45
+                        }
+
+                        .sa-ibh {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 6px;
+                            padding: 12px;
+                            background: var(--pc);
+                            color: #fff;
+                            text-align: center;
+                            font-weight: 700
+                        }
+
+                        .sa-ibh span {
+                            display: flex;
+                            width: 64px;
+                            height: 64px;
+                            border-radius: 50%;
+                            background: rgba(255, 255, 255, .18);
+                            align-items: center;
+                            justify-content: center
+                        }
+
+                        .sa-ibr {
+                            display: grid;
+                            grid-template-columns: 78px 1fr;
+                            gap: 6px;
+                            padding: 6px 10px;
+                            border-top: 1px solid var(--bd)
+                        }
+
+                        .sa-ibr b {
+                            color: var(--mu);
+                            font-weight: 700
+                        }
+
+                        .sa-wl {
+                            border: 0;
+                            background: none;
+                            padding: 0;
+                            font: inherit;
+                            color: #1a0dab;
+                            text-decoration: underline;
+                            cursor: pointer
+                        }
+
+                        .sa-see {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 6px;
+                            align-items: center;
+                            margin-top: 14px;
+                            clear: both
+                        }
+
+                        .sa-see b {
+                            font-size: 12px;
+                            color: var(--mu)
+                        }
+
+                        .sa-art .sa-btn {
+                            margin: 12px 0 0
+                        }
+
+                        .sa-flow {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 6px;
+                            align-items: center;
+                            margin: 8px 0;
+                            clear: left
+                        }
+
+                        .sa-flow span {
+                            padding: 6px 12px;
+                            border-radius: 99px;
+                            background: var(--pc);
+                            color: #fff;
+                            font-size: 12.5px;
+                            font-weight: 700
+                        }
+
+                        .sa-flow em {
+                            font-style: normal;
+                            color: var(--mu);
+                            font-weight: 700
+                        }
+
+                        .sa-gl dt {
+                            font-weight: 700;
+                            margin-top: 8px
+                        }
+
+                        .sa-gl dd {
+                            margin: 0
+                        }
+
+                        .sa-toc {
+                            padding: 22px 28px
+                        }
+
+                        .sa-toc input {
+                            width: 100%;
+                            padding: 10px 14px;
+                            border: 1px solid var(--bd);
+                            border-radius: 99px;
+                            font: 500 14px Inter, Arial, sans-serif;
+                            margin: 8px 0 6px;
+                            color: var(--tx);
+                            background: #fff
+                        }
+
+                        .sa-toc h3 {
+                            margin: 14px 0 4px;
+                            font-size: 12px;
+                            text-transform: uppercase;
+                            letter-spacing: .05em;
+                            color: var(--mu)
+                        }
+
+                        .sa-ti {
+                            display: flex;
+                            gap: 10px;
+                            width: 100%;
+                            text-align: left;
+                            padding: 8px 10px;
+                            border: 0;
+                            border-radius: 10px;
+                            background: none;
+                            cursor: pointer;
+                            font: 500 13px/1.4 Inter, Arial, sans-serif;
+                            color: var(--tx)
+                        }
+
+                        .sa-ti:hover {
+                            background: var(--sf)
+                        }
+
+                        .sa-ti b {
+                            color: #1a0dab;
+                            display: block
+                        }
+
+                        .sa-ti em {
+                            font-style: normal;
+                            color: var(--mu);
+                            flex: none;
+                            width: 26px
+                        }
+
+                        .sa-ti span {
+                            color: var(--mu);
+                            font-size: 12px
+                        }
+
+                        .sa-cv {
+                            min-height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 10px;
+                            text-align: center;
+                            padding: 30px 24px;
+                            color: #fff;
+                            background: radial-gradient(circle at 30% 20%, #2f7be5, #0d2b52 70%);
+                            border-left: 14px solid #08203f
+                        }
+
+                        .sa-cv .sa-ic {
+                            width: 96px;
+                            height: 96px;
+                            border-radius: 50%;
+                            background: rgba(255, 255, 255, .16);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center
+                        }
+
+                        .sa-cv h2 {
+                            margin: 0;
+                            font: 700 34px/1.15 Georgia, serif;
+                            border: 0;
+                            padding: 0;
+                            color: #fff
+                        }
+
+                        .sa-cv p {
+                            margin: 0;
+                            opacity: .92;
+                            font-size: 14px
+                        }
+
+                        .sa-au {
+                            margin-top: 10px;
+                            padding-top: 12px;
+                            border-top: 1px solid rgba(255, 255, 255, .35);
+                            font-size: 12px;
+                            letter-spacing: .12em;
+                            text-transform: uppercase
+                        }
+
+                        .sa-au b {
+                            display: block;
+                            font-size: 22px;
+                            letter-spacing: 0;
+                            text-transform: none;
+                            margin-top: 3px
+                        }
+
+                        .sa-cv .sa-btn.sa-alt {
+                            margin: 6px 4px 0
+                        }
+
+                        .sa-bf {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            gap: 8px;
+                            padding: 10px 14px;
+                            border-top: 1px solid var(--bd)
+                        }
+
+                        .sa-bf .sa-btn {
+                            margin: 0
+                        }
+
+                        .sa-bf .sa-btn[disabled] {
+                            opacity: .4;
+                            cursor: default
+                        }
+
+                        .sa-dots {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 5px;
+                            justify-content: center;
+                            flex: 1
+                        }
+
+                        .sa-dots button {
+                            width: 9px;
+                            height: 9px;
+                            padding: 0;
+                            border: 0;
+                            border-radius: 50%;
+                            background: var(--bd);
+                            cursor: pointer
+                        }
+
+                        .sa-dots button.sa-on {
+                            background: var(--pc, #1a73e8);
+                            transform: scale(1.35)
+                        }
+
+                        .sa-fwd {
+                            animation: sa-kf-f .28s ease-out
+                        }
+
+                        .sa-back {
+                            animation: sa-kf-b .28s ease-out
+                        }
+
+                        @keyframes sa-kf-f {
+                            from {
+                                opacity: 0;
+                                transform: translateX(36px)
+                            }
+
+                            to {
+                                opacity: 1;
+                                transform: none
+                            }
+                        }
+
+                        @keyframes sa-kf-b {
+                            from {
+                                opacity: 0;
+                                transform: translateX(-36px)
+                            }
+
+                            to {
+                                opacity: 1;
+                                transform: none
+                            }
+                        }
+
+                        @media(max-width:600px) {
+                            .sa-ib {
+                                float: none;
+                                width: 100%;
+                                margin: 0 0 12px
+                            }
+
+                            .sa-art,
+                            .sa-toc {
+                                padding: 16px
+                            }
+
+                            .sa-art h2 {
+                                font-size: 23px
+                            }
+
+                            .sa-cv h2 {
+                                font-size: 27px
+                            }
+
+                            .sa-bt {
+                                padding: 5px 8px
+                            }
+                        }
+
+                        @media(prefers-reduced-motion:reduce) {
+
+                            .sa-fwd,
+                            .sa-back {
+                                animation: none
+                            }
+                        }
+
+                        .sa-pop {
+                            z-index: 2147483647 !important
+                        }
+
+                        /* book: stays above host page, paper look */
+                        .sa-ov {
+                            position: fixed !important;
+                            inset: 0 !important;
+                            z-index: 2147483646 !important;
+                            background: rgba(20, 24, 32, .62) !important
+                        }
+
+                        .sa-ov.sa-open {
+                            display: block !important
+                        }
+
+                        .sa-ov:not(.sa-open) {
+                            display: none !important
+                        }
+
+                        .sa-bk {
+                            position: fixed !important;
+                            top: 50% !important;
+                            left: 50% !important;
+                            transform: translate(-50%, -50%) !important;
+                            width: min(840px, calc(100vw - 20px)) !important;
+                            height: min(660px, calc(100vh - 20px)) !important;
+                            max-width: none !important;
+                            margin: 0 !important;
+                            z-index: 2147483647 !important;
+                            background: #fbf7ee !important;
+                            border-radius: 6px 16px 16px 6px !important;
+                            border-left: 12px solid #0d2b52 !important;
+                            box-shadow: 0 24px 70px rgba(0, 0, 0, .5) !important
+                        }
+
+                        .sa-bk.sa-open {
+                            display: flex !important
+                        }
+
+                        .sa-bk:not(.sa-open) {
+                            display: none !important
+                        }
+
+                        .sa-bk button {
+                            font-family: inherit
+                        }
+
+                        .sa-bh,
+                        .sa-bf {
+                            background: #f4efe3;
+                            border-color: #e2d9c4
+                        }
+
+                        .sa-bs {
+                            background: linear-gradient(90deg, rgba(0, 0, 0, .08), rgba(0, 0, 0, 0) 30px), #fffdf8
+                        }
+
+                        .sa-art {
+                            font-family: Georgia, "Times New Roman", serif;
+                            color: #2b2a28;
+                            position: relative
+                        }
+
+                        .sa-art p {
+                            font-size: 15.5px
+                        }
+
+                        .sa-lead::first-letter {
+                            float: left;
+                            font-size: 3em;
+                            line-height: .9;
+                            padding: 4px 8px 0 0;
+                            color: var(--pc);
+                            font-weight: 700
+                        }
+
+                        .sa-ib {
+                            font-family: Inter, Arial, sans-serif;
+                            background: #faf6ea
+                        }
+
+                        .sa-run {
+                            display: flex;
+                            justify-content: space-between;
+                            gap: 8px;
+                            margin-bottom: 10px;
+                            font: 600 10.5px Inter, Arial, sans-serif;
+                            letter-spacing: .14em;
+                            text-transform: uppercase;
+                            color: #8a8574
+                        }
+
+                        .sa-code {
+                            background: #1d2433;
+                            color: #e8eaed;
+                            border-radius: 10px;
+                            padding: 12px 14px;
+                            font: 12.5px/1.5 "Roboto Mono", Consolas, monospace;
+                            overflow: auto;
+                            margin: 10px 0;
+                            white-space: pre
+                        }
+
+                        .sa-rl {
+                            margin: 4px 0 8px;
+                            padding-left: 20px;
+                            font-size: 14px;
+                            line-height: 1.55
+                        }
+
+                        .sa-rl a {
+                            color: #1a0dab
+                        }
+
+                        .sa-pn {
+                            clear: both;
+                            text-align: center;
+                            margin-top: 22px;
+                            color: #8a8574;
+                            font-size: 12.5px;
+                            letter-spacing: .2em
+                        }
+
+                        .sa-orn {
+                            color: var(--pc, #1a73e8);
+                            letter-spacing: .5em;
+                            margin: 6px 0
+                        }
+
+                        .sa-tp {
+                            min-height: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            text-align: center;
+                            gap: 12px;
+                            padding: 30px;
+                            font-family: Georgia, "Times New Roman", serif;
+                            color: #2b2a28
+                        }
+
+                        .sa-tp h2 {
+                            font: 400 40px/1.15 Georgia, serif;
+                            border: 0;
+                            margin: 0;
+                            padding: 0
+                        }
+
+                        .sa-tp p {
+                            margin: 0
+                        }
+
+                        .sa-tp .sa-au {
+                            border-top-color: #cfc6ae;
+                            color: #6b6552
+                        }
+
+                        .sa-pf {
+                            max-width: 580px;
+                            margin: 0 auto;
+                            padding: 30px 26px;
+                            font-family: Georgia, "Times New Roman", serif;
+                            color: #2b2a28
+                        }
+
+                        .sa-pf h2 {
+                            text-align: center;
+                            font: italic 400 34px Georgia, serif;
+                            border: 0;
+                            margin: 0
+                        }
+
+                        .sa-pf p {
+                            font-size: 16px;
+                            line-height: 1.75;
+                            text-indent: 1.4em;
+                            margin: 0 0 10px
+                        }
+
+                        .sa-pf p.sa-first {
+                            text-indent: 0
+                        }
+
+                        .sa-pf p.sa-first::first-letter {
+                            float: left;
+                            font-size: 3.2em;
+                            line-height: .9;
+                            padding: 4px 8px 0 0;
+                            color: var(--pc);
+                            font-weight: 700
+                        }
+
+                        .sa-sig {
+                            text-align: right;
+                            font-style: italic;
+                            margin-top: 18px
+                        }
+
+                        .sa-sig b {
+                            display: block;
+                            font-style: normal;
+                            font-size: 18px
+                        }
+
+                        .sa-cv {
+                            box-shadow: inset 0 0 0 12px #0d2b52, inset 0 0 0 13px rgba(255, 255, 255, .4)
+                        }
+
+                        .sa-bs .sa-fwd {
+                            transform-origin: left center;
+                            animation: sa-kf-f2 .5s ease-out
+                        }
+
+                        .sa-bs .sa-back {
+                            transform-origin: left center;
+                            animation: sa-kf-b2 .5s ease-out
+                        }
+
+                        @keyframes sa-kf-f2 {
+                            from {
+                                opacity: 0;
+                                transform: perspective(1400px) rotateY(-22deg) translateX(30px)
+                            }
+
+                            to {
+                                opacity: 1;
+                                transform: none
+                            }
+                        }
+
+                        @keyframes sa-kf-b2 {
+                            from {
+                                opacity: 0;
+                                transform: perspective(1400px) rotateY(22deg) translateX(-30px)
+                            }
+
+                            to {
+                                opacity: 1;
+                                transform: none
+                            }
+                        }
+
+                        @media(max-width:600px) {
+                            .sa-bk {
+                                border-left-width: 6px !important
+                            }
+
+                            .sa-tp h2 {
+                                font-size: 29px
+                            }
+
+                            .sa-pf h2 {
+                                font-size: 28px
+                            }
+                        }
+
+                        @media(prefers-reduced-motion:reduce) {
+
+                            .sa-bs .sa-fwd,
+                            .sa-bs .sa-back {
+                                animation: none
+                            }
+                        }
+
+                        .sa-pt {
+                            display: grid;
+                            gap: 8px
+                        }
+
+                        .sa-pt div {
+                            padding: 10px 12px;
+                            border-radius: 12px;
+                            background: var(--sf);
+                            font-size: 12.5px;
+                            line-height: 1.45
+                        }
+
+                        .sa-pt b {
+                            display: block;
+                            font-size: 13px
+                        }
+
+                        .sa-ta {
+                            width: 100%;
+                            min-height: 110px;
+                            padding: 9px 11px;
+                            border: 1px solid var(--bd);
+                            border-radius: 12px;
+                            font: 500 12.5px/1.45 Inter, Arial, sans-serif;
+                            resize: vertical;
+                            color: var(--tx);
+                            background: #fff
+                        }
+
+                        .sa-res {
+                            list-style: none;
+                            margin: 8px 0 0 !important;
+                            padding: 0 !important
+                        }
+
+                        .sa-res li {
+                            padding: 3px 0;
+                            font-size: 12px;
+                            color: var(--tx)
+                        }
+
+                        .sa-ok {
+                            color: var(--gr);
+                            font-weight: 700
+                        }
+
+                        .sa-no {
+                            color: var(--rd);
+                            font-weight: 700
+                        }
+
+                        .sa-hint {
+                            display: block;
+                            color: var(--mu);
+                            padding-left: 16px
+                        }
+
+                        .sa-safe {
+                            margin-top: 12px;
+                            padding: 10px 12px;
+                            border-radius: 12px;
+                            background: var(--ye);
+                            color: var(--yx);
+                            font-size: 11.5px;
+                            line-height: 1.45
+                        }
+
+                        .sa-reset {
+                            margin-top: 10px;
+                            border: 0;
+                            background: none;
+                            color: var(--mu);
+                            font: 600 11.5px Inter, Arial, sans-serif;
+                            text-decoration: underline;
+                            cursor: pointer
+                        }
+
+                        .sa-foot {
+                            margin-top: 12px;
+                            padding-top: 10px;
+                            border-top: 1px solid var(--bd);
+                            text-align: center;
+                            font-size: 11px;
+                            color: var(--mu)
+                        }
+
+                        .sa-foot a {
+                            color: var(--pr);
+                            text-decoration: none;
+                            font-weight: 600
+                        }
+
+                        .sa-pop :focus-visible,
+                        .sa-launch:focus-visible {
+                            outline: 2px solid var(--pr);
+                            outline-offset: 2px
+                        }
+
+                        @media(max-width:480px) {
+                            .sa-pop {
+                                top: auto;
+                                right: 10px;
+                                left: 10px;
+                                bottom: 10px;
+                                width: auto;
+                                max-width: none;
+                                max-height: 86vh;
+                                padding: 14px
+                            }
+
+                            .sa-st {
+                                grid-template-columns: 1fr
+                            }
+                        }
+                    </style>
+
+                    <div class="sa-bar">
+                        <button class="sa-launch sa-main" type="button" data-open="book" aria-expanded="false"
+                            title="Open the book, then start training">&#9654; Algorithm of Training</button>
+                    </div>
+
+                    <div class="sa-ov"></div>
+                    <div class="sa-bk" role="dialog" aria-label="Algorithm of Training - training pedia">
+                        <div class="sa-bh"><span><i></i><b class="sa-bpart"></b></span><span><button class="sa-bt"
+                                    type="button">&#9776; Contents</button><b class="sa-bnum"></b><button
+                                    class="sa-x sa-bxc" type="button" aria-label="Close book">&times;</button></span>
+                        </div>
+                        <div class="sa-bs" aria-live="polite"></div>
+                        <div class="sa-bf"><button class="sa-btn sa-alt sa-prev" type="button">&larr; Back</button>
+                            <div class="sa-dots"></div><button class="sa-btn sa-next2" type="button">Next
+                                &rarr;</button>
+                        </div>
+                    </div>
+
+                    <div class="sa-pop" role="dialog" aria-label="Algorithm of Training trainer">
+                        <div class="sa-head">
+                            <div>
+                                <h3>Algorithm of Training</h3>
+                                <p class="sa-sub">Train in 12 steps, then decide your next move.</p>
+                            </div>
+                            <div style="display:flex;gap:6px"><button class="sa-bko" type="button"
+                                    aria-label="Open the book" title="Open the book"
+                                    style="font-size:16px">&#128214;</button><button class="sa-x" type="button"
+                                    aria-label="Close">&times;</button></div>
+                        </div>
+                        <div class="sa-role" role="group" aria-label="I am a"><button type="button" data-r="student"
+                                class="sa-on">I am a Student</button><button type="button" data-r="teacher">I am a
+                                Teacher</button></div>
+                        <div class="sa-prog">
+                            <div><span>Your progress</span><span class="sa-ptxt"></span></div>
+                            <div class="sa-trk"><i></i></div>
+                        </div>
+                        <div class="sa-tabs" role="tablist">
+                            <button class="sa-tab" data-t="start" type="button">1. Start</button>
+                            <button class="sa-tab" data-t="path" type="button">2. Steps</button>
+                            <button class="sa-tab" data-t="circles" type="button">3. Circles</button>
+                            <button class="sa-tab" data-t="data" type="button">4. Decide</button>
+                            <button class="sa-tab" data-t="lib" type="button">5. Library</button>
+                            <button class="sa-tab" data-t="lab" type="button">6. Prompt Lab</button>
+                        </div>
+
+                        <div class="sa-panel" data-p="start">
+                            <div class="sa-card sa-next">
+                                <h4>Your next step</h4>
+                                <p class="sa-nxt"></p><button class="sa-btn sa-go" type="button">Open this step</button>
+                            </div>
+                            <div class="sa-card">
+                                <h4>How to use this trainer</h4>
+                                <ol>
+                                    <li>Open <b>Steps</b> and start at Step 1. Do not skip ahead.</li>
+                                    <li>Read the step, do the practice task, then answer the self-check.</li>
+                                    <li>Tick <b>Mark done</b>. Your progress is saved on this device.</li>
+                                    <li>After training, open <b>Decide</b> to choose your next move.</li>
+                                </ol>
+                            </div>
+                            <div class="sa-card">
+                                <h4>The big picture</h4>
+                                <p><b>STEM</b> teaches you to think with questions and numbers.<br><b>Data</b> turns
+                                    facts into decisions.<br><b>Books</b> build judgement and soft skills.<br><b>AI
+                                        innovation</b> helps you build faster and safer.</p>
+                                <p style="margin-top:6px">Steps 1-4 = STEM &middot; 5-8 = Data &middot; 9-12 = AI.</p>
+                            </div>
+                            <button class="sa-reset" type="button">Reset my progress</button>
+                        </div>
+
+                        <div class="sa-panel" data-p="path">
+                            <div class="sa-st"></div>
+                            <div class="sa-steps"></div>
+                        </div>
+
+                        <div class="sa-panel" data-p="data">
+                            <div class="sa-card sa-next sa-rec"></div>
+                            <p class="sa-lbl" style="margin-top:0">What do you want to do? Pick one goal</p>
+                            <div class="sa-goals"></div>
+                            <details class="sa-step">
+                                <summary><span class="sa-num">?</span><span>6 pointers for good data analysis</span>
+                                </summary>
+                                <div class="sa-body sa-pt">
+                                    <div><b>1. Ask one clear question</b>Write it in one sentence before you open any
+                                        data.</div>
+                                    <div><b>2. Clean first</b>Remove duplicates, fix dates, mark blanks. Never guess
+                                        blanks.</div>
+                                    <div><b>3. Join on a key</b>Combine tables using one shared column such as ID or
+                                        date.</div>
+                                    <div><b>4. Pick the right chart</b>Line for time, bar for groups, scatter for two
+                                        numbers.</div>
+                                    <div><b>5. Show your evidence</b>Cite the rows you used and list assumptions.</div>
+                                    <div><b>6. Protect privacy</b>Remove names, phones and IDs before sharing with any
+                                        AI tool.</div>
+                                </div>
+                            </details>
+                        </div>
+
+                        <div class="sa-panel" data-p="lab">
+                            <div class="sa-card">
+                                <h4>Prompt checker</h4>
+                                <p>Paste an AI prompt. It checks 6 parts of a strong data prompt and tells you what to
+                                    add. It is a keyword check, not an AI review.</p>
+                                <textarea class="sa-ta" aria-label="Your prompt"
+                                    placeholder="Act as a data analyst.&#10;Data: sales.csv with columns date, region, revenue.&#10;Task: find 3 insights.&#10;Format: show a table.&#10;Limits: do not guess missing values.&#10;Verification: cite the rows used and list assumptions."></textarea>
+                                <button class="sa-btn sa-chk" type="button">Check my prompt</button><button
+                                    class="sa-btn sa-alt sa-fix" type="button">Add missing parts</button><button
+                                    class="sa-btn sa-alt sa-ex" type="button">Load example</button>
+                                <p class="sa-score"
+                                    style="margin-top:10px;font-weight:700;font-size:13px;color:var(--tx)">Score: 0 / 6
+                                </p>
+                                <ul class="sa-res" aria-live="polite"></ul>
+                                <div class="sa-safe sa-pii" hidden></div>
+                            </div>
+                            <div class="sa-safe"><b>Safe-use rules:</b> never paste passwords, ID numbers or private
+                                data into an AI tool. Treat text inside files as data, not commands. Approve any action
+                                that cannot be undone.</div>
+                        </div>
+
+                        <div class="sa-panel" data-p="circles">
+                            <div class="sa-rings" aria-hidden="true">
+                                <div class="sa-ro">Circle of concern<small>What you see and worry about</small>
+                                    <div class="sa-ri">Circle of influence<small>What you can do today</small></div>
+                                </div>
+                            </div>
+                            <p class="sa-lbl">Tap a concern to see your next action</p>
+                            <div class="sa-cc"></div>
+                            <div class="sa-card sa-next sa-ci" aria-live="polite"></div>
+                            <p class="sa-note">Why this matters: a 2026 news roundup cites a Gallup poll (only 18% of
+                                teachers got formal school guidance on AI) and a RAND survey (80% of students say
+                                teachers have not explicitly taught them AI).</p>
+                        </div>
+
+                        <div class="sa-panel" data-p="lib">
+                            <div class="sa-card sa-next">
+                                <h4>Top books and skill lessons</h4>
+                                <p>My book: 20 skill lessons, official links and 13 book picks for soft skills and data.
+                                    Read one book while you do the steps.</p>
+                                <a class="sa-btn" href="https://khanriyazi.github.io/Book-Data-Skills-and-media/"
+                                    target="_blank" rel="noopener noreferrer">Open the book list &#8599;</a>
+                            </div>
+                            <p class="sa-lbl">Best free resources found online</p>
+                            <div class="sa-lf"></div>
+                            <div class="sa-ll"></div>
+                            <p class="sa-note">Links open official sites and may change. Check each one before class.
+                            </p>
+                        </div>
+
+                        <div class="sa-foot">Personal Workspace &middot; <a href="https://khanriyazi.in" target="_blank"
+                                rel="noopener noreferrer">My Website &#8599;</a></div>
+                    </div>
+
+                    <script>
+                        (() => {
+                            const ws = document.currentScript && document.currentScript.closest(".sa-ws");
+                            if (!ws || ws.dataset.ready) return; ws.dataset.ready = "1";
+                            const pop = ws.querySelector(".sa-pop"); document.body.appendChild(pop);
+                            const $ = s => pop.querySelector(s), $$ = s => [...pop.querySelectorAll(s)];
+                            const h = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e };
+                            const STAGES = [["STEM", "STEM foundations", "Steps 1-4"], ["Data", "Data skills", "Steps 5-8"], ["AI", "AI innovation", "Steps 9-12"]];
+                            const STEPS = [
+                                ["STEM", "Ask a testable question", "15 min", "Turn a real-life curiosity into a question that data can answer.", "Write one question and list the 3 columns you would need to answer it.", "Can someone prove your question wrong with data? If yes, it is testable."],
+                                ["STEM", "Collect and tidy data", "30 min", "Put your data in a sheet: one row per item, one column per fact.", "Make a Google Sheet with 20 rows. Remove duplicates and mark blanks.", "Does every column have one type of value (numbers, text or dates)?"],
+                                ["STEM", "Statistics and charts", "30 min", "Learn mean, median and the three basic charts.", "Find the mean and median of one column. Make one chart and say what it does not show.", "Why can the median be fairer than the mean when one value is huge?"],
+                                ["STEM", "SQL basics", "30 min", "Ask a table questions: filter, group and count.", "Write: SELECT region, SUM(revenue) FROM sales GROUP BY region;", "What does GROUP BY do that WHERE does not?"],
+                                ["Data", "Integrate data", "30 min", "Combine two sources using a shared key.", "Open the Data Integration app and join two small tables.", "Which column connected the two tables?"],
+                                ["Data", "Build a dashboard", "45 min", "Show 3 charts that answer your question from Step 1.", "Make a one-page dashboard. Add a title that states the answer.", "Can a new viewer understand it in 10 seconds?"],
+                                ["Data", "Python and pandas", "45 min", "Load a CSV and summarise it with code in Google Colab.", "Run: df = pd.read_csv('file.csv'); df.describe()", "What do count, mean and max tell you about your data?"],
+                                ["Data", "Data quality and privacy", "30 min", "Find bad data and remove private details before sharing.", "Scan one CSV for blanks, duplicates, formulas starting with = and personal data.", "Which 3 problems did you find and how did you fix each?"],
+                                ["AI", "How machine learning works", "30 min", "A model finds patterns in examples and predicts new cases.", "Train a simple model in Colab on 20 rows. Compare train and test scores.", "Why can a model fail on data it has never seen?"],
+                                ["AI", "Prompt with data", "30 min", "Write prompts with role, task, data, format, limits and verification.", "Open Prompt Lab and reach 6 / 6 on a prompt for your data.", "Which part of your prompt reduced wrong answers the most?"],
+                                ["AI", "Agents with human approval", "45 min", "An agent plans, acts and checks. You approve risky actions.", "Draw a loop for a report agent. Mark 2 points where you approve.", "What could go wrong if the agent could also delete?"],
+                                ["AI", "Capstone: your innovation", "2 hours", "Build one small useful project that uses data and AI.", "Create a tool that reads a CSV, finds 3 insights and drafts a report. Test on 5 files.", "Did it cite rows, state assumptions and protect private data?"]
+                            ];
+                            const TT = { STEM: "Run as a 15-minute pair task. Learners predict the answer before checking.", Data: "Give a small messy file. Pairs fix it and explain each change.", AI: "Mark each AI answer right, wrong or unchecked. Reward cited evidence over speed." };
+                            const KEY = "sa-trainer-v1"; let state = { done: {}, tab: "start" };
+                            try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s && typeof s.done === "object") state = { done: s.done, tab: "start" } } catch (e) { }
+                            const save = () => { try { localStorage.setItem(KEY, JSON.stringify({ done: state.done })) } catch (e) { } };
+                            const tabs = $$(".sa-tab"), panels = $$(".sa-panel");
+                            function goTab(id) { tabs.forEach(t => t.classList.toggle("sa-on", t.dataset.t === id)); panels.forEach(p => p.classList.toggle("sa-on", p.dataset.p === id)) }
+                            tabs.forEach(t => t.addEventListener("click", () => goTab(t.dataset.t)));
+
+                            /* Steps */
+                            const stBox = $(".sa-st"), stepBox = $(".sa-steps"), stBtns = [], els = []; let stage = "STEM";
+                            STAGES.forEach(([k, n, r]) => { const b = h("button", "sa-sb", n); b.type = "button"; b.append(h("span", null, r)); b.addEventListener("click", () => pickStage(k)); stBox.append(b); stBtns.push(b) });
+                            function pickStage(k) { stage = k; stBtns.forEach((b, i) => b.classList.toggle("sa-on", STAGES[i][0] === k)); els.forEach(e => e.d.hidden = e.s !== k) }
+                            STEPS.forEach((s, i) => {
+                                const d = h("details", "sa-step"), sm = h("summary"), n = h("span", "sa-num", String(i + 1)), t = h("span", null, s[1]); t.append(h("small", null, s[0] + " · " + s[2])); sm.append(n, t);
+                                const b = h("div", "sa-body"); b.append(h("p", null, s[3]), h("b", null, "Practice task"), h("p", null, s[4]), h("b", null, "Self-check"), h("p", null, s[5]), h("b", "sa-tt", "Teach it"), h("p", "sa-tt", TT[s[0]]));
+                                const lab = h("label"); lab.style.cssText = "display:flex;gap:8px;align-items:center;margin-top:10px;font-weight:650;cursor:pointer";
+                                const cb = h("input"); cb.type = "checkbox"; cb.checked = !!state.done[i];
+                                cb.addEventListener("change", () => { cb.checked ? state.done[i] = 1 : delete state.done[i]; save(); refresh() });
+                                lab.append(cb, document.createTextNode("Mark done")); b.append(lab); d.append(sm, b); stepBox.append(d); els.push({ d, s: s[0], cb, i });
+                            });
+                            function firstOpen() { return STEPS.findIndex((_, i) => !state.done[i]) }
+                            function openStep(i) { const s = STEPS[i]; pickStage(s[0]); els.forEach(e => e.d.open = e.i === i); goTab("path"); els[i].d.scrollIntoView({ block: "center" }) }
+                            function refresh() {
+                                const n = Object.keys(state.done).length, pct = Math.round(n / STEPS.length * 100);
+                                $(".sa-ptxt").textContent = n + " of " + STEPS.length + " steps"; $(".sa-trk i").style.width = pct + "%";
+                                els.forEach(e => { e.d.classList.toggle("sa-done", !!state.done[e.i]); e.cb.checked = !!state.done[e.i] });
+                                STAGES.forEach(([k], i) => { const ids = STEPS.map((s, j) => s[0] === k ? j : -1).filter(j => j >= 0); stBtns[i].lastChild.textContent = ids.filter(j => state.done[j]).length + " / " + ids.length + " done" });
+                                const f = firstOpen(), nx = $(".sa-nxt"), go = $(".sa-go");
+                                if (f < 0) { nx.textContent = "All 12 steps complete. Now choose your next move in Decide."; go.hidden = false; go.textContent = "Choose my next move"; go.onclick = () => goTab("data") }
+                                else { nx.textContent = "Step " + (f + 1) + ": " + STEPS[f][1] + " (" + STEPS[f][2] + "). " + STEPS[f][3]; go.hidden = false; go.textContent = "Open this step"; go.onclick = () => openStep(f) }
+                                if (typeof renderRec === "function" && $(".sa-goals")) renderRec();
+                            }
+                            $(".sa-reset").addEventListener("click", () => { if (!confirm("Reset all progress?")) return; state.done = {}; save(); refresh() });
+
+                            /* Prompt checker */
+                            const CH = [["Role", /\b(act as|you are|as an?)\b/i, "Start with who the AI is: Act as a data analyst.", "Act as a data analyst."],
+                            ["Task", /\b(clean|analy[sz]e|find|compare|summari[sz]e|build|write|plan|forecast|detect|rank|calculate)\b/i, "Say the action: clean, compare, find 3 insights.", "Task: find 3 insights."],
+                            ["Data context", /\b(csv|sheet|table|columns?|rows?|dataset|data|sql|excel)\b/i, "Describe the data: file type and columns.", "Data: describe the file and its columns."],
+                            ["Output format", /\b(table|bullets?|json|chart|checklist|report|summary|words|format)\b/i, "Say how the answer should look.", "Format: show a table."],
+                            ["Limits", /\b(do not|don't|only|must|avoid|never|at most|limit|ask me)\b/i, "Add limits: Do not guess missing values.", "Limits: do not guess missing values."],
+                            ["Verification", /\b(cite|source|verify|check|show (your )?(steps|work)|assumptions?)\b/i, "Ask it to cite rows and list assumptions.", "Verification: cite the rows used and list assumptions."]];
+                            const PII = [[/[\w.+-]+@[\w-]+\.[\w.]+/, "an email address"], [/\b\d{10}\b/, "a phone-like number"], [/\b\d{4}\s?\d{4}\s?\d{4}\b/, "a 12-digit ID"], [/(password|api[_-]?key|secret|token)\s*[:=]/i, "a password or key"]];
+                            const ta = $(".sa-ta"); let miss = [];
+                            const EX = "Act as a data analyst.\nData: sales.csv with columns date, region, revenue.\nTask: find 3 insights.\nFormat: show a table.\nLimits: do not guess missing values.\nVerification: cite the rows used and list assumptions.";
+                            function check() {
+                                const v = ta.value.trim(), out = $(".sa-res"); out.replaceChildren(); miss = [];
+                                if (v.length < 10) { out.append(h("li", "sa-no", "Write at least 10 characters first.")); return }
+                                let s = 0; CH.forEach(([n, re, hint], i) => { const ok = re.test(v); if (ok) s++; else miss.push(i); const li = h("li"); li.append(h("span", ok ? "sa-ok" : "sa-no", ok ? "\u2713 " : "\u2717 "), document.createTextNode(n)); if (!ok) li.append(h("span", "sa-hint", hint)); out.append(li) });
+                                $(".sa-score").textContent = "Score: " + s + " / 6" + (s === 6 ? " - Strong" : "");
+                                const f = PII.filter(p => p[0].test(v)).map(p => p[1]), w = $(".sa-pii"); w.hidden = !f.length; w.textContent = f.length ? "Privacy warning: your prompt seems to contain " + f.join(", ") + ". Remove it before using any AI tool." : "";
+                            }
+                            $(".sa-chk").addEventListener("click", check);
+                            $(".sa-fix").addEventListener("click", () => { check(); if (!miss.length) return; ta.value = ta.value.trim() + "\n" + miss.map(i => CH[i][3]).join("\n"); check() });
+                            $(".sa-ex").addEventListener("click", () => { ta.value = EX; check() });
+
+                            /* Decide: my data sorted by decision */
+                            const G = "https://khanriyazi.github.io/";
+                            const GOALS = [
+                                ["Combine and clean my data", "Choose this if your data sits in many places or is messy.", [["Data Integration", G + "Data-Integration/"], ["Service", "https://data.affiliatemath.xyz/"]]],
+                                ["Show results to others", "Choose this if you must present an answer clearly.", [["Dashboard", G + "Data/"], ["Time Machine", "https://script.google.com/macros/s/AKfycbxyfTWXM-05m-8J0fmcMgjPlTIAd_zqUT-Iq16WLUcGQWa6MNqj8I1__x1CaLJ1s3o/exec"]]],
+                                ["Find deeper patterns", "Choose this if you already have clean data and want insight.", [["Data Mining", G + "Data-mining/"], ["Mining 2", G + "Data-Mining2/"]]],
+                                ["Learn the skills", "Choose this if a step felt hard. Practise before you build.", [["Google Portfolio", G + "Google-Workspace/"], ["Studio Google", "https://studio.workspace.google.com/workflow/g16727eb23f34b68f2a0e7c31c0980027"], ["Progressive Prompting", "https://script.google.com/macros/s/AKfycbzlBmDfL2t1nQHO096nkeA0MHNQB60-V53Ua7C720Kriv8LmePwn4Iv-izmKMRHuH2F/exec"], ["Google Colab", "https://colab.research.google.com"]]],
+                                ["Grow as an entrepreneur", "Choose this to turn your skills into a business or career.", [["Top Books", G + "Book-Data-Skills-and-media/"], ["My Website", "https://khanriyazi.in"]]]];
+                            const gb = $(".sa-goals");
+                            GOALS.forEach(([t, w, ls], i) => { const c = h("div", "sa-card sa-goal"); c.append(h("h4", null, (i + 1) + ". " + t), h("p", "sa-why", w)); ls.forEach(([n, u]) => { const a = h("a", "sa-btn sa-alt", n + " \u2197"); a.href = u; a.target = "_blank"; a.rel = "noopener noreferrer"; c.append(a) }); gb.append(c) });
+                            function renderRec() {
+                                const box = $(".sa-rec"); box.replaceChildren(); const f = firstOpen(); let t, acts = [];
+                                if (f < 0) { t = "Training complete. Success step: pick ONE goal below and finish one real result this week."; }
+                                else {
+                                    const s = STEPS[f];
+                                    if (s[0] === "STEM") { t = "Finish Step " + (f + 1) + " first: " + s[1] + ". Tools: Google Sheets and Colab."; acts.push(["Open Step " + (f + 1), () => openStep(f)]) }
+                                    else if (s[0] === "Data") { t = "Your goal now is Step " + (f + 1) + ": " + s[1] + ". Use Data Integration or the Dashboard below."; acts.push(["Open Step " + (f + 1), () => openStep(f)]) }
+                                    else { t = "Your goal now is Step " + (f + 1) + ": " + s[1] + ". Practise in Prompt Lab, then build."; acts.push(["Open Prompt Lab", () => goTab("lab")], ["Open Step " + (f + 1), () => openStep(f)]) }
+                                }
+                                const hd = h("h4"); hd.append(h("span", "sa-badge", "Recommended"), document.createTextNode("Your best next move"));
+                                box.append(hd, h("p", null, t)); acts.forEach(([l, fn], i) => { const b = h("button", "sa-btn" + (i ? " sa-alt" : ""), l); b.type = "button"; b.addEventListener("click", fn); box.append(b) });
+                            }
+
+                            /* Role, Circles, Library */
+                            let role = "student"; try { role = localStorage.getItem("sa-role") === "teacher" ? "teacher" : "student" } catch (e) { }
+                            const CIRC = {
+                                student: [["AI will change jobs", "Build one skill at a time. Finish Steps 1-4, then ship your Step 12 project.", ["tab", "path"], "Go to Steps"],
+                                ["AI gives wrong answers", "Verify every answer. Ask for cited rows and assumptions in your prompt.", ["tab", "lab"], "Open Prompt Lab"],
+                                ["My data may leak", "Mask names, phones and IDs before using any AI tool.", ["step", 7], "Open Step 8"],
+                                ["I do not know where to start", "Do only your next 15-minute step. Small steps count.", ["tab", "start"], "See next step"]],
+                                teacher: [["Students use AI, guidance is thin", "Teach one 20-minute AI lesson a week using free, ready lessons.", ["tab", "lib"], "Open Library"],
+                                ["Cheating and integrity", "Grade the process: prompts, cited rows and stated assumptions.", ["tab", "lab"], "Open Prompt Lab"],
+                                ["Bias and made-up facts", "Run Step 9-10 self-checks and mark answers right, wrong or unchecked.", ["step", 8], "Open Step 9"],
+                                ["No time, not a computing teacher", "Use thematic lessons that fit your subject without extra lesson time.", ["tab", "lib"], "Open Library"]]
+                            };
+                            const cc = $(".sa-cc"), ci = $(".sa-ci");
+                            function showC(i) {
+                                const c = CIRC[role][i]; $$(".sa-cc .sa-chip").forEach((x, j) => x.classList.toggle("sa-on", j === i)); ci.replaceChildren(h("h4", null, "Your move"), h("b", null, "Concern"), h("p", null, c[0]), h("b", null, "Within your influence"), h("p", null, c[1]));
+                                const b = h("button", "sa-btn", c[3]); b.type = "button"; b.addEventListener("click", () => c[2][0] === "step" ? openStep(c[2][1]) : goTab(c[2][0] === "tab" ? c[2][1] : "start")); ci.append(b)
+                            }
+                            function drawC() { cc.replaceChildren(); CIRC[role].forEach((c, i) => { const b = h("button", "sa-chip", c[0]); b.type = "button"; b.addEventListener("click", () => showC(i)); cc.append(b) }); showC(0) }
+                            const LIBR = [
+                                ["Students", "Kaggle Learn", "https://www.kaggle.com/learn", "Short free lessons on Python, SQL and machine learning."],
+                                ["Students", "Google Machine Learning Crash Course", "https://developers.google.com/machine-learning/crash-course", "How machine learning works, with exercises."],
+                                ["Students", "Microsoft AI for Beginners", "https://github.com/microsoft/AI-For-Beginners", "A free 12-week self-paced AI curriculum."],
+                                ["Students", "SQLBolt", "https://sqlbolt.com", "Learn SQL with small interactive lessons."],
+                                ["Students", "Hour of AI (Code.org)", "https://hourofai.org", "Free beginner AI activities, some without computers."],
+                                ["Teachers", "Experience AI (Raspberry Pi Foundation)", "https://www.raspberrypi.org/blog/ai-education-resources-ai-awareness-day/", "Free AI literacy lessons and teacher courses, built with Google DeepMind."],
+                                ["Teachers", "Common Sense: AI literacy lessons", "https://www.commonsense.org/education/ai-in-schools", "Quick lessons for grades 6-12 on AI and its social impact."],
+                                ["Teachers", "Google AI literacy hub", "https://blog.google/innovation-and-ai/products/google-ai-literacy-tools-2025/", "Resources for educators, students and parents."],
+                                ["Teachers", "DataCamp: free AI learning list", "https://www.datacamp.com/blog/best-resources-learn-ai-for-free", "Curated free AI resources, with free access for teachers and students."],
+                                ["Books", "Think Clear, Decide Well (companion book page)", "https://khanriyazi.github.io/Book-Data-Skills-and-media/", "20 skill lessons and 13 book picks for soft skills and data."],
+                                ["Books", "Mind Tools", "https://www.mindtools.com/", "Practical guides for professional soft skills."]];
+                            let lf = "Students"; const lfb = $(".sa-lf"), ll = $(".sa-ll");
+                            function drawL() {
+                                lfb.replaceChildren(); ll.replaceChildren();["Students", "Teachers", "Books"].forEach(t => { const c = h("button", "sa-chip" + (t === lf ? " sa-on" : ""), t); c.type = "button"; c.addEventListener("click", () => { lf = t; drawL() }); lfb.append(c) });
+                                LIBR.filter(x => x[0] === lf).forEach(([ty, t, u, d]) => { const a = h("a", "sa-link"); a.href = u; a.target = "_blank"; a.rel = "noopener noreferrer"; const b = h("b", null, t); b.append(h("em", null, ty)); a.append(b, h("span", null, d)); ll.append(a) })
+                            }
+                            function setRole(r) { role = r; try { localStorage.setItem("sa-role", r) } catch (e) { } pop.classList.toggle("sa-teacher", r === "teacher"); $$(".sa-role button").forEach(b => b.classList.toggle("sa-on", b.dataset.r === r)); lf = r === "teacher" ? "Teachers" : "Students"; drawC(); drawL() }
+                            $$(".sa-role button").forEach(b => b.addEventListener("click", () => setRole(b.dataset.r)));
+                            setRole(role);
+
+                            /* Open / close */
+                            const launchers = [...ws.querySelectorAll("[data-open]")]; let lastBtn = null;
+                            const open = (id, btn) => { lastBtn = btn; goTab(id); pop.classList.add("sa-open"); launchers.forEach(b => b.setAttribute("aria-expanded", b === btn)); $(".sa-x").focus() };
+                            const close = () => { pop.classList.remove("sa-open"); launchers.forEach(b => b.setAttribute("aria-expanded", "false")) };
+                            launchers.forEach(b => b.addEventListener("click", e => { e.stopPropagation(); b.dataset.open === "book" ? openBook(b) : (pop.classList.contains("sa-open") && lastBtn === b ? close() : open(b.dataset.open, b)) }));
+                            $(".sa-x").addEventListener("click", () => { close(); lastBtn && lastBtn.focus() });
+                            document.addEventListener("click", e => { if (pop.classList.contains("sa-open") && !pop.contains(e.target) && !ws.contains(e.target) && !e.target.closest(".sa-bk,.sa-ov")) close() });
+                            document.addEventListener("keydown", e => { if (e.key === "Escape" && pop.classList.contains("sa-open")) { close(); lastBtn && lastBtn.focus() } });
+
+                            /* Book */
+                            const ICON = { code: '<path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/>', mic: '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/>', coin: '<circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h4.5a2.5 2.5 0 0 1 0 5H9"/>', star: '<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>', link: '<path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>', pen: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>', users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>', book: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>', flask: '<path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/>', table: '<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 3v18M3 9h18M3 15h18"/>', bot: '<path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/>', search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>', shield: '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>', target: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', flag: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/>', bulb: '<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 22h4"/>', chart: '<path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/>', layers: '<path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/>', eye: '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>', map: '<path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/>', rings: '<circle cx="12" cy="12" r="10" stroke-dasharray="3 3"/><circle cx="12" cy="12" r="5"/>' };
+                            const svg = (n, z) => '<svg viewBox="0 0 24 24" width="' + z + '" height="' + z + '" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICON[n] + '</svg>';
+                            const PARTS = { pre: ["Front matter", "#00796b"], ind: ["Part I · Inductive: cases to pattern", "#e8710a"], ded: ["Part II · Deductive: algorithm to practice", "#1a73e8"], ent: ["Part III · Entrepreneur: skill to venture", "#8e24aa"], go: ["Part IV · Begin and back matter", "#188038"], cv: ["Cover", "#0d2b52"] };
+                            const T = (l, t) => [l, "tab", t], S = (l, i) => [l, "step", i];
+                            const A = (id, part, icon, title, lead, info, secs, see, train, flow) => ({ id, part, icon, title, lead, info, secs, see: see || [], train: train || null, flow: flow || null });
+                            const PAGES = [
+                                { id: "cover", special: "cover" },
+                                { id: "title", special: "title" },
+                                { id: "copyright", special: "copyright" },
+                                { id: "preface", special: "preface", part: "pre", title: "Preface", lead: "Why this book exists and how to read it.", secs: [] },
+                                A("about", "pre", "book", "About this book", "**Algorithm of Training** is an entrepreneur's training book that joins STEM, Data, Media and AI innovation in one learning path for students and teachers.", [["Author", "Rizwan Ali, Trainer"], ["Audience", "Students and teachers"], ["Length", "12 steps, about 8 hours"], ["Method", "Read, practise, check"]], [["Why this book exists", "Many learners meet tools such as spreadsheets, code and chatbots before they know what problem the tools solve. This book reverses the order: problem first, evidence second, tool third."], ["What you will be able to do", "Turn a worry into a testable question, clean and join data, tell an honest story with a chart, use AI as a checked assistant and make a decision you can defend, the way a founder must."], ["How it is written", "Each page works like a wiki article: a short definition, key ideas, a worked example, common mistakes and links to related pages. Underlined words jump to other pages."]], ["how", "plan"], T("Open the 12 steps", "path")),
+                                { id: "contents", special: "toc", part: "pre" },
+                                A("how", "pre", "eye", "How to use this book", "This book mixes two ways of reasoning. **Inductive** reasoning starts with examples and finds a pattern. **Deductive** reasoning starts with a rule and applies it to a case.", [["Part I", "Inductive: 5 cases to 1 pattern"], ["Part II", "Deductive: the algorithm and its strands"], ["Part III", "Entrepreneur: skill to venture"], ["Part IV", "Begin, glossary, references"]], [["Reading order", "Read Part I to see the pattern for yourself. Read Part II to learn the algorithm. Read Part III to apply it as an entrepreneur. Finish with Part IV and start the steps."], ["Navigation", "Use Back and Next, the dots, the arrow keys or a swipe. Open Contents to jump anywhere or to search."], ["Why both?", "Induction builds curiosity and trust in the pattern. Deduction gives speed once the pattern is known. A good trainer uses both."]], ["pattern", "rule"]),
+                                A("ex1", "ind", "flask", "Case 1: A classroom question", "A **testable question** turns curiosity into something data can answer.", [["Strand", "STEM"], ["Skill", "Asking questions"], ["Tool", "A sheet"], ["Output", "A chart"]], [["The situation", "A student wonders whether studying more raises her scores."], ["What she did", "She wrote one clear question, listed hours and scores for 20 classmates and drew a scatter chart."], ["What to notice", "The question came before the numbers, and the chart answered only that question."], ["Common mistake", "Picking a chart type first and then hunting for a question."]], ["stem", "pattern"], S("Step 1: Ask a testable question", 0)),
+                                A("ex2", "ind", "table", "Case 2: A messy spreadsheet", "**Data integration** means combining data from several sources into one clean table.", [["Strand", "Data"], ["Skill", "Cleaning and joining"], ["Tool", "Sheets, SQL, Data Integration app"], ["Output", "One tidy table"]], [["The situation", "A shop keeps sales in three files with blanks, duplicate rows and different date formats."], ["What they did", "They fixed the dates, removed duplicates, marked blanks instead of guessing and joined the files on a shared product ID."], ["What to notice", "Cleaning took longer than charting, and every later result depended on it."], ["Common mistake", "Filling blanks with guesses, which hides the real gap."]], ["data", "pattern"], S("Step 5: Integrate data", 4)),
+                                A("ex3", "ind", "chart", "Case 3: A chart that spreads", "**Media literacy** is the skill of asking who made a message, how and why, before you believe or share it.", [["Strand", "Media"], ["Skill", "Reading and telling data stories"], ["Tool", "Charts, headlines, sources"], ["Output", "A clear, honest message"]], [["The situation", "A post shows a steep line chart and claims a huge rise. The vertical axis starts at 95, not 0."], ["What a careful reader did", "She checked the axis, the source and the time range, then redrew the chart with an honest scale."], ["What to notice", "Data does not speak for itself. Design choices can mislead, so media skills belong beside data skills."], ["Common mistake", "Sharing a chart because it looks convincing."]], ["media", "pattern"], S("Step 6: Build a dashboard", 5)),
+                                A("ex4", "ind", "bot", "Case 4: An AI answer to check", "**Verification** means checking an AI answer against evidence before you use it.", [["Strand", "AI"], ["Skill", "Prompting and checking"], ["Tool", "A chatbot plus the source file"], ["Output", "A checked answer"]], [["The situation", "An AI says sales rose 20 percent last quarter."], ["What she did", "She asked it to cite the rows it used and list its assumptions, then recalculated the figure herself."], ["What to notice", "AI sped up the work. A human still verified and decided."], ["Common mistake", "Treating a confident tone as proof."]], ["ai", "safety"], T("Try the Prompt Lab", "lab")),
+                                A("ex5", "ind", "target", "Case 5: A founder's decision", "A **founder's decision** is made with incomplete information, so the skill is to sort choices by how hard they are to undo.", [["Strand", "Enterprise"], ["Skill", "Deciding under uncertainty"], ["Tool", "Options, criteria, data"], ["Output", "A reversible next step"]], [["The situation", "A young founder must choose between a safe job and a first customer project."], ["What she did", "She wrote both options and the data she had, asked which choice she would regret at age 80, and checked whether the decision was a one-way or a two-way door. The project was easy to reverse, so she decided fast."], ["What to notice", "Fast decisions suit reversible choices. Slow decisions suit irreversible ones."], ["Common mistake", "Waiting for perfect information."]], ["leaders", "skills"], T("Open Decide", "data")),
+                                A("pattern", "ind", "search", "The pattern", "Across the five cases the same **decision loop** appears: question, clean data, honest story, build with checks, decide.", [["Reasoning", "Induction"], ["Evidence", "5 cases"], ["Result", "A 5-stage loop"], ["Used in", "Every training step"]], [["The loop", "AI and other tools can speed up each stage, but none replaces a stage."], ["Why it matters", "A repeatable loop turns scattered tools into one habit that works at school, at work or in a business."], ["Next", "Part II writes the loop as an algorithm. See [[rule|The algorithm]]."]], ["rule"], null, ["Question", "Clean data", "Story", "Build", "Decide"]),
+                                Object.assign(A("rule", "ded", "layers", "The algorithm", "The **algorithm of training** is five steps that turn a real problem into a decision you can defend. Run them in order, and loop back to the first step that failed.", [["Input", "A real problem"], ["Steps", "Ask, Prepare, Tell, Build, Decide"], ["Output", "A defensible decision"], ["Reasoning", "Deduction"]], [["Strands", "[[stem|STEM]] asks. [[data|Data]] prepares. [[media|Media]] tells. [[ai|AI]] builds. [[venture|Enterprise]] decides."], ["Limits", "If the question is unclear, no amount of data helps. If the evidence is weak, say so."]], ["stem", "data", "media", "ai", "venture"], null, ["Ask", "Prepare", "Tell", "Build", "Decide"]), {
+                                    code: `INPUT   a problem worth solving
+REPEAT
+  1 ASK      a testable question     (STEM)
+  2 PREPARE  clean, joined data      (Data)
+  3 TELL     an honest story         (Media)
+  4 BUILD    with AI, then verify    (AI)
+  5 DECIDE   launch, learn, repeat   (Enterprise)
+UNTIL   the decision can be defended
+OUTPUT  a decision you can defend`}),
+                                A("stem", "ded", "flask", "STEM", "**STEM** (science, technology, engineering and mathematics) builds the habit of testing ideas with evidence. It is step 1 of the algorithm: ASK.", [["Steps", "1 to 4"], ["Skills", "Questions, tidy data, statistics, SQL"], ["Tools", "Google Sheets, SQL"], ["Output", "First charts and queries"]], [["Key ideas", "Hypothesis and evidence; mean, median and spread; choosing bar, line or scatter charts; filtering and grouping with SQL."], ["Worked example", "One huge salary pulls the mean up while the median stays fair. Report both."], ["Common mistakes", "Mixing data types in one column; giving an average without the spread."]], ["data", "ex1"], T("Open the steps", "path")),
+                                A("data", "ded", "table", "Data", "**Data** skills turn raw records into decisions: collect, clean, join, analyse and show. It is step 2 of the algorithm: PREPARE.", [["Steps", "5 to 8"], ["Skills", "Integration, dashboards, pandas, quality, privacy"], ["Tools", "Data Integration app, Colab, Sheets"], ["Output", "A dashboard"]], [["Key ideas", "Join tables on a shared key; treat blanks honestly; show one answer per chart; cite the rows you used."], ["Worked example", "Group revenue by region, show the top region and cite its rows so anyone can re-check."], ["Common mistakes", "Skipping cleaning, crowding a dashboard, sharing private columns."]], ["ex2", "safety"], S("Step 5: Integrate data", 4)),
+                                A("media", "ded", "eye", "Media", "**Media** skills turn data into understanding: reading messages critically and telling honest stories. It is step 3 of the algorithm: TELL.", [["Strand", "Added to STEM, Data, AI"], ["Skills", "Source checks, honest charts, storytelling"], ["Tools", "Charts, slides, short video, writing"], ["Output", "A clear data story"]], [["Key ideas", "Check the source and the date; keep axes honest; write one headline that states the finding; fit the format to the audience."], ["Worked example", "Change 'Sales soar' to 'Sales rose 12 percent from March to April; the chart starts at zero.'"], ["Why it matters", "People who explain results clearly are trusted and heard."]], ["ex3", "mediasrc"], S("Step 6: Build a dashboard", 5)),
+                                A("ai", "ded", "bot", "AI", "**Artificial intelligence** here means tools that learn patterns from examples, such as machine learning and language models. It is step 4 of the algorithm: BUILD.", [["Steps", "9 to 12"], ["Skills", "How ML works, six-part prompts, agents"], ["Tools", "Colab, Prompt Lab, chatbots"], ["Output", "A small AI project"]], [["Key ideas", "A model predicts from patterns and can be wrong. A six-part prompt gives role, task, data, format, limits and verification. An agent loops plan, act, observe and asks a human before risky actions."], ["Worked example", "'Act as a data analyst. Find 3 insights in sales.csv. Show a table. Do not guess blanks. Cite rows.'"], ["Common mistakes", "Pasting private data; accepting answers unchecked; letting an agent delete."]], ["ex4", "innov", "safety"], T("Open the Prompt Lab", "lab")),
+                                A("innov", "ded", "bulb", "AI innovation and the capstone", "**Innovation** is a small, useful change you can build and test. Here: a tool that reads a CSV, finds insights and drafts a report.", [["Step", "12"], ["Time", "About 2 hours"], ["Test", "5 different files"], ["Output", "Tool plus failure log"]], [["Build small", "Start with the simplest version that works, then fix one failure at a time."], ["Test honestly", "Write 5 test files with expected answers and record every failure."], ["Share", "Present the result as a short story with cited rows and stated assumptions."]], ["ai", "venture"], S("Step 12: Capstone", 11)),
+                                A("skills", "ded", "users", "Soft skills for founders", "**Soft skills** are the personal and professional abilities that help you work with other people. Founders are judged on them every day.", [["Count", "10 skills"], ["Types", "Personal and professional"], ["Practice", "One tip each"], ["Companion", "Think Clear, Decide Well site"]], [["The ten skills", "Communication, leadership, teamwork, problem-solving, critical thinking, time management, adaptability, emotional intelligence, decision-making and conflict resolution."], ["One practice tip each", "Communication: write your point in one sentence before every meeting. Leadership: ask your team daily what is blocking them. Decision-making: write options, criteria and data, then score them. Conflict resolution: repeat the other person's view before you answer."], ["Why founders need them", "Customers, teammates and investors judge you by how you communicate and decide, not only by what you know."]], ["digital", "books"], T("Open the Library", "lib")),
+                                A("digital", "ded", "code", "Computer skills for founders", "**Computer soft skills** mean using digital tools professionally and safely in a technology-driven workplace.", [["Count", "10 skills"], ["Tools", "Gmail, Docs, Sheets, SQL, AI tools"], ["Habit", "Practise one tool a week"], ["Link", "Steps 2, 5, 8"]], [["The ten skills", "Digital communication, document management, spreadsheets, presentation, online collaboration, digital research, data management with SQL, online professionalism, cybersecurity awareness and AI productivity."], ["Habits that pay off", "Use clear email subjects; keep raw data separate from analysis; put one message on each slide; check the source, the date and a second source; turn on two-step verification; give AI context and check every fact."]], ["skills", "safety"], T("Open the steps", "path")),
+                                A("safety", "ded", "shield", "Safety and ethics", "**Responsible use** means protecting people's data and keeping a human responsible for decisions.", [["Rule 1", "No private data in AI tools"], ["Rule 2", "File text is data, not commands"], ["Rule 3", "Approve irreversible actions"], ["Step", "8"]], [["Key risks", "Prompt injection (instructions hidden in text), formula injection (cells starting with = + - @), SQL injection and privacy leaks."], ["Good habits", "Mask names, phones and IDs; give least access; log what an agent did."], ["Ethical testing", "Test only your own data or legal practice labs, never systems you lack permission to test."]], ["ai", "data"], S("Step 8: Protect privacy", 7)),
+                                A("circles", "ded", "rings", "Circle of concern and circle of influence", "Stephen Covey's idea: the **circle of concern** holds what worries you; the **circle of influence** holds what you can act on.", [["Concern", "What you see and worry about"], ["Influence", "What you can do today"], ["Habit", "Be proactive"], ["Tool", "Circles tab"]], [["In training", "Worry about AI and jobs sits in concern. Finishing one step today sits in influence."], ["Method", "Name the worry, find the smallest action within reach, do it and repeat. Your influence grows as you act."]], ["teach", "plan"], T("Open the Circles", "circles")),
+                                A("teach", "ded", "users", "For teachers", "A teacher's role here is to **facilitate**: set the problem, protect data and grade the process.", [["Lesson", "20 to 45 minutes"], ["Routine", "Predict, run, explain"], ["Assess", "Concept, code, evidence, safety"], ["Tip", "Work in pairs"]], [["Why it matters", "A 2026 news roundup cites a Gallup poll in which only 18 percent of teachers had formal school guidance on AI, and a RAND survey in which 80 percent of students said teachers had not explicitly taught them AI."], ["Routine", "Learners predict the output, run it, explain it to a partner and mark each AI answer right, wrong or unchecked."], ["Assessment", "Reward cited rows and stated assumptions over speed."]], ["circles", "safety"], T("Open the Library", "lib")),
+                                A("venture", "ent", "flag", "From skill to venture", "**Entrepreneurship** applies the algorithm to a customer's problem: find it, test it small, learn from real people and decide.", [["Start with", "A problem you can observe"], ["Test with", "About 10 real users"], ["Build", "The smallest useful version"], ["Measure", "One number that matters"]], [["Find a problem", "Choose a problem you can see, and talk to users early. A common startup lesson is to make something people want."], ["Build small", "Release the simplest version that works, record what users do and improve one thing at a time."], ["Decide", "Write the option, the criteria and the data. Move fast on two-way doors and slowly on one-way doors."], ["Get official help", "In India, Startup India is the government portal for recognition and schemes. Rules change, so check the official site."]], ["leaders", "mediasrc", "richdata"], T("Open Decide", "data")),
+                                A("leaders", "ent", "star", "Learn from ideal IT leaders", "Five leaders who shaped technology each offer one lesson for your own venture. Read them as case studies, not as heroes.", [["Profiles", "5"], ["Themes", "Decisions, product, AI, scale"], ["Skill", "Reading critically"], ["Output", "One lesson to try"]], [["Jeff Bezos", "Ask what you will regret at age 80, and treat easy-to-reverse decisions as two-way doors."], ["Sundar Pichai", "Master one product deeply, then widen your scope. Build simple tools that millions can use."], ["Elon Musk", "Break a problem into basic facts and rebuild the answer. Build, test, learn and repeat."], ["Bill Gates", "Read widely and set aside focused time to think. Use your success to help others."], ["Mark Zuckerberg", "Ship early, improve from feedback and change direction when the platform shifts."], ["Read critically", "Each leader also faces criticism, such as labour conditions, antitrust cases, safety, privacy and misinformation. Read more than one view."]], ["venture", "books"], T("Open the Library", "lib")),
+                                A("mediasrc", "ent", "mic", "Media sources for founders", "**Trusted media** keeps a founder learning every week: podcasts, magazines, blogs and official guides.", [["Podcast", "Raj Shamani's Figuring Out"], ["Magazines", "BBC Business, TIME"], ["Blogs", "Essays and startup guides"], ["Habit", "One piece a week"]], [["Podcast and book", "Figuring Out holds long talks with business people, creators and experts. Raj Shamani's book Build, Don't Talk carries one message: start building."], ["Magazines", "BBC Business and Worklife, and TIME Business, offer founder stories and trends."], ["Blogs and guides", "Paul Graham's essays, the Y Combinator Library, First Round Review, a16z, HBR Entrepreneurship, Sam Altman's blog, Seth Godin's blog, Indie Hackers and Startup India."], ["How to use them", "Read or listen to one piece a week, write one action and try it within seven days. Every source has a point of view."]], ["venture", "refs2"], T("Open the Library", "lib")),
+                                A("richdata", "ent", "coin", "Rich lists and the right data", "**Rich lists look simple, but each is built differently.** Before you use a number, find out who made it, when, how and in what currency.", [["Sources", "Forbes, Hurun, Bloomberg"], ["Check", "Date, scope, currency, method"], ["Skill", "Comparing sources"], ["Output", "A sourced table"]], [["Seven checks", "1. The date: a list is a snapshot. 2. The scope: one person or a whole family. 3. The currency and exchange rate. 4. The method: listed shares are easy to value, private companies are estimates. 5. Compare at least two lists. 6. Go to primary sources such as company filings and regulators. 7. Save the source, link and date beside every number."], ["Try this", "Build a sheet with the top 10 from Forbes, Hurun and Bloomberg. Columns: name, rank, net worth, currency, list date, person or family. Write 3 lines on why the numbers differ."], ["Caution", "Net worth lists are estimates, not audited figures."]], ["data", "refs2"], S("Step 6: Build a dashboard", 5)),
+                                A("roadmap", "ent", "map", "The data-to-AI roadmap", "The **roadmap** has 12 stages that turn classroom skills into a career in data analysis, data science or AI innovation.", [["Stages", "12"], ["Tracks", "Data Analyst, Data Science, AI Innovation"], ["Portfolio", "3 to 5 projects"], ["Companion", "Think Clear, Decide Well site"]], [["Analyst stages", "Spreadsheets, SQL, statistics, visualization, Python for data, cleaning and exploratory analysis, Git and a portfolio."], ["Science and AI stages", "Machine learning, deep learning, NLP and large language models, deployment and monitoring, then responsible AI and innovation."], ["How it fits this book", "The 12 training steps teach the habits. The roadmap shows where to go next. Pick one track and build a portfolio of 3 to 5 projects."]], ["plan", "books"], T("Open Decide", "data")),
+                                A("books", "ent", "book", "Books for entrepreneurs", "**Books** carry tested ideas for thinking, money and habits. Read one at a time and try one idea a week.", [["Groups", "4"], ["Habit", "10 pages a day"], ["Output", "One idea tried weekly"], ["List", "See References"]], [["Data and decisions", "Storytelling with Data (Cole Nussbaumer Knaflic); Naked Statistics (Charles Wheelan); The Art of Statistics (David Spiegelhalter); Python for Data Analysis (Wes McKinney); Data Science for Business (Provost and Fawcett)."], ["Money and mindset", "The Psychology of Money (Morgan Housel); Think and Grow Rich (Napoleon Hill); Rich Dad Poor Dad (Robert Kiyosaki); The Millionaire Next Door (Stanley and Danko)."], ["Habits and thinking", "Atomic Habits (James Clear); Thinking, Fast and Slow (Daniel Kahneman); Deep Work (Cal Newport); How to Win Friends and Influence People (Dale Carnegie)."], ["Founders and AI", "Build, Don't Talk (Raj Shamani); The Everything Store (Brad Stone); Working Backwards (Bryar and Carr); Co-Intelligence (Ethan Mollick)."]], ["skills", "refs1"], T("Open the Library", "lib")),
+                                A("plan", "go", "target", "Training plan", "The plan has **12 steps in 3 stages**, about 8 hours in total. It runs the algorithm once, from a small question to a capstone.", [["STEM", "Steps 1 to 4"], ["Data", "Steps 5 to 8"], ["AI", "Steps 9 to 12"], ["Capstone", "About 2 hours"]], [["Pace", "One step per sitting works well: 15 to 45 minutes each."], ["Progress", "Tick Mark done on every step and the trainer shows your next step."], ["After training", "Open Decide to choose your next move: combine data, show results, find patterns, learn more or grow as an entrepreneur."]], ["rule", "roadmap"], T("Open the 12 steps", "path"), ["STEM 1-4", "Data 5-8", "AI 9-12"]),
+                                Object.assign(A("gloss", "go", "book", "Glossary", "Short definitions of the key terms in this book.", [["Terms", "18"], ["Use", "Look up while training"]], [], ["how", "pattern"]), { gl: [["Algorithm", "A clear set of steps that turns an input into an output."], ["Hypothesis", "A testable guess about how things work."], ["Median", "The middle value; it resists extreme values."], ["Key", "A shared column used to join two tables."], ["Dashboard", "A page of charts that answers one question."], ["Prompt", "The instruction you give an AI."], ["Six-part prompt", "Role, task, data, format, limits, verification."], ["Agent", "An AI that loops plan, act, observe toward a goal."], ["Prompt injection", "Instructions hidden inside data to steer an AI."], ["Verification", "Checking an answer against evidence."], ["Media literacy", "Judging who made a message, how and why."], ["Induction", "Reasoning from examples to a pattern."], ["Deduction", "Reasoning from a rule to a case."], ["One-way door", "A decision that is hard to undo: decide slowly."], ["Two-way door", "A decision that is easy to undo: decide fast."], ["First-principles thinking", "Breaking a problem into basic facts and rebuilding the answer."], ["Primary source", "The original record, such as a company filing or a regulator's page."], ["Entrepreneur", "A person who builds something to solve a customer's problem."]] }),
+                                Object.assign(A("refs1", "go", "book", "References: books", "Books named in this book, grouped by theme. Look for them in a library or bookshop.", [["Groups", "5"], ["Order", "By theme"], ["Companion", "Think Clear, Decide Well site"]], [], ["refs2", "books"]), { refs: [["Data and decisions", [["Storytelling with Data, Cole Nussbaumer Knaflic"], ["Naked Statistics, Charles Wheelan"], ["The Art of Statistics, David Spiegelhalter"], ["Python for Data Analysis, Wes McKinney"], ["Data Science for Business, Foster Provost and Tom Fawcett"], ["Factfulness, Hans Rosling"]]], ["Money and mindset", [["The Psychology of Money, Morgan Housel"], ["Think and Grow Rich, Napoleon Hill"], ["Rich Dad Poor Dad, Robert Kiyosaki"], ["The Millionaire Next Door, Thomas Stanley and William Danko"]]], ["Habits and thinking", [["Atomic Habits, James Clear"], ["Thinking, Fast and Slow, Daniel Kahneman"], ["Deep Work, Cal Newport"], ["Thinking in Bets, Annie Duke"], ["Mindset, Carol Dweck"]]], ["People skills", [["How to Win Friends and Influence People, Dale Carnegie"], ["The 7 Habits of Highly Effective People, Stephen Covey"], ["Leaders Eat Last, Simon Sinek"], ["Emotional Intelligence, Daniel Goleman"], ["Getting to Yes, Roger Fisher and William Ury"], ["Never Split the Difference, Chris Voss"], ["Crucial Conversations, Patterson and others"]]], ["Founders and AI", [["Build, Don't Talk, Raj Shamani"], ["The Everything Store, Brad Stone"], ["Working Backwards, Colin Bryar and Bill Carr"], ["Co-Intelligence, Ethan Mollick"]]]] }),
+                                Object.assign(A("refs2", "go", "link", "References: websites", "Online sources named in this book. Links open third-party sites and may change over time.", [["Groups", "4"], ["Check", "Dates and updates"], ["Open", "New tab"]], [], ["refs1", "mediasrc"]), { refs: [["Learning", [["Algorithm of Training (companion book site)", "https://khanriyazi.github.io/Book-Data-Skills-and-media/"], ["Mind Tools", "https://www.mindtools.com/"], ["Kaggle Learn", "https://www.kaggle.com/learn"], ["SQLBolt", "https://sqlbolt.com"], ["Khan Academy: Statistics and probability", "https://www.khanacademy.org/math/statistics-probability"], ["Google Machine Learning Crash Course", "https://developers.google.com/machine-learning/crash-course"], ["Hour of AI", "https://hourofai.org"]]], ["Teachers and AI literacy", [["Experience AI, Raspberry Pi Foundation", "https://www.raspberrypi.org/blog/ai-education-resources-ai-awareness-day/"], ["Common Sense Education: AI literacy", "https://www.commonsense.org/education/ai-in-schools"], ["Google AI literacy hub", "https://blog.google/innovation-and-ai/products/google-ai-literacy-tools-2025/"], ["News roundup citing Gallup and RAND on AI in schools (2026)", "https://www.lanacion.com.ar/usa/localize-it-states-and-schools-around-the-us-are-scrambling-to-develop-ai-literacy-plans-nid21082026/"]]], ["Media and startups", [["Raj Shamani's Figuring Out (Apple Podcasts)", "https://podcasts.apple.com/in/podcast/id1501941375"], ["BBC Business", "https://www.bbc.com/business"], ["TIME Business", "https://time.com/section/business/"], ["Paul Graham essays", "https://paulgraham.com/articles.html"], ["Y Combinator Library", "https://www.ycombinator.com/library"], ["First Round Review", "https://review.firstround.com/"], ["Harvard Business Review: Entrepreneurship", "https://hbr.org/topic/subject/entrepreneurship"], ["Startup India", "https://www.startupindia.gov.in/"]]], ["Rich lists and primary data", [["Forbes Billionaires", "https://www.forbes.com/billionaires/"], ["Hurun India", "https://www.hurunindia.com/"], ["Bloomberg Billionaires Index", "https://www.bloomberg.com/billionaires/"], ["SEC EDGAR", "https://www.sec.gov/edgar"], ["BSE India", "https://www.bseindia.com/"], ["NSE India", "https://www.nseindia.com/"], ["SEBI", "https://www.sebi.gov.in/"], ["World Bank Data", "https://data.worldbank.org/"], ["IMF Data", "https://www.imf.org/en/Data"]]]] }),
+                                A("author", "go", "pen", "About the author", "**Rizwan Ali** is the author and trainer of Algorithm of Training.", [["Role", "Author · Trainer"], ["Focus", "STEM, Data, Media, AI innovation"], ["Audience", "Students and teachers"], ["Website", "khanriyazi.in"]], [["What he teaches", "Practical training that moves learners from STEM thinking to data skills, media judgement and AI innovation, with an entrepreneur's focus on real problems."], ["Connect", "Visit khanriyazi.in for the trainer tools, the Data Integration app and the companion book list."]], ["plan", "refs2"]),
+                                { id: "start", special: "end" }
+                            ];
+                            const IDX = {}; PAGES.forEach((p, i) => IDX[p.id] = i);
+                            const bk = document.querySelector(".sa-bk"), ov = document.querySelector(".sa-ov"), bs = bk.querySelector(".sa-bs"), dots = bk.querySelector(".sa-dots");
+                            document.body.appendChild(ov); document.body.appendChild(bk);
+                            let bi = 0;
+                            function toTrainer(kind, arg) { closeBook(); const b = launchers[0]; if (kind === "step") { open("path", b); openStep(arg) } else open(arg, b) }
+                            function rich(el, str) { str.split(/(\*\*.+?\*\*|\[\[.+?\|.+?\]\])/).forEach(x => { if (!x) return; if (x.startsWith("**")) el.append(h("b", null, x.slice(2, -2))); else if (x.startsWith("[[")) { const m = x.slice(2, -2).split("|"), b = h("button", "sa-wl", m[1]); b.type = "button"; b.addEventListener("click", () => goB(IDX[m[0]])); el.append(b) } else el.append(document.createTextNode(x)) }); return el }
+                            const plain = s => s.replace(/\*\*|\[\[.+?\|(.+?)\]\]/g, "$1");
+                            const textOf = p => plain([p.title || "", p.lead || "", ...(p.secs || []).flat(), ...(p.gl || []).flat()].join(" ")).toLowerCase();
+                            function tocPage() {
+                                const w = h("div", "sa-toc"); w.append(h("h2", null, "Contents")); w.firstChild.style.cssText = "margin:0;font:400 28px Georgia,serif";
+                                const inp = h("input"); inp.type = "search"; inp.placeholder = "Search this pedia: data, prompt, media..."; inp.setAttribute("aria-label", "Search the pedia"); const list = h("div"); w.append(inp, list);
+                                const draw = () => {
+                                    list.replaceChildren(); const q = inp.value.trim().toLowerCase(); let last = "", n = 0;
+                                    PAGES.forEach((p, i) => {
+                                        if (!p.part || p.id === "contents") return; if (q && !textOf(p).includes(q)) return; n++;
+                                        if (p.part !== last) { last = p.part; list.append(h("h3", null, PARTS[p.part][0])) }
+                                        const b = h("button", "sa-ti"); b.type = "button"; const d = h("div"); d.append(h("b", null, p.title), h("span", null, plain(p.lead).slice(0, 95) + (p.lead.length > 95 ? "..." : ""))); b.append(h("em", null, String(i)), d); b.addEventListener("click", () => goB(i)); list.append(b)
+                                    });
+                                    if (!n) list.append(h("p", null, "No page matches. Try another word."))
+                                };
+                                inp.addEventListener("input", draw); draw(); return w
+                            }
+                            function article(pg) {
+                                const a = h("article", "sa-art"), rn = h("div", "sa-run"); rn.append(h("span", null, "Algorithm of Training"), h("span", null, PARTS[pg.part][0].split(":")[0])); a.append(rn); a.append(h("h2", null, pg.title));
+                                const ib = h("aside", "sa-ib"), hd = h("div", "sa-ibh"), ic = h("span"); ic.innerHTML = svg(pg.icon, 36); hd.append(ic, h("div", null, PARTS[pg.part][0].split(":")[0])); ib.append(hd);
+                                pg.info.forEach(([k, v]) => { const r = h("div", "sa-ibr"); r.append(h("b", null, k), h("span", null, v)); ib.append(r) }); a.append(ib);
+                                a.append(rich(h("p", "sa-lead"), pg.lead)); if (pg.code) a.append(h("pre", "sa-code", pg.code));
+                                pg.secs.forEach(([t, x]) => { a.append(h("h3", null, t)); a.append(rich(h("p"), x)) });
+                                if (pg.gl) { const dl = h("dl", "sa-gl"); pg.gl.forEach(([t, x]) => { dl.append(h("dt", null, t), h("dd", null, x)) }); a.append(dl) }
+                                if (pg.refs) pg.refs.forEach(([t, items]) => { a.append(h("h3", null, t)); const ul = h("ul", "sa-rl"); items.forEach(([x, u]) => { const li = h("li"); if (u) { const l = h("a", null, x); l.href = u; l.target = "_blank"; l.rel = "noopener noreferrer"; li.append(l) } else li.append(document.createTextNode(x)); ul.append(li) }); a.append(ul) });
+                                if (pg.flow) { const f = h("div", "sa-flow"); pg.flow.forEach((x, i) => { if (i) f.append(h("em", null, "\u2192")); f.append(h("span", null, x)) }); a.append(f) }
+                                if (pg.see.length) { const s = h("div", "sa-see"); s.append(h("b", null, "See also:")); pg.see.forEach(id => { const b = h("button", "sa-wl", PAGES[IDX[id]].title); b.type = "button"; b.addEventListener("click", () => goB(IDX[id])); s.append(b) }); a.append(s) }
+                                if (pg.train) { const b = h("button", "sa-btn", "Training: " + pg.train[0] + " \u2192"); b.type = "button"; b.addEventListener("click", () => toTrainer(pg.train[1], pg.train[2])); a.append(b) }
+                                a.append(h("div", "sa-pn", "\u2014 " + bi + " \u2014")); return a
+                            }
+                            function renderB(dir) {
+                                const pg = PAGES[bi], part = pg.part || (pg.special === "end" ? "go" : "cv"), pt = PARTS[part]; bk.style.setProperty("--pc", pt[1]);
+                                bk.querySelector(".sa-bpart").textContent = pt[0]; bk.querySelector(".sa-bnum").textContent = bi === 0 ? "" : "Page " + bi + " of " + (PAGES.length - 1);
+                                bs.replaceChildren(); const w = h("div", dir > 0 ? "sa-fwd" : dir < 0 ? "sa-back" : "");
+                                if (pg.special === "cover") {
+                                    const c = h("div", "sa-cv"); const ic = h("div", "sa-ic"); ic.innerHTML = svg("book", 52); c.append(ic, h("h2", null, "Algorithm of Training"), h("p", null, "An entrepreneur's training book: STEM \u2192 Data \u2192 Media \u2192 AI innovation"), h("p", null, "For students and teachers"));
+                                    const au = h("div", "sa-au", "Author \u00b7 Trainer"); au.append(h("b", null, "Rizwan Ali")); c.append(au, h("p", null, "Don't judge a book by its cover. Open it."));
+                                    const b = h("button", "sa-btn", "Open the book \u2192"); b.type = "button"; b.addEventListener("click", () => goB(1)); c.append(b); w.append(c)
+                                }
+                                else if (pg.special === "end") {
+                                    const c = h("div", "sa-cv"); c.style.background = "radial-gradient(circle at 30% 20%,#34a853,#0b5c2a 75%)"; const ic = h("div", "sa-ic"); ic.innerHTML = svg("flag", 52); c.append(ic, h("h2", null, "Ready? Start training"), h("p", null, "Don't judge a book by its cover. Judge it by what you can do after reading."));
+                                    const b = h("button", "sa-btn", "\u25b6 Start training"); b.type = "button"; b.addEventListener("click", () => toTrainer("tab", "start"));
+                                    const l = h("a", "sa-btn sa-alt", "Open the book list \u2197"); l.href = "https://khanriyazi.github.io/Book-Data-Skills-and-media/"; l.target = "_blank"; l.rel = "noopener noreferrer";
+                                    const au = h("div", "sa-au", "Author \u00b7 Trainer"); au.append(h("b", null, "Rizwan Ali")); c.append(b, l, au); w.append(c)
+                                }
+                                else if (pg.special === "title") { const c = h("div", "sa-tp"); c.append(h("div", "sa-orn", "\u2726 \u2726 \u2726"), h("h2", null, "Algorithm of Training"), h("p", null, "An entrepreneur's training book: STEM \u2192 Data \u2192 Media \u2192 AI innovation")); const au = h("div", "sa-au", "Author \u00b7 Trainer"); au.append(h("b", null, "Rizwan Ali")); c.append(au, h("p", null, "Training edition")); w.append(c) }
+                                else if (pg.special === "preface") {
+                                    const c = h("div", "sa-pf"); c.append(h("h2", null, "Preface"), h("div", "sa-orn sa-center", "\u2726")); c.lastChild.style.textAlign = "center";
+                                    ["An algorithm is a clear set of steps that turns an input into an output. Training can work the same way. Give a learner a real problem, follow the steps in order, and the output is a decision they can defend.", "This book is that algorithm for students and teachers who want to think like entrepreneurs. It joins four strands: STEM to think with evidence, Data to find the facts, Media to tell the story honestly, and AI to build faster, always with a human checking the result.", "You will read five short cases and find the pattern they share. Then you will meet the algorithm itself, apply it to each strand, learn from founders and trusted sources, and finish with a twelve-step training plan.", "Read with a pen in your hand and try every task. Do not judge this book by its cover. Judge it by what you build after you close it."].forEach((t, i) => c.append(h("p", i ? "" : "sa-first", t)));
+                                    const sg = h("div", "sa-sig", "\u2014"); sg.append(h("b", null, "Rizwan Ali"), document.createTextNode("Author \u00b7 Trainer")); c.append(sg, h("div", "sa-pn", "\u2014 " + bi + " \u2014")); w.append(c)
+                                }
+                                else if (pg.special === "copyright") {
+                                    const c = h("div", "sa-tp"); c.style.cssText = "font-size:13.5px;line-height:1.7;text-align:left;align-items:flex-start;justify-content:flex-end;max-width:580px;margin:0 auto";
+                                    const b = h("p", null, "Algorithm of Training"); b.style.cssText = "font:italic 22px Georgia,serif"; c.append(b, h("p", null, "Copyright \u00a9 2026 Rizwan Ali. All rights reserved."), h("p", null, "No part of this book may be copied, stored or shared in any form without written permission from the author, except for short quotations with credit, as the law allows."), h("p", null, "Names of people, companies, books and websites belong to their owners and are mentioned for education. Links lead to third-party sites that may change."), h("p", null, "This book is for learning. It is not legal, financial or investment advice. Facts about people and companies come from public sources and may change, so please check official sites."), h("p", null, "First training edition, 2026. Author and Trainer: Rizwan Ali. khanriyazi.in")); w.append(c)
+                                }
+                                else if (pg.special === "toc") w.append(tocPage());
+                                else w.append(article(pg));
+                                bs.append(w); bs.scrollTop = 0;
+                                bk.querySelector(".sa-prev").disabled = bi === 0; bk.querySelector(".sa-next2").disabled = bi === PAGES.length - 1;
+                                dots.querySelectorAll("button").forEach((d, i) => d.classList.toggle("sa-on", i === bi))
+                            }
+                            function goB(n) { n = Math.max(0, Math.min(PAGES.length - 1, n)); if (n === bi && bs.firstChild) return; const d = n > bi ? 1 : -1; bi = n; renderB(d) }
+                            PAGES.forEach((p, i) => { const d = h("button"); d.type = "button"; d.title = p.title || ({ cover: "Cover", title: "Title page", copyright: "Copyright", end: "Back cover" }[p.special]); d.setAttribute("aria-label", "Page " + i); d.addEventListener("click", () => goB(i)); dots.append(d) });
+                            bk.querySelector(".sa-prev").addEventListener("click", () => goB(bi - 1)); bk.querySelector(".sa-next2").addEventListener("click", () => goB(bi + 1));
+                            bk.querySelector(".sa-bt").addEventListener("click", () => goB(IDX.contents));
+                            function openBook(btn) { close(); lastBtn = btn || launchers[0]; ov.classList.add("sa-open"); bk.classList.add("sa-open"); launchers.forEach(b => b.setAttribute("aria-expanded", b === lastBtn)); renderB(0); bk.querySelector(".sa-bxc").focus() }
+                            function closeBook() { ov.classList.remove("sa-open"); bk.classList.remove("sa-open"); launchers.forEach(b => b.setAttribute("aria-expanded", "false")) }
+                            bk.querySelector(".sa-bxc").addEventListener("click", () => { closeBook(); lastBtn && lastBtn.focus() });
+                            ov.addEventListener("click", closeBook);
+                            $(".sa-bko").addEventListener("click", () => openBook(lastBtn));
+                            document.addEventListener("keydown", e => { if (!bk.classList.contains("sa-open")) return; if (e.target && e.target.tagName === "INPUT" && e.key !== "Escape") return; if (e.key === "ArrowRight") goB(bi + 1); else if (e.key === "ArrowLeft") goB(bi - 1); else if (e.key === "Escape") { closeBook(); lastBtn && lastBtn.focus() } });
+                            let tx = null; bs.addEventListener("touchstart", e => { tx = e.touches[0].clientX }, { passive: true }); bs.addEventListener("touchend", e => { if (tx == null) return; const dx = e.changedTouches[0].clientX - tx; tx = null; if (Math.abs(dx) > 70) goB(bi + (dx < 0 ? 1 : -1)) });
+
+                            goTab("start"); const f0 = firstOpen(); pickStage(f0 < 0 ? "AI" : STEPS[f0][0]); refresh();
                         })();
                     </script>
                 </section>
