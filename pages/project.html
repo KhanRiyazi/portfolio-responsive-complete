@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project Lab: Founder-inspired STEM projects | Rizwan Ali</title>
+    <meta name="description"
+        content="Build real STEM projects inspired by Musk, Bezos, Zuckerberg, Gates, Pichai, Amodei and Shiv Nadar. Take them from home to the world, and track base, midline and endline.">
+    <meta name="color-scheme" content="light dark">
+    <style>
+        :root {
+            --bl: #1a73e8;
+            --rd: #ea4335;
+            --ye: #fbbc04;
+            --gn: #34a853;
+            --bg: #fff;
+            --sf: #f1f3f4;
+            --sf2: #f8f9fa;
+            --tx: #202124;
+            --mu: #5f6368;
+            --bd: #dadce0;
+            --tn: #e8f0fe;
+            --on: #174ea6;
+            --sh: 0 1px 2px rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+            --sh2: 0 2px 6px 2px rgba(60, 64, 67, .15), 0 1px 2px rgba(60, 64, 67, .3)
+        }
+
+        @media(prefers-color-scheme:dark) {
+            :root {
+                --bl: #8ab4f8;
+                --bg: #202124;
+                --sf: #303134;
+                --sf2: #28292c;
+                --tx: #e8eaed;
+                --mu: #9aa0a6;
+                --bd: #3c4043;
+                --tn: #1c2b45;
+                --on: #aecbfa;
+                --sh: none;
+                --sh2: 0 2px 8px rgba(0, 0, 0, .5)
+            }
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--tx);
+            font: 15px/1.55 "Google Sans", Roboto, "Segoe UI", Arial, sans-serif
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        p {
+            margin: 0
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+            color: inherit
+        }
+
+        a {
+            color: var(--bl)
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--bl);
+            outline-offset: 2px;
+            border-radius: 8px
+        }
+
+        .w {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 16px
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: var(--bg);
+            border-bottom: 1px solid var(--bd)
+        }
+
+        header .w {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px 16px
+        }
+
+        .br {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 19px;
+            font-weight: 500;
+            white-space: nowrap
+        }
+
+        .dots {
+            display: grid;
+            grid-template-columns: repeat(2, 9px);
+            gap: 3px
+        }
+
+        .dots i {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%
+        }
+
+        .srch {
+            flex: 1;
+            max-width: 620px;
+            position: relative
+        }
+
+        .srch input {
+            width: 100%;
+            height: 44px;
+            border: 0;
+            border-radius: 99px;
+            background: var(--sf);
+            padding: 0 18px 0 44px;
+            outline: 0
+        }
+
+        .srch input:focus {
+            background: var(--bg);
+            box-shadow: var(--sh2)
+        }
+
+        .srch span {
+            position: absolute;
+            left: 16px;
+            top: 10px;
+            color: var(--mu)
+        }
+
+        .av {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            flex: none;
+            margin-left: auto
+        }
+
+        .tabs {
+            display: flex;
+            gap: 6px;
+            padding: 10px 0;
+            overflow-x: auto
+        }
+
+        .tabs button {
+            flex: none;
+            border: 1px solid var(--bd);
+            background: none;
+            border-radius: 99px;
+            padding: 8px 18px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--mu)
+        }
+
+        .tabs button[aria-selected=true] {
+            background: var(--tn);
+            color: var(--on);
+            border-color: transparent
+        }
+
+        .hero {
+            padding: 30px 0 10px
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+            font-weight: 400;
+            letter-spacing: -.02em;
+            max-width: 18ch;
+            line-height: 1.15
+        }
+
+        .hero h1 b {
+            color: var(--bl);
+            font-weight: 500
+        }
+
+        .hero p {
+            color: var(--mu);
+            max-width: 58ch;
+            margin-top: 10px
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 14px 0
+        }
+
+        .chip {
+            border: 1px solid var(--bd);
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-size: 14px
+        }
+
+        .chip[aria-pressed=true] {
+            background: var(--tn);
+            color: var(--on);
+            border-color: transparent;
+            font-weight: 500
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid var(--bd);
+            background: var(--bg);
+            color: var(--bl);
+            border-radius: 99px;
+            padding: 9px 20px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 8px 8px 0 0
+        }
+
+        .btn:hover {
+            background: var(--tn)
+        }
+
+        .btn.p {
+            background: var(--bl);
+            color: #fff;
+            border-color: var(--bl)
+        }
+
+        @media(prefers-color-scheme:dark) {
+            .btn.p {
+                color: #202124
+            }
+        }
+
+        .g {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 14px
+        }
+
+        .pc {
+            text-align: left;
+            border: 1px solid var(--bd);
+            background: var(--bg);
+            border-radius: 20px;
+            padding: 18px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: box-shadow .15s
+        }
+
+        .pc:hover {
+            box-shadow: var(--sh2)
+        }
+
+        .pc .top {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .pc h3 {
+            font-size: 17px;
+            font-weight: 500
+        }
+
+        .pc .by {
+            font-size: 13px;
+            color: var(--mu)
+        }
+
+        .pc p {
+            font-size: 14px;
+            color: var(--mu)
+        }
+
+        .ic {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            flex: none
+        }
+
+        .m {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px
+        }
+
+        .m span {
+            background: var(--sf);
+            border-radius: 6px;
+            padding: 2px 10px;
+            font-size: 12px;
+            color: var(--mu)
+        }
+
+        .bar {
+            height: 6px;
+            background: var(--bd);
+            border-radius: 6px;
+            overflow: hidden
+        }
+
+        .bar i {
+            display: block;
+            height: 100%;
+            background: var(--gn);
+            border-radius: 6px
+        }
+
+        .card {
+            border: 1px solid var(--bd);
+            border-radius: 20px;
+            padding: 18px;
+            background: var(--bg)
+        }
+
+        .card.t {
+            background: var(--tn);
+            border-color: transparent
+        }
+
+        .st {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin: 14px 0
+        }
+
+        .st div {
+            background: var(--sf2);
+            border-radius: 16px;
+            padding: 14px
+        }
+
+        .st b {
+            display: block;
+            font-size: 26px;
+            font-weight: 400;
+            color: var(--bl)
+        }
+
+        .st span {
+            font-size: 13px;
+            color: var(--mu)
+        }
+
+        h2.s {
+            font-size: 20px;
+            font-weight: 500;
+            margin: 22px 0 10px
+        }
+
+        dialog {
+            border: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--tx);
+            box-shadow: var(--sh2);
+            width: min(620px, 100%);
+            height: 100%;
+            max-height: 100%;
+            margin: 0 0 0 auto;
+            border-radius: 24px 0 0 24px;
+            overflow: auto
+        }
+
+        dialog::backdrop {
+            background: rgba(32, 33, 36, .55)
+        }
+
+        @media(max-width:700px) {
+            dialog {
+                border-radius: 0
+            }
+        }
+
+        .dh {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            color: #fff;
+            padding: 18px 18px 16px
+        }
+
+        .dh h2 {
+            font-size: 22px;
+            font-weight: 500
+        }
+
+        .dh p {
+            opacity: .92;
+            font-size: 14px
+        }
+
+        .dh button {
+            position: absolute;
+            right: 14px;
+            top: 14px;
+            border: 0;
+            background: rgba(255, 255, 255, .22);
+            color: #fff;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 20px;
+            cursor: pointer
+        }
+
+        .db {
+            padding: 6px 18px 30px
+        }
+
+        .db h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 20px 0 8px
+        }
+
+        .ck {
+            display: flex;
+            gap: 12px;
+            padding: 8px 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            align-items: flex-start
+        }
+
+        .ck:hover {
+            background: var(--sf2)
+        }
+
+        .ck input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--gn);
+            margin-top: 2px;
+            flex: none
+        }
+
+        .ck.done span {
+            color: var(--mu);
+            text-decoration: line-through
+        }
+
+        .sf {
+            background: #fef7e0;
+            color: #5f4400;
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-size: 13.5px;
+            margin: 12px 0
+        }
+
+        @media(prefers-color-scheme:dark) {
+            .sf {
+                background: #3b3200;
+                color: #fde293
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px
+        }
+
+        th,
+        td {
+            padding: 6px;
+            text-align: left;
+            border-bottom: 1px solid var(--bd)
+        }
+
+        th {
+            background: var(--sf2)
+        }
+
+        td input,
+        .f input,
+        .f select {
+            width: 100%;
+            border: 1px solid var(--bd);
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 7px 9px
+        }
+
+        .f label {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--mu);
+            margin: 10px 0 2px
+        }
+
+        .rw {
+            display: grid;
+            grid-template-columns: 90px 1fr 46px;
+            gap: 10px;
+            align-items: center;
+            margin: 6px 0;
+            font-size: 13px
+        }
+
+        .vid {
+            aspect-ratio: 16/9;
+            width: 100%;
+            border: 0;
+            border-radius: 16px;
+            background: #000;
+            margin-top: 10px
+        }
+
+        .lad {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 8px;
+            margin-bottom: 14px
+        }
+
+        .lad button {
+            border: 1px solid var(--bd);
+            background: var(--bg);
+            border-radius: 14px;
+            padding: 10px 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500
+        }
+
+        .lad button[aria-pressed=true] {
+            background: var(--tn);
+            border-color: var(--bl);
+            color: var(--on)
+        }
+
+        .lad span {
+            display: block;
+            font-weight: 400;
+            font-size: 11px;
+            color: var(--mu)
+        }
+
+        footer {
+            border-top: 1px solid var(--bd);
+            margin-top: 40px;
+            padding: 20px 0 30px;
+            color: var(--mu);
+            font-size: 13px;
+            text-align: center
+        }
+
+        @media(max-width:700px) {
+            .srch {
+                display: none
+            }
+
+            .tabs {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: var(--bg);
+                border-top: 1px solid var(--bd);
+                justify-content: space-around;
+                padding: 8px;
+                z-index: 30
+            }
+
+            .tabs button {
+                padding: 8px 10px;
+                font-size: 13px
+            }
+
+            body {
+                padding-bottom: 64px
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            * {
+                transition: none !important
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="w">
+            <div class="br">
+                <div class="dots" aria-hidden="true"><i style="background:#4285f4"></i><i
+                        style="background:#ea4335"></i><i style="background:#fbbc04"></i><i
+                        style="background:#34a853"></i></div>Project Lab
+            </div>
+            <div class="srch"><span aria-hidden="true">🔍</span><input id="q" type="search"
+                    placeholder="Search projects: rocket, queue, AI, code" aria-label="Search projects"></div>
+            <div class="av" style="background:#1a73e8" title="Rizwan Ali">RA</div>
+        </div>
+    </header>
+    <main class="w">
+        <nav class="tabs" id="tabs" role="tablist" aria-label="Sections"></nav>
+        <div id="body" aria-live="polite"></div>
+    </main>
+    <dialog id="dlg" aria-label="Project details"></dialog>
+    <footer>
+        <div class="w">Prepared by Rizwan Ali, STEM Trainer · HCL. Founder notes are short learning summaries, not full
+            histories. Every founder also faced mistakes and criticism. Read more than one source and check facts.</div>
+    </footer>
+
+    <script>
+        (function () {
+            var K = 'ps-v2', S = { v: {}, sc: {}, d: {}, st: {}, rows: {}, act: '', tab: 0, si: 0, flt: 'All', q: '', lv: 0, open: '' };
+            try { var o = JSON.parse(localStorage.getItem(K) || '{}');['v', 'sc', 'd', 'st', 'rows'].forEach(function (k) { S[k] = o[k] || {} }); S.act = o.act || '' } catch (e) { }
+            var sv = function () { try { localStorage.setItem(K, JSON.stringify({ v: S.v, sc: S.sc, d: S.d, st: S.st, rows: S.rows, act: S.act })) } catch (e) { } };
+            var $ = function (s) { return document.querySelector(s) };
+            var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] }) };
+            var yt = function (q) { return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q) };
+            var vid = function (u) { var m = String(u).match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/); return m ? m[1] : '' };
+
+            /* ===== PROJECTS inspired by founders ===== */
+            var PJ = [
+                {
+                    id: 'musk', by: 'Elon Musk · SpaceX', i: 'EM', c: '#ea4335', t: 'Bottle Rocket Lab', sub: ['Physics', 'Engineering'], min: '4 sessions', noun: 'rocket',
+                    lesson: 'Test early and often. Every failure is data.', fact: 'SpaceX was founded in 2002. Its early Falcon 1 launches failed before the 2008 success.',
+                    mission: 'Write the headline first: "Our rocket reached ___ m with ___ ml of water."', mat: '2 L plastic bottle, launcher valve or cork, bicycle pump, water, cardboard fins, tape measure, safety goggles',
+                    steps: ['Ask: how does the water volume change the height?', 'Build: make fins and a nose cone from cardboard.', 'Test: launch with 0, 250, 500 and 750 ml. Do 3 launches each.', 'Record: estimate height with a phone video or angle and distance.', 'Show: chart height against water and write what each failure taught.'],
+                    cols: ['water_ml', 'launch', 'height_m'], safe: 'Launch outdoors with an adult. Goggles on, everyone 10 m back, never aim at people.', ai: 'Ask an AI to predict the best water volume. Then compare its guess with your data.', yt: 'water bottle rocket experiment physics school'
+                },
+                {
+                    id: 'bezos', by: 'Jeff Bezos · Amazon', i: 'JB', c: '#fbbc04', t: 'Canteen Queue Optimizer', sub: ['Data', 'Engineering'], min: '3 sessions', noun: 'queue system',
+                    lesson: 'Start with the customer and work backwards.', fact: 'Amazon began in 1994 as an online bookstore and grew by focusing on customer problems.',
+                    mission: 'Write the happy customer review first. Then build the system that earns it.', mat: 'Stopwatch or phone, clipboard, timetable, Google Sheets',
+                    steps: ['Ask: how long do students wait at the canteen or water point?', 'Build: draw the queue flow and circle the slowest step.', 'Test: time 20 students, then change one thing, such as two lines.', 'Record: wait_min before and after, using numbers instead of names.', 'Show: a before and after chart plus a one-page customer letter.'],
+                    cols: ['student_no', 'line_type', 'wait_min'], safe: 'Ask permission before timing anyone. Do not write names. Use numbers.', ai: 'Ask an AI for 3 queue ideas. Test only one idea at a time.', yt: 'queue theory simple explanation school project'
+                },
+                {
+                    id: 'zuck', by: 'Mark Zuckerberg · Meta', i: 'MZ', c: '#4285f4', t: 'Class Connect Board', sub: ['Coding', 'Data'], min: '3 sessions', noun: 'class board',
+                    lesson: 'Ship a small version early and improve it from real use.', fact: 'Facebook began in 2004 as a college project. The company became Meta in 2021.',
+                    mission: 'Launch version 1 in one week, even if it is small.', mat: 'Google Forms, Google Sheets, a phone or computer lab',
+                    steps: ['Ask: what does our class need to know every day?', 'Build: make a Google Form notice or feedback board.', 'Test: let 10 classmates use it and watch where they get stuck.', 'Record: users per day and the top complaint.', 'Show: version 1 against version 2 with usage numbers.'],
+                    cols: ['day', 'users', 'complaints'], safe: 'No private data. Use first names or numbers only. A teacher checks every post.', ai: 'Ask an AI to group feedback into themes. Then check the themes yourself.', yt: 'google forms google sheets tutorial for students'
+                },
+                {
+                    id: 'gates', by: 'Bill Gates · Microsoft', i: 'BG', c: '#34a853', t: 'Tiny Quiz Program', sub: ['Coding'], min: '3 sessions', noun: 'program',
+                    lesson: 'Learn by making something small that people can really use.', fact: 'Gates co-founded Microsoft in 1975 and wrote software for an early microcomputer.',
+                    mission: 'Write version 1 in a single session.', mat: 'Computer lab, Scratch or Python, notebook',
+                    steps: ['Ask: which subject needs a quiz or calculator?', 'Build: write 5 questions in Scratch or Python.', 'Test: let 5 classmates play and note every bug.', 'Record: score and time_sec for each player.', 'Show: share your code with a 3-line user guide.'],
+                    cols: ['player_no', 'score', 'time_sec'], safe: 'Use school-approved devices only.', ai: 'Ask an AI to explain an error message. Then fix the bug yourself.', yt: 'scratch python quiz game for beginners'
+                },
+                {
+                    id: 'pichai', by: 'Sundar Pichai · Google', i: 'SP', c: '#1a73e8', t: 'Hindi-Friendly Mini Search', sub: ['Data', 'Coding'], min: '3 sessions', noun: 'search sheet',
+                    lesson: 'Make technology work for everyone, in every language.', fact: 'Pichai worked on Chrome and Android at Google before becoming CEO in 2015.',
+                    mission: 'Build a search a first-time user can use in Hindi or English.', mat: 'Google Sheets, 30 school notes or book titles, five testers',
+                    steps: ['Ask: can a classmate find a note in under 10 seconds?', 'Build: a Sheet with title, topic and keywords in Hindi and English.', 'Test: add a search box with FILTER and let 5 users try.', 'Record: search_sec and whether they found it (1 or 0).', 'Show: compare time before and after adding better keywords.'],
+                    cols: ['user_no', 'search_sec', 'found_1_or_0'], safe: 'Use school notes only. No private data.', ai: 'Ask an AI for synonym keywords. Keep only the ones that are right.', yt: 'google sheets filter function search tutorial'
+                },
+                {
+                    id: 'amodei', by: 'Dario Amodei · Anthropic', i: 'DA', c: '#d97757', t: 'Safe Study Agent', sub: ['AI', 'Data'], min: '4 sessions', noun: 'agent',
+                    lesson: 'Build helpful AI with limits, tests and a human in charge.', fact: 'Anthropic was founded in 2021 by Dario Amodei and colleagues, with a focus on AI safety.',
+                    mission: 'Prove your agent is safe before you call it smart.', mat: 'A CSV from your project, a computer, an AI assistant, notebook',
+                    steps: ['Ask: which boring data task could an agent help with?', 'Build: write its goal, tools, stop rule and the point where a human approves.', 'Test: run it on 5 files and record every wrong answer.', 'Record: expected, agent_result and correct (1 or 0).', 'Show: the success rate and your 5 safety rules.'],
+                    cols: ['file_no', 'expected', 'agent_result', 'correct_1_or_0'], safe: 'Never paste private data into an AI tool. A human approves every change.', ai: 'This whole project is the AI extension.', yt: 'building effective AI agents explained simply'
+                },
+                {
+                    id: 'nadar', by: 'Shiv Nadar · HCL', i: 'SN', c: '#7b1fa2', t: 'Binary Calculator Lab', sub: ['Engineering', 'Coding'], min: '3 sessions', noun: 'calculator',
+                    lesson: 'Start small, build real products and grow with a team.', fact: 'HCL began in 1976 in Delhi with a small team of engineers building early computers in India.',
+                    mission: 'Build the machine that adds, then explain how it thinks.', mat: 'Breadboard, LEDs, switches, 9V battery and wires, or a free logic simulator',
+                    steps: ['Ask: how does a computer add two numbers?', 'Build: a 2-bit adder with switches and LEDs, or in a simulator.', 'Test: try every input combination.', 'Record: a, b, expected_sum and what the LEDs showed.', 'Show: a truth table and a poster of your circuit.'],
+                    cols: ['a', 'b', 'expected_sum', 'led_result'], safe: 'Use low-voltage batteries only. Never touch mains electricity.', ai: 'Ask an AI to explain a logic gate in Hindi. Then draw it yourself.', yt: '2 bit binary adder logic gates breadboard'
+                }];
+            var LV = [['Home', 'Your problem'], ['Class', 'Test it'], ['School', 'Exhibit it'], ['District', 'Share it'], ['State', 'Compete'], ['National', 'Prove it'], ['International', 'Scale it']];
+            var LD = ['Sketch your {x} and the problem it solves. Ask 3 people at home what they think.', 'Build version 1 of your {x} and test it 3 times. Record every result.', 'Show your {x} at the school exhibition in 3 minutes: question, method, result, lesson.', 'Share with another school. Collect feedback from 10 visitors.', 'Enter NCSC or INSPIRE MANAK with a 2-page report on your {x}.', 'Prepare a working prototype with data, photos and a video for programmes such as the ATL Marathon.', 'Study IOAI, IOI and Bebras routes. Add a clear method and strong data.'];
+            var CR = ['Question', 'Build', 'Data', 'Presentation'];
+            var SES = [['Bezos', 'Find a problem worth solving', 'Customer obsession', 'Start with a real customer problem.', 'jeff bezos customer obsession working backwards explained', 'Which problem did he pick, and who had it?', 'Write 3 problems near home. Ask 5 people about the best one.'],
+            ['Musk', 'Build, test, fail, repeat', 'Learning from failure', 'Early rocket failures taught the team what to fix.', 'spacex falcon 1 early failures first success', 'What did each test teach them?', 'Test your first version 3 times and log each failure.'],
+            ['Gates', 'Make something small and useful', 'First software', 'Start with a tool someone can use tomorrow.', 'bill gates early programming lakeside microsoft story', 'What did he make first, and for whom?', 'Build a quiz, sheet or tiny program for your class.'],
+            ['Zuckerberg', 'Share early, learn from users', 'Ship and improve', 'Early users shape a product.', 'mark zuckerberg early facebook story', 'How did the first users find it?', 'Show your work to 10 people and fix one thing.'],
+            ['Pichai', 'Make it work for everyone', 'Access and language', 'Technology matters when more people can use it.', 'sundar pichai google chrome android story', 'Who could not use the product at first?', 'Add Hindi keywords or labels to your project.'],
+            ['Amodei', 'Build AI with safety', 'Human in control', 'A helpful agent needs limits, tests and approval.', 'anthropic building effective agents explained', 'Where does a human stay in control?', 'List the worst thing your agent could do and how to stop it.'],
+            ['Data', 'Prove it with numbers', 'Evidence', 'Compare base and endline results.', 'how to present data story chart school project', 'How does the speaker show one clear number?', 'Build one chart and write one finding sentence.']];
+
+            /* ===== helpers ===== */
+            var P = function (id) { return PJ.filter(function (p) { return p.id === id })[0] };
+            var done = function (p) { return Object.keys(S.st[p.id] || {}).length };
+            var rowsOf = function (p) { return S.rows[p.id] || (S.rows[p.id] = []) };
+            var num = function (v) { return v !== '' && !isNaN(+v) ? +v : null };
+            var TABS = ['Home', 'Projects', 'Learn', 'Tracker', 'Book'];
+
+            /* ===== views ===== */
+            function card(p) { var n = done(p); return '<button class="pc" data-open="' + p.id + '"><div class="top"><div class="ic" style="background:' + p.c + '">' + p.i + '</div><div><h3>' + p.t + '</h3><div class="by">Inspired by ' + p.by + '</div></div></div><p>' + p.lesson + '</p><div class="m">' + p.sub.map(function (s) { return '<span>' + s + '</span>' }).join('') + '<span>' + p.min + '</span></div><div class="bar" aria-label="' + n + ' of 5 steps done"><i style="width:' + n * 20 + '%"></i></div></button>' }
+            function vHome() {
+                var a = P(S.act), started = PJ.filter(function (p) { return done(p) }).length, steps = PJ.reduce(function (s, p) { return s + done(p) }, 0), ses = Object.keys(S.d).filter(function (k) { return k[0] === 's' }).length, lv = Object.keys(S.d).filter(function (k) { return k.slice(0, 2) === 'ld' }).length;
+                return '<div class="hero"><h1>Build something real. <b>Take it to the world.</b></h1><p>Pick a STEM project inspired by a great founder. Build it, test it, measure it, then climb from home to the world.</p></div>' +
+                    (a ? '<div class="card t" style="margin:14px 0"><div class="top" style="display:flex;gap:12px;align-items:center"><div class="ic" style="background:' + a.c + '">' + a.i + '</div><div><b>Continue: ' + a.t + '</b><p style="color:var(--mu);font-size:13px">' + (done(a) < 5 ? 'Next: ' + a.steps[done(a) < 5 ? firstOpen(a) : 0] : 'All 5 steps done. Climb the ladder.') + '</p></div></div><button class="btn p" data-open="' + a.id + '">Open project</button></div>' : '<div class="card t" style="margin:14px 0"><b>Start here</b><p>Choose any project below. Your progress is saved on this device.</p></div>') +
+                    '<div class="st"><div><b>' + started + '</b><span>projects started</span></div><div><b>' + steps + '</b><span>build steps done</span></div><div><b>' + ses + '</b><span>learning sessions done</span></div><div><b>' + lv + '</b><span>ladder levels done</span></div></div><h2 class="s">Founder challenges</h2><div class="g">' + PJ.map(card).join('') + '</div>'
+            }
+            function firstOpen(p) { var s = S.st[p.id] || {}; for (var i = 0; i < 5; i++)if (!s[i]) return i; return 0 }
+            function vProj() {
+                var q = S.q.toLowerCase(), L = PJ.filter(function (p) { return (S.flt === 'All' || p.sub.indexOf(S.flt) > -1) && (!q || (p.t + p.by + p.lesson + p.sub.join(' ') + p.noun).toLowerCase().indexOf(q) > -1) });
+                return '<h2 class="s" style="margin-top:8px">Projects</h2><div class="chips" role="group" aria-label="Filter by subject">' + ['All', 'Physics', 'Engineering', 'Data', 'Coding', 'AI'].map(function (f) { return '<button class="chip" data-f="' + f + '" aria-pressed="' + (S.flt === f) + '">' + f + '</button>' }).join('') + '</div>' + (L.length ? '<div class="g">' + L.map(card).join('') + '</div>' : '<p>No project matches. Clear the search or choose All.</p>')
+            }
+            function vLearn() {
+                var x = SES[S.si], id = vid(S.v[S.si] || '');
+                return '<h2 class="s" style="margin-top:8px">Learn from founders</h2><div class="lad">' + SES.map(function (s, i) { return '<button data-si="' + i + '" aria-pressed="' + (i === S.si) + '">' + s[0] + '<span>Session ' + (i + 1) + '</span></button>' }).join('') + '</div>' +
+                    '<div class="g"><div class="card t"><h3>' + x[1] + '</h3><p><b>' + x[2] + '.</b> ' + x[3] + '</p><a class="btn p" href="' + yt(x[4]) + '" target="_blank" rel="noopener">Find videos on YouTube ↗</a></div><div class="card"><h3>Watch, do, discuss</h3><p style="margin-top:6px"><b>Watch for:</b> ' + x[5] + '</p><p><b>Do:</b> ' + x[6] + '</p><label class="ck"><input type="checkbox" data-k="s' + S.si + '"' + (S.d['s' + S.si] ? ' checked' : '') + '><span>I finished this session</span></label></div></div>' +
+                    '<div class="card f" style="margin-top:14px"><h3>Play a video you trust</h3><label for="vu">YouTube link</label><input id="vu" type="text" value="' + esc(S.v[S.si] || '') + '" placeholder="https://www.youtube.com/watch?v=...">' + (id ? '<iframe class="vid" src="https://www.youtube-nocookie.com/embed/' + id + '" title="Session video" allowfullscreen loading="lazy"></iframe>' : '<p style="color:var(--mu);margin-top:8px">No video saved for this session.</p>') + '</div>'
+            }
+            var sc = function (k) { var L = S.sc[k] || (S.sc[k] = {});['Base', 'Mid', 'End'].forEach(function (p) { if (!L[p]) L[p] = [0, 0, 0, 0] }); return L }, tot = function (a) { return a.reduce(function (s, x) { return s + (+x || 0) }, 0) };
+            function vTrack() {
+                var p = P(S.act) || PJ[0], k = p.id + ':' + S.lv, L = sc(k);
+                return '<h2 class="s" style="margin-top:8px">Ladder and tracker</h2><div class="f"><label for="pj">Project</label><select id="pj">' + PJ.map(function (q) { return '<option value="' + q.id + '"' + (q.id === p.id ? ' selected' : '') + '>' + q.t + '</option>' }).join('') + '</select></div><div class="lad" style="margin-top:12px">' + LV.map(function (l, i) { return '<button data-lv="' + i + '" aria-pressed="' + (i === S.lv) + '">' + l[0] + '<span>' + l[1] + '</span></button>' }).join('') + '</div>' +
+                    '<div class="card t"><h3>Level ' + (S.lv + 1) + ': ' + LV[S.lv][0] + '</h3><p>' + LD[S.lv].replace('{x}', p.noun) + '</p></div>' +
+                    '<div class="card" style="margin-top:14px"><h3>Score this level (0 to 5 each)</h3><p style="color:var(--mu);font-size:13px">Base is before you start. Midline is after your first test. Endline is at the end. Growth is endline minus base.</p><table><tr><th>When</th>' + CR.map(function (c) { return '<th>' + c + '</th>' }).join('') + '<th>Total</th></tr>' + ['Base', 'Mid', 'End'].map(function (w) { return '<tr><td><b>' + w + '</b></td>' + L[w].map(function (v, i) { return '<td><input type="number" min="0" max="5" data-k2="' + k + '" data-p="' + w + '" data-i="' + i + '" value="' + v + '" aria-label="' + w + ' ' + CR[i] + '"></td>' }).join('') + '<td id="tt' + w + '"><b>' + tot(L[w]) + '</b></td></tr>' }).join('') + '</table><div id="gr" style="margin-top:12px"></div><button class="btn p" id="csv">Download all scores (CSV)</button></div>'
+            }
+            function growth() {
+                var k = (P(S.act) || PJ[0]).id + ':' + S.lv, L = sc(k), b = $('#gr'); if (!b) return; var B = tot(L.Base), M = tot(L.Mid), E = tot(L.End);
+                b.innerHTML = [['Base', B], ['Midline', M], ['Endline', E]].map(function (r) { return '<div class="rw"><span>' + r[0] + '</span><div class="bar"><i style="width:' + r[1] * 5 + '%;background:var(--bl)"></i></div><b>' + r[1] + '/20</b></div>' }).join('') + '<p><b>Growth: ' + (E - B >= 0 ? '+' : '') + (E - B) + ' points.</b> ' + (E > B ? 'Your score rose. Write one sentence on what caused it.' : E === B ? 'No change yet. Work on your lowest criterion.' : 'Endline is lower than base. Find out why before moving up.') + '</p>'
+            }
+            function vBook() { return '<h2 class="s" style="margin-top:8px">My Book</h2><div class="g"><div class="card t"><h3>Algorithm of Training</h3><p>An entrepreneur\'s training book for STEM, Data, Media and AI, with 12 steps and a capstone project.</p><a class="btn p" href="https://khanriyazi.github.io/Book-Data-Skills-and-media/" target="_blank" rel="noopener">Open the book list ↗</a></div><div class="card"><h3>The loop</h3><p>Ask a testable question. Prepare clean data. Tell an honest story. Build with AI, then verify. Decide and repeat.</p></div><div class="card"><h3>More</h3><a class="btn" href="dream.html">Dream</a><a class="btn" href="https://khanriyazi.in" target="_blank" rel="noopener">My website ↗</a></div></div>' }
+            function render() { $('#tabs').innerHTML = TABS.map(function (t, i) { return '<button role="tab" data-t="' + i + '" aria-selected="' + (i === S.tab) + '">' + t + '</button>' }).join(''); $('#body').innerHTML = [vHome, vProj, vLearn, vTrack, vBook][S.tab](); if (S.tab === 3) growth() }
+
+            /* ===== project detail sheet ===== */
+            function dstat(p) {
+                var r = rowsOf(p), y = p.cols.length - 1, ys = r.map(function (x) { return num(x[y]) }).filter(function (v) { return v !== null }), mx = Math.max.apply(null, ys.concat([1])), mean = ys.length ? ys.reduce(function (a, b) { return a + b }, 0) / ys.length : 0;
+                return ys.length ? '<div style="margin-top:10px"><p><b>Average ' + p.cols[y] + ': ' + mean.toFixed(2) + '</b> from ' + ys.length + ' rows</p>' + ys.map(function (v, i) { return '<div class="rw"><span>Value ' + (i + 1) + '</span><div class="bar"><i style="width:' + v / mx * 100 + '%;background:' + p.c + '"></i></div><b>' + v + '</b></div>' }).join('') + '</div>' : '<p class="by" style="color:var(--mu)">Add rows and numbers to see an average and bars.</p>'
+            }
+            function dtab(p) {
+                var r = rowsOf(p);
+                return '<table><tr><th>#</th>' + p.cols.map(function (c) { return '<th>' + c + '</th>' }).join('') + '</tr>' + r.map(function (x, i) { return '<tr><td>' + (i + 1) + '</td>' + p.cols.map(function (c, j) { return '<td><input data-r="' + i + '" data-c="' + j + '" aria-label="' + c + ' row ' + (i + 1) + '" value="' + esc(x[j] || '') + '"></td>' }).join('') + '</tr>' }).join('') + '</table><button class="btn" data-act="add">Add row</button><div id="dst">' + dstat(p) + '</div>'
+            }
+            function det(p) {
+                var s = S.st[p.id] || {};
+                return '<div class="dh" style="background:' + p.c + '"><button data-close aria-label="Close">×</button><p>Inspired by ' + p.by + '</p><h2>' + p.t + '</h2><p id="dp">' + done(p) + ' of 5 steps done</p></div><div class="db">' +
+                    '<h3>The founder lesson</h3><p><b>' + p.lesson + '</b> ' + p.fact + '</p><p style="margin-top:6px;color:var(--mu)">' + p.mission + '</p>' +
+                    '<h3>Materials</h3><p>' + p.mat + '</p><div class="sf"><b>Safety:</b> ' + p.safe + '</div>' +
+                    '<h3>Build plan</h3>' + p.steps.map(function (t, i) { return '<label class="ck' + (s[i] ? ' done' : '') + '"><input type="checkbox" data-sk="' + i + '"' + (s[i] ? ' checked' : '') + '><span>' + t + '</span></label>' }).join('') +
+                    '<h3>Your data</h3><div id="dtab">' + dtab(p) + '</div>' +
+                    '<h3>From home to the world</h3>' + LV.map(function (l, i) { var k = 'ld' + p.id + i; return '<label class="ck' + (S.d[k] ? ' done' : '') + '"><input type="checkbox" data-k="' + k + '"' + (S.d[k] ? ' checked' : '') + '><span><b>' + l[0] + ':</b> ' + LD[i].replace('{x}', p.noun) + '</span></label>' }).join('') +
+                    '<h3>AI extension</h3><p>' + p.ai + '</p><a class="btn" href="' + yt(p.yt) + '" target="_blank" rel="noopener">Find YouTube sessions ↗</a><button class="btn p" data-act="track">Open tracker for this project</button></div>'
+            }
+            function open(id) { var p = P(id); S.act = id; sv(); var d = $('#dlg'); d.innerHTML = det(p); d.showModal(); d.scrollTop = 0 }
+
+            /* ===== events ===== */
+            document.addEventListener('click', function (e) {
+                var t = e.target.closest('button'); if (!t) return; var d = t.dataset, dlg = $('#dlg');
+                if (d.t !== undefined) S.tab = +d.t; else if (d.f) S.flt = d.f; else if (d.si !== undefined) S.si = +d.si; else if (d.lv !== undefined) S.lv = +d.lv;
+                else if (d.open) { open(d.open); return }
+                else if (d.close !== undefined) { dlg.close(); return }
+                else if (d.act === 'add') { var p = P(S.act); rowsOf(p).push(p.cols.map(function () { return '' })); sv(); $('#dtab').innerHTML = dtab(p); return }
+                else if (d.act === 'track') { dlg.close(); S.tab = 3 }
+                else if (t.id === 'csv') { var r = ['project,level,phase,question,build,data,presentation,total']; Object.keys(S.sc).forEach(function (k) { var L = S.sc[k], a = k.split(':');['Base', 'Mid', 'End'].forEach(function (w) { if (L[w]) r.push([a[0], LV[+a[1]][0], w].concat(L[w], tot(L[w])).join(',')) }) }); var u = URL.createObjectURL(new Blob([r.join('\n')], { type: 'text/csv' })), a = document.createElement('a'); a.href = u; a.download = 'project-scores.csv'; a.click(); URL.revokeObjectURL(u); return }
+                else return; render()
+            });
+            $('#dlg').addEventListener('click', function (e) { if (e.target === this) this.close() });
+            $('#dlg').addEventListener('close', render);
+            document.addEventListener('change', function (e) {
+                var t = e.target, d = t.dataset;
+                if (d.sk !== undefined) { var p = P(S.act), s = S.st[p.id] || (S.st[p.id] = {}); t.checked ? s[d.sk] = 1 : delete s[d.sk]; t.closest('.ck').classList.toggle('done', t.checked); $('#dp').textContent = done(p) + ' of 5 steps done'; sv() }
+                else if (d.k) { t.checked ? S.d[d.k] = 1 : delete S.d[d.k]; if (t.closest('.ck')) t.closest('.ck').classList.toggle('done', t.checked); sv() }
+                else if (d.r !== undefined) { var p2 = P(S.act); rowsOf(p2)[+d.r][+d.c] = t.value; sv(); $('#dst').innerHTML = dstat(p2) }
+                else if (d.k2) { var L = sc(d.k2); L[d.p][+d.i] = Math.max(0, Math.min(5, +t.value || 0)); sv();['Base', 'Mid', 'End'].forEach(function (w) { $('#tt' + w).innerHTML = '<b>' + tot(L[w]) + '</b>' }); growth() }
+                else if (t.id === 'vu') { var v = t.value.trim(); if (v && !vid(v)) { alert('Please paste a full YouTube link.'); return } S.v[S.si] = v; sv(); render() }
+                else if (t.id === 'pj') { S.act = t.value; sv(); render() }
+            });
+            $('#q').addEventListener('input', function () { S.q = this.value; S.tab = 1; render() });
+            $('#tabs').addEventListener('keydown', function (e) { if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return; S.tab = (S.tab + (e.key === 'ArrowRight' ? 1 : TABS.length - 1)) % TABS.length; render(); document.querySelector('[data-t="' + S.tab + '"]').focus() });
+            render();
+        })();
+    </script>
+</body>
+
+</html>

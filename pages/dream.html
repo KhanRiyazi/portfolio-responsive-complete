@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Dream Project Lab: STEM, Data and Agentic AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafd;
+            --sf: #fff;
+            --s2: #eef3fb;
+            --pr: #0b57d0;
+            --pc: #d3e3fd;
+            --on: #fff;
+            --tx: #1f1f1f;
+            --mu: #444746;
+            --bd: #c4c7c5;
+            --gr: #146c2e;
+            --gc: #c4eed0;
+            --ye: #fbbc04;
+            --rd: #d93025;
+            --sh: 0 1px 3px rgba(60, 64, 67, .25);
+            color-scheme: light dark
+        }
+
+        @media(prefers-color-scheme:dark) {
+            :root:not([data-theme=light]) {
+                --bg: #131314;
+                --sf: #1e1f20;
+                --s2: #282a2c;
+                --pr: #a8c7fa;
+                --pc: #0842a0;
+                --on: #062e6f;
+                --tx: #e3e3e3;
+                --mu: #c4c7c5;
+                --bd: #444746;
+                --gr: #6dd58c;
+                --gc: #0f5223;
+                --sh: none
+            }
+        }
+
+        :root[data-theme=dark] {
+            --bg: #131314;
+            --sf: #1e1f20;
+            --s2: #282a2c;
+            --pr: #a8c7fa;
+            --pc: #0842a0;
+            --on: #062e6f;
+            --tx: #e3e3e3;
+            --mu: #c4c7c5;
+            --bd: #444746;
+            --gr: #6dd58c;
+            --gc: #0f5223;
+            --sh: none
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px)
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--tx);
+            font: 400 15px/1.55 Roboto, Arial, sans-serif
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin: 0;
+            font-weight: 400;
+            line-height: 1.25
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+            color: inherit
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--pr);
+            outline-offset: 2px
+        }
+
+        a {
+            color: var(--pr)
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 16px;
+            background: var(--bg)
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            white-space: nowrap
+        }
+
+        .dots {
+            display: grid;
+            grid-template-columns: repeat(2, 9px);
+            gap: 3px
+        }
+
+        .dots i {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%
+        }
+
+        .search {
+            flex: 1;
+            max-width: 620px;
+            margin: 0 auto 0 24px;
+            position: relative
+        }
+
+        .search input {
+            width: 100%;
+            height: 46px;
+            border: 0;
+            border-radius: 24px;
+            background: var(--s2);
+            padding: 0 18px 0 46px;
+            outline: none
+        }
+
+        .search input:focus {
+            background: var(--sf);
+            box-shadow: 0 1px 6px rgba(32, 33, 36, .3)
+        }
+
+        .search svg {
+            position: absolute;
+            left: 14px;
+            top: 12px;
+            width: 22px;
+            height: 22px;
+            fill: var(--mu)
+        }
+
+        .ib {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            display: grid;
+            place-items: center
+        }
+
+        .ib:hover {
+            background: var(--s2)
+        }
+
+        .ib svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--mu)
+        }
+
+        .menu {
+            position: absolute;
+            right: 12px;
+            top: 58px;
+            background: var(--sf);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, .3);
+            border-radius: 20px;
+            padding: 12px;
+            display: none;
+            grid-template-columns: repeat(3, 84px);
+            gap: 4px
+        }
+
+        .menu.on {
+            display: grid
+        }
+
+        .menu button {
+            border: 0;
+            background: none;
+            border-radius: 12px;
+            padding: 10px 4px;
+            cursor: pointer;
+            font-size: .8rem
+        }
+
+        .menu button:hover {
+            background: var(--s2)
+        }
+
+        .menu b {
+            display: block;
+            font-size: 1.5rem
+        }
+
+        .shell {
+            display: grid;
+            grid-template-columns: 84px 1fr
+        }
+
+        nav.rail {
+            position: sticky;
+            top: 64px;
+            height: calc(100vh - 64px);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 8px 0;
+            align-items: center
+        }
+
+        nav.rail button {
+            width: 68px;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: .75rem;
+            padding: 0
+        }
+
+        nav.rail button span.p {
+            width: 56px;
+            height: 32px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            font-size: 1.15rem
+        }
+
+        nav.rail button[aria-current=page] span.p {
+            background: var(--pc)
+        }
+
+        nav.rail button[aria-current=page] {
+            font-weight: 500
+        }
+
+        main {
+            padding: 8px 24px 90px;
+            max-width: 1000px;
+            width: 100%
+        }
+
+        .view {
+            display: none
+        }
+
+        .view.on {
+            display: block
+        }
+
+        .hero {
+            padding: 26px 0 8px
+        }
+
+        .hero h1 {
+            font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+            font-weight: 400;
+            max-width: 20ch
+        }
+
+        .hero p {
+            color: var(--mu);
+            max-width: 60ch;
+            margin: 10px 0 0;
+            font-size: 1.05rem
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 18px 0
+        }
+
+        .chip {
+            height: 36px;
+            padding: 0 16px;
+            border: 1px solid var(--bd);
+            border-radius: 8px;
+            background: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .chip:hover {
+            background: var(--s2)
+        }
+
+        .chip[aria-pressed=true],
+        .chip[aria-selected=true] {
+            background: var(--pc);
+            border-color: transparent
+        }
+
+        .card {
+            background: var(--sf);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: var(--sh);
+            border: 1px solid var(--bd)
+        }
+
+        .card h2,
+        .card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 6px
+        }
+
+        .card h4 {
+            font-size: .95rem;
+            font-weight: 500;
+            margin: 14px 0 4px
+        }
+
+        .two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 14px
+        }
+
+        @media(max-width:760px) {
+            .two {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .btn {
+            height: 40px;
+            padding: 0 22px;
+            border-radius: 20px;
+            border: 1px solid var(--bd);
+            background: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--pr)
+        }
+
+        .btn:hover {
+            background: var(--s2)
+        }
+
+        .fill {
+            background: var(--pr);
+            color: var(--on);
+            border-color: var(--pr)
+        }
+
+        .fill:hover {
+            background: var(--pr);
+            opacity: .9
+        }
+
+        .mu {
+            color: var(--mu)
+        }
+
+        ul.l {
+            margin: 4px 0 0;
+            padding-left: 20px
+        }
+
+        ul.l li {
+            margin: 3px 0
+        }
+
+        .agent {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: var(--s2)
+        }
+
+        .steps {
+            display: flex;
+            gap: 0;
+            margin: 16px 0;
+            overflow-x: auto
+        }
+
+        .steps button {
+            flex: 1;
+            min-width: 104px;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            padding: 6px 4px;
+            border-top: 4px solid var(--bd);
+            text-align: left
+        }
+
+        .steps button[aria-selected=true] {
+            border-top-color: var(--pr)
+        }
+
+        .steps button.d {
+            border-top-color: var(--gr)
+        }
+
+        .steps small {
+            display: block;
+            color: var(--mu)
+        }
+
+        .bar {
+            height: 8px;
+            background: var(--s2);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 8px 0
+        }
+
+        .bar i {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: var(--gr);
+            transition: width .3s
+        }
+
+        .fab {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            height: 56px;
+            padding: 0 22px;
+            border-radius: 16px;
+            border: 0;
+            background: var(--pc);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+            z-index: 15
+        }
+
+        .res {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 10px
+        }
+
+        .res a {
+            display: block;
+            text-decoration: none;
+            color: var(--tx);
+            background: var(--sf);
+            border: 1px solid var(--bd);
+            border-radius: 12px;
+            padding: 12px 14px
+        }
+
+        .res a:hover {
+            background: var(--s2)
+        }
+
+        .res small {
+            display: block;
+            color: var(--mu)
+        }
+
+        .chk label {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 10px 4px;
+            border-bottom: 1px solid var(--bd);
+            cursor: pointer
+        }
+
+        .chk input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--pr)
+        }
+
+        dialog {
+            border: 0;
+            border-radius: 28px;
+            background: var(--sf);
+            color: var(--tx);
+            width: min(720px, calc(100% - 24px));
+            padding: 24px
+        }
+
+        dialog::backdrop {
+            background: rgba(0, 0, 0, .45)
+        }
+
+        dialog label {
+            display: block;
+            font-size: .85rem;
+            color: var(--mu);
+            margin: 10px 0 4px
+        }
+
+        dialog input,
+        dialog select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--bd);
+            border-radius: 8px;
+            background: var(--sf)
+        }
+
+        pre {
+            white-space: pre-wrap;
+            background: var(--s2);
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0;
+            font: .82rem/1.5 ui-monospace, Consolas, monospace;
+            max-height: 42vh;
+            overflow: auto
+        }
+
+        .out {
+            margin-top: 12px
+        }
+
+        .out table {
+            border-collapse: collapse;
+            width: 100%
+        }
+
+        .out td {
+            padding: 6px 8px;
+            border-bottom: 1px solid var(--bd)
+        }
+
+        @media(max-width:800px) {
+            .shell {
+                grid-template-columns: 1fr
+            }
+
+            main {
+                padding: 8px 14px 150px
+            }
+
+            nav.rail {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                top: auto;
+                height: auto;
+                flex-direction: row;
+                justify-content: space-around;
+                background: var(--s2);
+                padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0px));
+                z-index: 18
+            }
+
+            nav.rail button {
+                width: auto;
+                flex: 1
+            }
+
+            .logo span.t {
+                display: none
+            }
+
+            .search {
+                margin-left: 0
+            }
+
+            .fab {
+                bottom: 84px;
+                right: 14px;
+                height: 48px
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            * {
+                transition: none !important
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <div class="dots" aria-hidden="true"><i style="background:#4285f4"></i><i style="background:#ea4335"></i><i
+                    style="background:#fbbc04"></i><i style="background:#34a853"></i></div><span class="t">Dream Project
+                Lab</span>
+        </div>
+        <div class="search"><svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z" />
+            </svg><input id="q" type="search" placeholder="Search resources, competitions, data"
+                aria-label="Search resources"></div>
+        <button class="ib" id="theme" type="button" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24">
+                <path d="M12 3a9 9 0 1 0 9 9c0-.5 0-1-.1-1.4A5.5 5.5 0 0 1 12.4 3.1 9 9 0 0 0 12 3z" />
+            </svg></button>
+        <button class="ib" id="apps" type="button" aria-label="Open views" aria-expanded="false"><svg
+                viewBox="0 0 24 24">
+                <path
+                    d="M6 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6-4a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM6 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6-4a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM6 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm6-4a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+            </svg></button>
+        <div class="menu" id="menu"></div>
+    </header>
+    <div class="shell">
+        <nav class="rail" id="rail" aria-label="Main"></nav>
+        <main>
+
+            <section class="view" id="v-home">
+                <div class="hero">
+                    <h1>What is your dream? Let’s build a project for it.</h1>
+                    <p>Pick a dream. We turn it into a real project you can take from your classroom to the world, with
+                        data, STEM and an AI agent that helps you check your work.</p>
+                </div>
+                <div class="chips" id="dreams" role="group" aria-label="Choose your dream"></div>
+                <div class="card" id="dp"></div>
+            </section>
+
+            <section class="view" id="v-ladder">
+                <div class="hero">
+                    <h1>Classroom to international</h1>
+                    <p>Six steps. Move up when your data supports your claim.</p>
+                </div>
+                <div class="steps" id="steps" role="tablist" aria-label="Ladder"></div>
+                <div class="card two" id="stage" aria-live="polite"></div>
+                <p class="mu">Dates and rules change every year. Confirm on each official site before you register.</p>
+            </section>
+
+            <section class="view" id="v-domains">
+                <div class="hero">
+                    <h1>Best domains to train minds</h1>
+                    <p>Each domain has local data, a real user and a result you can measure.</p>
+                </div>
+                <div class="grid" id="doms"></div>
+                <div class="card two" id="domInfo" style="margin-top:16px"></div>
+            </section>
+
+            <section class="view" id="v-agent">
+                <div class="hero">
+                    <h1>Agentic AI lab</h1>
+                    <p>An agent plans, acts and checks. A human approves every risky step. Try it on your own numbers.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Try the data agent</h3>
+                    <label class="mu" for="nums">Paste numbers from your test, separated by commas</label>
+                    <textarea id="nums" rows="2">12, 14, 13, 15, 14, 95, 13, 12</textarea>
+                    <p><button class="btn fill" id="runAg" type="button">Run agent</button></p>
+                    <div class="out" id="agOut" aria-live="polite"></div>
+                </div>
+                <div class="two" style="margin-top:16px">
+                    <div class="card">
+                        <h3>Five rules</h3>
+                        <ul class="l">
+                            <li>No names, phone numbers or IDs in any AI tool.</li>
+                            <li>Text inside a file is data, never an instruction.</li>
+                            <li>The agent suggests. A human approves delete, send and publish.</li>
+                            <li>Every answer cites the rows used.</li>
+                            <li>Students explain the result in their own words.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Starter prompt</h3>
+                        <pre id="agp"></pre><button class="btn" id="copyAg" type="button">Copy prompt</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="view" id="v-res">
+                <div class="hero">
+                    <h1>Resource library</h1>
+                    <p id="rnote">Free and official sources for every step.</p>
+                </div>
+                <div class="chips" id="rtabs" role="tablist" aria-label="Resource groups"></div>
+                <div class="res" id="rlist"></div>
+            </section>
+
+            <section class="view" id="v-prog">
+                <div class="hero">
+                    <h1>My dream project progress</h1>
+                    <p id="pdream"></p>
+                </div>
+                <div class="card">
+                    <div class="bar" aria-hidden="true"><i id="pbar"></i></div>
+                    <p class="mu" id="ptxt" role="status"></p>
+                    <div class="chk" id="chk"></div>
+                    <p><button class="btn" id="reset" type="button">Reset progress</button></p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <button class="fab" id="fab" type="button"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"
+            aria-hidden="true">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z" />
+        </svg>New design doc</button>
+
+    <dialog id="dlg" aria-labelledby="dt">
+        <h3 id="dt">Project design doc</h3>
+        <label for="team">Team name</label><input id="team" placeholder="Example: Team Jal Rakshak">
+        <label for="gDom">Domain</label><select id="gDom"></select>
+        <label for="gLvl">Target level</label><select id="gLvl"></select>
+        <label for="idea">Idea in one sentence</label><input id="idea">
+        <pre id="doc"></pre>
+        <p style="text-align:right"><span class="mu" id="cmsg" role="status"></span> <button class="btn" id="cls"
+                type="button">Close</button> <button class="btn fill" id="copyDoc" type="button">Copy</button></p>
+    </dialog>
+
+    <script>
+        const $ = i => document.getElementById(i), el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e };
+        const LNK = (n, u) => { const a = el('a', null, n); a.href = u; a.target = '_blank'; a.rel = 'noopener noreferrer'; return a };
+        const copy = async (t, b, l) => { try { await navigator.clipboard.writeText(t); b.textContent = 'Copied' } catch (e) { b.textContent = 'Select and copy' } setTimeout(() => b.textContent = l, 1800) };
+
+        const VIEWS = [['home', '🏠', 'Dream'], ['ladder', '🪜', 'Ladder'], ['domains', '🧭', 'Domains'], ['agent', '🤖', 'Agent lab'], ['res', '📚', 'Resources'], ['prog', '✅', 'Progress']];
+        let view = 'home';
+        function go(v) { view = v; document.querySelectorAll('.view').forEach(s => s.classList.toggle('on', s.id === 'v-' + v)); drawNav(); $('menu').classList.remove('on'); window.scrollTo(0, 0); if (v === 'res') drawRes(); if (v === 'prog') drawTk() }
+        function drawNav() { const r = $('rail'); r.replaceChildren(); VIEWS.forEach(([k, i, n]) => { const b = el('button'); b.type = 'button'; if (k === view) b.setAttribute('aria-current', 'page'); const p = el('span', 'p', i); b.append(p, el('span', null, n)); b.onclick = () => go(k); r.append(b) }) }
+        const mn = $('menu'); VIEWS.forEach(([k, i, n]) => { const b = el('button'); b.type = 'button'; b.append(el('b', null, i), document.createTextNode(n)); b.onclick = () => go(k); mn.append(b) });
+        $('apps').onclick = () => { const o = !mn.classList.contains('on'); mn.classList.toggle('on', o); $('apps').setAttribute('aria-expanded', o) };
+
+        /* Data */
+        const ST = [
+            { n: 'Classroom', s: 'your class', goal: 'Choose one real problem, build a first version and test it three times.', do: ['One testable question', 'One-page design doc', 'Prototype and a results table with 3 test runs', 'A 3-minute demo'], opp: [['Class STEM exhibition', ''], ['Bebras practice', 'https://bebras.cspathshala.org/']], ag: 'The agent tidies your test table and checks your chart. You write the conclusion.' },
+            { n: 'School', s: 'whole school', goal: 'Show your work to teachers and parents and collect feedback.', do: ['Working model or app', 'Poster: question, method, data, lesson', 'Feedback from 10 visitors', 'Version 2 that fixes the top problem'], opp: [['Bebras India Challenge', 'https://sites.google.com/view/bebrasindia'], ['INSPIRE Awards MANAK', 'https://inspireawards-dst.gov.in/']], ag: 'The agent ranks visitor feedback by how often each problem appears.' },
+            { n: 'District', s: 'many schools', goal: 'Explain the idea to judges and prove it with data.', do: ['Short project report', 'Data table and 2 charts', 'Every member speaks', 'Local problem linked to the yearly theme'], opp: [['National Children’s Science Congress', 'http://www.ncsc.co.in/'], ['MANAK district', 'https://inspireawards-dst.gov.in/']], ag: 'The agent drafts judge questions. You practise the answers.' },
+            { n: 'State', s: 'top teams', goal: 'Strengthen the science and show it works beyond one place.', do: ['Tests in two places or conditions', 'Cost and materials list', 'Safety and privacy note', 'Plan to scale'], opp: [['NCSC state', 'http://www.ncsc.co.in/'], ['MANAK state', 'https://inspireawards-dst.gov.in/'], ['Indian Computing Olympiad', 'https://www.iarcs.org.in/inoi/']], ag: 'The agent compares results across places and flags outliers you must explain.' },
+            { n: 'National', s: 'all India', goal: 'Show an original, tested solution with a clear community benefit.', do: ['Polished prototype and 2-minute video', 'Evidence from real users', 'Open data or code in a public repo', 'What failed and why'], opp: [['MANAK national', 'https://inspireawards-dst.gov.in/'], ['NCSC national', 'http://www.ncsc.co.in/'], ['ATL Marathon', 'https://aim.gov.in/atl.php'], ['INOI coding', 'https://www.iarcs.org.in/inoi/'], ['NIF submit an idea', 'https://www.nif.org.in/submitidea']], ag: 'The agent checks that every number in your report traces to a row in your data.' },
+            { n: 'International', s: 'world stage', goal: 'Compete with the best young scientists, coders and AI builders.', do: ['Research-grade question and method', 'Reproducible data and code', 'English abstract and slides', 'Mentor review before you submit'], opp: [['IOAI', 'https://india.acm.org/education/ai-olympiad-faq'], ['International Olympiad in Informatics', 'https://ioinformatics.org/'], ['Regeneron ISEF', 'https://www.societyforscience.org/isef/'], ['Bebras international', 'https://www.bebras.org/']], ag: 'The agent acts as a reviewer: it finds weak claims and missing controls. You fix them.' }];
+        const DM = [
+            { ic: '💧', n: 'Water and climate', pr: 'Find where water is wasted or polluted in your school or ward.', data: ['Tap-point flow readings', 'TDS and pH results', 'Rain and tank level logs'], stem: 'Sensors, volume and rate, graphs.', ag: 'Agent cleans readings and finds leak patterns by time of day.', src: [['India Meteorological Department', 'https://mausam.imd.gov.in/'], ['India Open Government Data', 'https://data.gov.in/']] },
+            { ic: '🌫️', n: 'Air and environment', pr: 'Measure air quality and green cover around your school and suggest fixes.', data: ['PM2.5 readings', 'Tree count', 'Traffic count by hour'], stem: 'Particulate sensors, correlation, maps.', ag: 'Agent joins your readings with public air data and drafts the trend.', src: [['CPCB', 'https://cpcb.nic.in/'], ['India Open Government Data', 'https://data.gov.in/']] },
+            { ic: '🩺', n: 'Health and nutrition', pr: 'Track nutrition and hygiene habits and design an awareness tool.', data: ['Anonymous survey answers', 'Meal feedback counts', 'Handwash station usage'], stem: 'Survey design, percentages, bar charts.', ag: 'Agent summarises survey text and flags missing groups. Names stay out.', src: [['Kaggle datasets', 'https://www.kaggle.com/datasets'], ['India Open Government Data', 'https://data.gov.in/']] },
+            { ic: '🌱', n: 'Agriculture and food', pr: 'Help a farmer or kitchen garden grow more with less water.', data: ['Soil moisture logs', 'Plant height weekly', 'Cost and yield table'], stem: 'Soil sensors, growth curves, controlled tests.', ag: 'Agent compares watering schedules and recommends the next test.', src: [['Bhuvan (ISRO)', 'https://bhuvan.nrsc.gov.in/'], ['India Open Government Data', 'https://data.gov.in/']] },
+            { ic: '☀️', n: 'Energy and smart city', pr: 'Cut electricity use in your lab or build a low-cost solar or safety device.', data: ['Daily meter readings', 'Solar output by hour', 'Device on-time logs'], stem: 'Circuits, power, efficiency, IoT.', ag: 'Agent finds the biggest energy waste and drafts a savings plan.', src: [['Atal Tinkering Labs', 'https://aim.gov.in/atl.php'], ['Kaggle datasets', 'https://www.kaggle.com/datasets']] },
+            { ic: '🤝', n: 'Inclusion and access', pr: 'Build a tool that helps a classmate with a disability or a language barrier.', data: ['User trial notes', 'Task completion times', 'Errors per trial'], stem: 'Assistive circuits, usability tests, iteration.', ag: 'Agent clusters trial notes into themes you can act on.', src: [['NIF idea submission', 'https://www.nif.org.in/submitidea'], ['Google ML Crash Course', 'https://developers.google.com/machine-learning/crash-course']] },
+            { ic: '📚', n: 'Education and learning gaps', pr: 'Find which topics students struggle with and build a practice tool.', data: ['Anonymous quiz scores by topic', 'Time-on-task logs', 'Attendance patterns'], stem: 'Statistics, spreadsheets, simple web apps.', ag: 'Agent ranks topics by difficulty and drafts practice questions you check.', src: [['Khan Academy statistics', 'https://www.khanacademy.org/math/statistics-probability'], ['Kaggle Learn', 'https://www.kaggle.com/learn']] },
+            { ic: '🔒', n: 'Digital safety', pr: 'Teach your community to spot fake messages, weak passwords and unsafe links.', data: ['Quiz results before and after', 'Sample scam messages (no real data)', 'Strength tests on dummy passwords'], stem: 'Computational thinking, probability, security basics.', ag: 'Agent builds practice quizzes. Humans check every answer.', src: [['Bebras practice', 'https://bebras.cspathshala.org/'], ['Hour of AI', 'https://hourofai.org']] }];
+        const DR = [['🔭', 'Scientist', 0, 'Find where water is wasted in our school'], ['🌍', 'Climate hero', 1, 'Map air quality around our school'], ['🩺', 'Doctor', 2, 'Build a hygiene and nutrition awareness tool'], ['🚜', 'Farmer innovator', 3, 'Grow a school garden with half the water'], ['⚡', 'Engineer', 4, 'Cut our lab’s electricity use by 20 percent'], ['🤝', 'Inclusion maker', 5, 'Make one classroom tool work for every learner'], ['🎓', 'Teacher', 6, 'Find and fix our class’s hardest topic'], ['💻', 'Coder', 7, 'Build a fake-message detector quiz for our ward']];
+        const WK = ['Week 1: talk to 5 users and write your testable question', 'Week 2: build version 1 and start collecting data', 'Week 3: clean the data, run 3 tests, make 2 honest charts', 'Week 4: present in 3 minutes, then fix the top problem'];
+
+        /* State */
+        const KEY = 'dream-lab-v1'; let S = { dream: null, done: {}, stage: 0 };
+        try { S = Object.assign(S, JSON.parse(localStorage.getItem(KEY) || '{}')) } catch (e) { }
+        const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)) } catch (e) { } };
+
+        /* Home */
+        function drawDreams() { const c = $('dreams'); c.replaceChildren(); DR.forEach((d, i) => { const b = el('button', 'chip', d[0] + ' ' + d[1]); b.type = 'button'; b.setAttribute('aria-pressed', S.dream === i); b.onclick = () => { S.dream = i; save(); drawDreams() }; c.append(b) }); drawDP() }
+        function drawDP() {
+            const p = $('dp'); p.replaceChildren(); if (S.dream == null) { p.append(el('h2', null, 'Your dream project appears here'), el('p', 'mu', 'Choose a dream above and get a project, a four-week plan and a path to competitions.')); return }
+            const d = DR[S.dream], m = DM[d[2]]; p.append(el('h2', null, d[0] + ' ' + d[3]), el('p', 'mu', 'Domain: ' + m.n + '. ' + m.pr));
+            const t = el('div', 'two'), a = el('div'), b = el('div'); a.append(el('h4', null, 'Four-week plan')); const u = el('ul', 'l'); WK.forEach(w => u.append(el('li', null, w))); a.append(u);
+            b.append(el('h4', null, 'Data you will collect')); const u2 = el('ul', 'l'); m.data.forEach(w => u2.append(el('li', null, w))); b.append(u2, el('div', 'agent', 'Agent helps: ' + m.ag)); t.append(a, b); p.append(t);
+            const r = el('p'); const x = el('button', 'btn fill', 'Build my design doc'); x.type = 'button'; x.onclick = openDoc; const y = el('button', 'btn', 'Climb the ladder'); y.type = 'button'; y.onclick = () => go('ladder'); r.append(x, document.createTextNode(' '), y); p.append(r)
+        }
+
+        /* Ladder */
+        function drawLadder() {
+            const s = $('steps'); s.replaceChildren(); ST.forEach((x, i) => { const b = el('button', i < S.stage ? 'd' : ''); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', i === S.stage); b.append(el('b', null, x.n), el('small', null, x.s)); b.onclick = () => { S.stage = i; save(); drawLadder() }; s.append(b) });
+            const x = ST[S.stage], p = $('stage'); p.replaceChildren(); const a = el('div'), c = el('div'); a.append(el('h3', null, x.n + ' level'), el('p', null, x.goal), el('h4', null, 'Deliver')); const u = el('ul', 'l'); x.do.forEach(d => u.append(el('li', null, d))); a.append(u, el('div', 'agent', 'Agent role: ' + x.ag));
+            c.append(el('h4', null, 'Where this level leads')); const u2 = el('ul', 'l'); x.opp.forEach(([n, l]) => { const li = el('li'); li.append(l ? LNK(n, l) : document.createTextNode(n)); u2.append(li) }); c.append(u2); p.append(a, c)
+        }
+
+        /* Domains */
+        let di = 0;
+        function drawDoms() {
+            const g = $('doms'); g.replaceChildren(); DM.forEach((d, i) => { const b = el('button', 'card'); b.type = 'button'; b.style.cssText = 'text-align:left;cursor:pointer;' + (i === di ? 'outline:2px solid var(--pr)' : ''); b.append(el('div', null, d.ic), el('h3', null, d.n), el('span', 'mu', d.pr)); b.onclick = () => { di = i; drawDoms() }; g.append(b) });
+            const d = DM[di], p = $('domInfo'); p.replaceChildren(); const a = el('div'), c = el('div'); a.append(el('h3', null, d.n), el('h4', null, 'Data your team can collect')); const u = el('ul', 'l'); d.data.forEach(x => u.append(el('li', null, x))); a.append(u, el('h4', null, 'STEM skills'), el('p', null, d.stem));
+            c.append(el('h4', null, 'Agent helps with'), el('p', null, d.ag), el('h4', null, 'Open data and tools')); const u2 = el('ul', 'l'); d.src.forEach(([n, l]) => { const li = el('li'); li.append(LNK(n, l)); u2.append(li) }); c.append(u2); p.append(a, c)
+        }
+
+        /* Agent lab */
+        $('runAg').onclick = () => {
+            const raw = $('nums').value.split(/[,\s]+/).map(Number).filter(n => !isNaN(n) && n !== 0 || n === 0); const v = $('nums').value.split(/[,\s]+/).filter(Boolean).map(Number); const o = $('agOut'); o.replaceChildren();
+            if (v.length < 4 || v.some(isNaN)) { o.append(el('p', 'mu', 'Enter at least 4 numbers separated by commas.')); return }
+            const q = (a, f) => { const i = (a.length - 1) * f, l = Math.floor(i); return a[l] + (a[Math.ceil(i)] - a[l]) * (i - l) }, mean = a => a.reduce((x, y) => x + y, 0) / a.length;
+            const s = [...v].sort((a, b) => a - b), q1 = q(s, .25), q3 = q(s, .75), iq = q3 - q1, out = v.filter(x => x < q1 - 1.5 * iq || x > q3 + 1.5 * iq);
+            const pl = el('ul', 'l');['Plan: count values, find the average and the middle value', 'Act: check for values far from the rest', 'Check: list every value I flag so you can verify it'].forEach(x => pl.append(el('li', null, x))); o.append(pl);
+            const t = el('table');[['Values', v.length], ['Mean', mean(v).toFixed(2)], ['Median', q(s, .5)], ['Flagged values', out.length ? out.join(', ') : 'none']].forEach(([a, b]) => { const r = el('tr'); r.append(el('td', null, a), el('td', null, String(b))); t.append(r) }); o.append(t);
+            if (out.length) {
+                const box = el('div', 'agent'); box.append(el('p', null, 'Agent suggests excluding ' + out.join(', ') + '. This changes your result, so you decide.'));
+                const ok = el('button', 'btn fill', 'Approve'); ok.type = 'button'; const no = el('button', 'btn', 'Keep all values'); no.type = 'button';
+                ok.onclick = () => { const k = v.filter(x => !out.includes(x)); box.replaceChildren(el('p', null, 'You approved. New mean: ' + mean(k).toFixed(2) + ' from ' + k.length + ' values. Write down why ' + out.join(', ') + ' was unusual.')) };
+                no.onclick = () => box.replaceChildren(el('p', null, 'You kept all values. Mean stays ' + mean(v).toFixed(2) + '. Explain the unusual value in your report.'));
+                box.append(ok, document.createTextNode(' '), no); o.append(box)
+            } else o.append(el('div', 'agent', 'No unusual values found. Still check your measuring method.'))
+        };
+        const AGP = `Act as a patient data mentor for a school student.
+Goal: help me answer my testable question using my data.
+Data: I will paste a small table and describe its columns.
+Task: 1) list your plan, 2) find missing values and duplicates, 3) summarise by group, 4) give 3 findings.
+Limits: do not guess missing values. Do not ask for names or phone numbers.
+Check: cite the row numbers you used and list your assumptions.
+Approval: ask me before you suggest deleting any row.
+Finish: ask me 3 questions so I explain the result in my own words.`;
+        $('agp').textContent = AGP; $('copyAg').onclick = e => copy(AGP, e.target, 'Copy prompt');
+
+        /* Resources */
+        const RS = {
+            'STEM': [['NCERT textbooks', 'https://ncert.nic.in/'], ['DIKSHA learning portal', 'https://diksha.gov.in/'], ['ATL Guidebook (PDF)', 'https://aim.gov.in/pdf/ATL-Guidebook.pdf'], ['Khan Academy math', 'https://www.khanacademy.org/math'], ['India Science and Technology portal', 'https://www.indiascienceandtechnology.gov.in/']],
+            'Data': [['Kaggle Learn', 'https://www.kaggle.com/learn'], ['SQLBolt', 'https://sqlbolt.com'], ['Google Colab', 'https://colab.research.google.com'], ['India Open Government Data', 'https://data.gov.in/'], ['Looker Studio', 'https://lookerstudio.google.com'], ['Khan Academy statistics', 'https://www.khanacademy.org/math/statistics-probability']],
+            'Agentic AI': [['Google ML Crash Course', 'https://developers.google.com/machine-learning/crash-course'], ['Microsoft AI for Beginners', 'https://github.com/microsoft/AI-For-Beginners'], ['Hour of AI', 'https://hourofai.org'], ['Experience AI (Raspberry Pi)', 'https://www.raspberrypi.org/blog/ai-education-resources-ai-awareness-day/'], ['Common Sense AI lessons', 'https://www.commonsense.org/education/ai-in-schools'], ['Claude', 'https://claude.ai']],
+            'Competitions': [['Bebras India', 'https://sites.google.com/view/bebrasindia'], ['INSPIRE Awards MANAK', 'https://inspireawards-dst.gov.in/'], ['NCSC', 'http://www.ncsc.co.in/'], ['NCSC Activity Guidebook 2026-27 (PDF)', 'https://dst.gov.in/sites/default/files/Activity-Guidebook-for-NCSC-2026-27_0.pdf'], ['Indian Computing Olympiad', 'https://www.iarcs.org.in/inoi/'], ['IOAI (ACM India)', 'https://india.acm.org/education/ai-olympiad-faq'], ['ATL Marathon', 'https://aim.gov.in/atl.php'], ['NIF submit an idea', 'https://www.nif.org.in/submitidea'], ['International Olympiad in Informatics', 'https://ioinformatics.org/'], ['Regeneron ISEF', 'https://www.societyforscience.org/isef/']],
+            'Teachers': [['Experience AI teacher courses', 'https://www.raspberrypi.org/blog/ai-education-resources-ai-awareness-day/'], ['Google AI literacy hub', 'https://blog.google/innovation-and-ai/products/google-ai-literacy-tools-2025/'], ['Ministry of Education', 'https://www.education.gov.in/'], ['Think Clear, Decide Well (companion book)', 'https://khanriyazi.github.io/Book-Data-Skills-and-media/'], ['Data Integration app', 'https://khanriyazi.github.io/Data-Integration/']]
+        };
+        let rt = 'STEM';
+        function drawRes() {
+            const q = $('q').value.trim().toLowerCase(), t = $('rtabs'); t.replaceChildren(); Object.keys(RS).forEach(k => { const b = el('button', 'chip', k); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', !q && k === rt); b.onclick = () => { rt = k; $('q').value = ''; drawRes() }; t.append(b) });
+            const l = $('rlist'); l.replaceChildren(); const items = q ? Object.values(RS).flat().filter(([n, u]) => (n + u).toLowerCase().includes(q)) : RS[rt];
+            $('rnote').textContent = q ? items.length + ' results for “' + $('q').value.trim() + '”' : 'Free and official sources for every step.';
+            items.forEach(([n, u]) => { const a = LNK(n, u); a.append(el('small', null, u.replace(/^https?:\/\//, '').split('/')[0])); l.append(a) })
+        }
+        $('q').addEventListener('input', () => { if ($('q').value.trim() && view !== 'res') go('res'); else if (view === 'res') drawRes() });
+
+        /* Progress */
+        const TK = ['Chose a dream and a real user', 'Wrote a testable question', 'Finished the design doc', 'Collected data with no personal details', 'Cleaned data and logged every change', 'Ran each test at least 3 times', 'Made 2 honest charts', 'Used an agent with human approval', 'Presented in 3 minutes to my class', 'Improved version 2 from feedback', 'Registered through my school for a competition', 'Wrote a lessons-learned report'];
+        function drawTk() { $('pdream').textContent = S.dream == null ? 'Choose a dream on the first page to start.' : DR[S.dream][0] + ' ' + DR[S.dream][3]; const c = $('chk'); c.replaceChildren(); TK.forEach((t, i) => { const l = el('label'), x = el('input'); x.type = 'checkbox'; x.checked = !!S.done[i]; x.onchange = () => { x.checked ? S.done[i] = 1 : delete S.done[i]; save(); pr() }; l.append(x, el('span', null, t)); c.append(l) }); pr() }
+        function pr() { const n = Object.keys(S.done).length; $('pbar').style.width = Math.round(n / TK.length * 100) + '%'; $('ptxt').textContent = n + ' of ' + TK.length + ' done' }
+        $('reset').onclick = () => { if (!confirm('Reset all progress?')) return; S.done = {}; save(); drawTk() };
+
+        /* Design doc */
+        const LV = ['Classroom', 'School', 'District', 'State', 'National', 'International'];
+        $('gDom').innerHTML = DM.map((d, i) => `<option value="${i}">${d.n}</option>`).join(''); $('gLvl').innerHTML = LV.map((l, i) => `<option value="${i}">${l}</option>`).join('');
+        function doc() {
+            const d = DM[+$('gDom').value], l = LV[+$('gLvl').value], t = $('team').value.trim() || 'Your team name', i = $('idea').value.trim() || 'Write your idea in one sentence';
+            $('doc').textContent = `DESIGN DOC: ${t}
+Level target: ${l}   Domain: ${d.n}
+
+1. Problem
+${d.pr}
+
+2. Our idea
+${i}
+
+3. Testable question
+One question that data can answer (example: does X cut Y by 20 percent?).
+
+4. Users
+Talk to 5 people who will use it before you build.
+
+5. Data we will collect
+- ${d.data.join('\n- ')}
+
+6. STEM method
+${d.stem} Run every test at least 3 times.
+
+7. Agent plan
+${d.ag}
+Human approves: deleting rows, sharing data, publishing results.
+
+8. Success measure
+One number that proves it works, with a target.
+
+9. Risks and privacy
+No names, phones or IDs in any AI tool. List 3 things that could go wrong.
+
+10. Timeline
+${WK.join('\n')}
+
+11. Launch and review
+Demo at ${l.toLowerCase()} level. Write what worked, what failed and what changes.`
+        }
+        function openDoc() { if (S.dream != null) $('gDom').value = DR[S.dream][2]; if (!$('idea').value && S.dream != null) $('idea').value = DR[S.dream][3]; $('gLvl').value = S.stage; doc(); $('dlg').showModal() }
+        ['team', 'idea', 'gDom', 'gLvl'].forEach(i => $(i).addEventListener('input', doc));
+        $('fab').onclick = openDoc; $('cls').onclick = () => $('dlg').close(); $('copyDoc').onclick = e => copy($('doc').textContent, e.target, 'Copy');
+        $('theme').onclick = () => { const r = document.documentElement, d = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme:dark)').matches; r.dataset.theme = d ? 'light' : 'dark' };
+        document.addEventListener('click', e => { if (!e.target.closest('#menu,#apps')) mn.classList.remove('on') });
+        drawDreams(); drawLadder(); drawDoms(); go('home');
+    </script>
+</body>
+
+</html>

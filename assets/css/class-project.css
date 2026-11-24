@@ -1,0 +1,138 @@
+:root {
+  --stem: #0f4c81;
+  --stem-deep: #0a3358;
+  --stem-soft: #e7f1fb;
+  --ink: #1c2834;
+  --muted: #5c6b7a;
+  --line: #d5e0ea;
+  --paper: #f4f7fb;
+  --ok: #0f7b4c;
+  --warn: #9a6700;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(900px 420px at 100% -10%, #d7ebff 0%, transparent 55%),
+    radial-gradient(700px 380px at -10% 0%, #e5f6ef 0%, transparent 50%),
+    var(--paper);
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(145deg, #1a73b8, var(--stem-deep));
+  font-weight: 700;
+}
+
+.auth-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+}
+
+.auth-card {
+  width: min(440px, 100%);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(15, 76, 129, 0.08);
+  padding: 28px 24px 22px;
+}
+
+.demo-box {
+  background: var(--stem-soft);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.92rem;
+}
+
+.app-shell {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 18px 16px 40px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  height: 100%;
+}
+
+.project-btn {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+
+.project-btn.active {
+  border-color: var(--stem);
+  background: var(--stem-soft);
+}
+
+.project-btn small,
+.hint,
+.schema {
+  color: var(--muted);
+}
+
+.badge-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 99px;
+  padding: 2px 8px;
+  background: #eef2f6;
+}
+
+.badge-status.Building,
+.badge-status.Testing {
+  background: #fff4d6;
+  color: var(--warn);
+}
+
+.badge-status.Presented {
+  background: #e5f6ee;
+  color: var(--ok);
+}
+
+.work-table td,
+.work-table th {
+  vertical-align: middle;
+}
+
+.schema {
+  font-size: 0.92rem;
+}
+
+.schema code {
+  color: var(--stem-deep);
+}
+
+#status {
+  min-height: 1.25rem;
+}
